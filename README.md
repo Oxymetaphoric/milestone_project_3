@@ -57,7 +57,7 @@ This is my milestone two project for the [Code Institute's](http://www.codeinsti
 
 ##### - First Time User
 
-1. As a first time user I want to encounter a landing page that succinclty and clearly explains the fun tionality of the site 
+1. As a first time user I want to encounter a landing page that succinclty and clearly explains the functionality of the site 
 2. As a first time user I want to be able to brwose review of games I am interested in
 3. As a first time user I want to be able to sign up to the site in order to login and start posting reviews 
 4. As a first time user I want to be able navigate the site easily and intuitively 
@@ -76,8 +76,14 @@ This is my milestone two project for the [Code Institute's](http://www.codeinsti
 
 | Task/Need                                   |      Importance (1 -5) |
 |----------------------------------------------|-------------------|
-
+| browsing the collection of reviews | |
+| user profiles that can be securely logged in to ||
+| user profiles allow viewing/manipulation of existing reviews   | |
+| allow users to add games to the database  ||
+| profile pages for each user, detailing reviews and some user stats (no. of reviews etc.)    ||
+|   ||
 #### Accessibility
+
 
 
 ---
