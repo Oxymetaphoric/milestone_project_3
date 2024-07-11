@@ -41,6 +41,42 @@ This is my milestone two project for the [Code Institute's](http://www.codeinsti
 
 ### User Experience
 
+#### Front End 
+
+The site will be styled using the materialise toolkit to provide a consistent and aesthetic UI. I will use template inheritance using Jinja and Flask in order to create pages that have a consistent and accessible layout with minimal code to ensure a good UX. 
+
+#### Back end 
+
+I will utilise postgreSQL to build the moultiple tables within the database that will be necessary. These models will be: 
+
+Game Table: 
+    Game title 
+    Game published by
+    game developed by
+    year of release
+    genre
+    number of reviews 
+    aggregate score 
+    image url
+    
+Review Table:
+    the game
+    the review
+    the author 
+    rating
+
+User Table:
+    user's name
+    user email
+    user password
+
+Profile Table:
+    user name
+    location
+    user reviews 
+    added games 
+
+
 #### Target Audience
 
 - video game players
@@ -51,7 +87,7 @@ This is my milestone two project for the [Code Institute's](http://www.codeinsti
 - secure login procedures 
 - accessible 
 - able to browse review by catagory (game, author, aggregate score etc. )
-- able to write, delete, edit reiews 
+- able to write, delete, edit reviews 
 
 #### User Stories
 
@@ -69,28 +105,51 @@ This is my milestone two project for the [Code Institute's](http://www.codeinsti
 3. As a returning visitor I want to be able to delete reviews I have previously written
 4. As a returning visitor I want to be able to view the profile of others 
 5. As a returning visitor I want to be able to write new reviews
-6. As a returning visitor I want to be able to add games to the database if they are not currently there
+6. As a returning visitor I want to be able to edit games to the database if they are not currently there
 
 
 #### Identified tasks/needs the website should fulfill
 
-| Task/Need                                   |      Importance (1 -5) |
+| Features                                  |      Importance (1 -5) |
 |----------------------------------------------|-------------------|
-| browsing the collection of reviews | |
+| site is easy to navigate ||
+| site is responsive ||
+| browsing the collection of games | |
+| browsing all reviews of a given game ||
 | user profiles that can be securely logged in to ||
 | user profiles allow viewing/manipulation of existing reviews   | |
-| allow users to add games to the database  ||
+| allow users to edit games to the database  ||
 | profile pages for each user, detailing reviews and some user stats (no. of reviews etc.)    ||
-|   ||
+| site is accessible  ||
+| site stores user information securely  ||
+| site sends useers to a 404 with links to home if game/review/user not found ||
+| search existing games   ||
+
+
 #### Accessibility
 
 
 
 ---
 
-## :bricks: Structure
+## :bricks: Structure;
 
 ---
+
+base.html
+signup.html
+login.html
+user_profile.html
+games.html
+game.html
+add_game.html
+edit_game.html
+delete_game.html
+edit_review.html
+delete_review.html
+add_review.html
+404.html
+
 
 
 ---
