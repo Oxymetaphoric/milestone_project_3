@@ -47,54 +47,7 @@ The site will be styled using the materialise toolkit to provide a consistent an
 
 #### Back end 
 
-I will utilise postgreSQL to build the moultiple tables within the database that will be necessary. These models will be: 
-
- Game Table 
-| Column Name | Data Type | Constraints | Key | Nullable |
-|-------------|-----------|-------------|-----|----------|
-| game_id | int | AUTO_INCREMENT | PK | No |
-| title | string(255) | | | No |
-| publisher | string(255) | | | Yes |
-| developer | string(255) | | | Yes |
-| release_date | date | | | Yes |
-| genre | string(100) | | | Yes |
-| image_url | string(512) | | | Yes |
-
-Review Table 
-| Column Name | Data Type | Constraints | Key | Nullable |
-|-------------|-----------|-------------|-----|----------|
-| review_id | int | AUTO_INCREMENT | PK | No |
-| game_id | int | | FK (Game) | No |
-| user_id | int | | FK (User) | No |
-| content | text | | | No |
-| hours_played | float | | | No |
-| completed | bool | | | No |
-| rating | int | CHECK (rating BETWEEN 1 AND 10) | | No |
-| created_at | datetime | CURRENT TIMESTAMP | | No |
-
-
- User Table  
-| Column Name | Data Type | Constraints | Key | Nullable |
-|-------------|-----------|-------------|-----|----------|
-| user_id | int | AUTO_INCREMENT | PK | No |
-| username | string(50) | UNIQUE | | No |
-| email | string(255) | UNIQUE | | No |
-| password_hash | string(255) | | | No |
-| location | string(255) | | | Yes |
-| created_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
-
-
- user > game / game > users  
-| Column Name | Data Type | Constraints | Key | Nullable |
-|-------------|-----------|-------------|-----|----------|
-| user_id | int | | PK, FK (User) | No |
-| game_id | int | | PK, FK (Game) | No |
-| added_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
-
-I converted the above markup tables into DBML (Database Markup Language) and used [dbdiagram.io](https://dbdiagram.io) to generate a .sql file of my schema to use in my project
-
-
-![Schema Diagram](docs/database_schema.png) 
+I will utilise postgreSQL to build the moultiple tables within the database that will be necessary 
 
 
 #### Target Audience
@@ -156,23 +109,72 @@ I converted the above markup tables into DBML (Database Markup Language) and use
 
 ---
 
-base.html
-signup.html
-login.html
-user_profile.html
-games.html
-game.html
-add_game.html
-edit_game.html
-delete_game.html
-edit_review.html
-delete_review.html
-add_review.html
-404.html
+### Page Hierarchy 
 
+- base.html
+- signup.html
+- login.html
+- user_profile.html
+- games.html
+- game.html
+- add_game.html
+- edit_game.html
+- delete_game.html
+- edit_review.html
+- delete_review.html
+- add_review.html
+- 404.html
 
+![Hierarchy diagram](docs/quest_log_heirarchy_diagram.png)
 
 ---
+
+ Game Table 
+| Column Name | Data Type | Constraints | Key | Nullable |
+|-------------|-----------|-------------|-----|----------|
+| game_id | int | AUTO_INCREMENT | PK | No |
+| title | string(255) | | | No |
+| publisher | string(255) | | | Yes |
+| developer | string(255) | | | Yes |
+| release_date | date | | | Yes |
+| genre | string(100) | | | Yes |
+| image_url | string(512) | | | Yes |
+
+Review Table 
+| Column Name | Data Type | Constraints | Key | Nullable |
+|-------------|-----------|-------------|-----|----------|
+| review_id | int | AUTO_INCREMENT | PK | No |
+| game_id | int | | FK (Game) | No |
+| user_id | int | | FK (User) | No |
+| content | text | | | No |
+| hours_played | float | | | No |
+| completed | bool | | | No |
+| rating | int | CHECK (rating BETWEEN 1 AND 10) | | No |
+| created_at | datetime | CURRENT TIMESTAMP | | No |
+
+
+ User Table  
+| Column Name | Data Type | Constraints | Key | Nullable |
+|-------------|-----------|-------------|-----|----------|
+| user_id | int | AUTO_INCREMENT | PK | No |
+| username | string(50) | UNIQUE | | No |
+| email | string(255) | UNIQUE | | No |
+| password_hash | string(255) | | | No |
+| location | string(255) | | | Yes |
+| created_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
+
+
+ user > game / game > users  
+| Column Name | Data Type | Constraints | Key | Nullable |
+|-------------|-----------|-------------|-----|----------|
+| user_id | int | | PK, FK (User) | No |
+| game_id | int | | PK, FK (Game) | No |
+| added_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
+
+I converted the above markup tables into DBML (Database Markup Language) and used [dbdiagram.io](https://dbdiagram.io) to generate a .sql file of my schema to use in my project
+
+
+![Schema Diagram](docs/database_schema.png) 
 
 ### Wireframes
 
