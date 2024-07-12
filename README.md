@@ -49,33 +49,42 @@ The site will be styled using the materialise toolkit to provide a consistent an
 
 I will utilise postgreSQL to build the moultiple tables within the database that will be necessary. These models will be: 
 
-Game Table: 
-    Game title 
-    Game published by
-    game developed by
-    year of release
-    genre
-    number of reviews 
-    aggregate score 
-    image url
-    
-Review Table:
-    the game
-    the review
-    the author 
-    rating
 
-User Table:
-    user's name
-    user email
-    user password
+| Game | Data Type | Constraints | Key | Nullable |
+|-------------|-----------|-------------|-----|----------|
+| game_id | int | AUTO_INCREMENT | PK | No |
+| title | varchar(255) | | | No |
+| publisher | varchar(255) | | | Yes |
+| developer | varchar(255) | | | Yes |
+| release_date | date | | | Yes |
+| genre | varchar(100) | | | Yes |
+| image_url | varchar(512) | | | Yes |
 
-Profile Table:
-    user name
-    location
-    user reviews 
-    added games 
+| Review | Data Type | Constraints | Key | Nullable |
+|-------------|-----------|-------------|-----|----------|
+| review_id | int | AUTO_INCREMENT | PK | No |
+| game_id | int | | FK (Game) | No |
+| user_id | int | | FK (User) | No |
+| content | text | | | No |
+| hours_played | float | | | No |
+| completed | bool | | | No |
+| rating | int | CHECK (rating BETWEEN 1 AND 10) | | No |
+| created_at | datetime | CURRENT TIMESTAMP | | No |
 
+| User | Data Type | Constraints | Key | Nullable |
+|-------------|-----------|-------------|-----|----------|
+| user_id | int | AUTO_INCREMENT | PK | No |
+| username | varchar(50) | UNIQUE | | No |
+| email | varchar(255) | UNIQUE | | No |
+| password_hash | varchar(255) | | | No |
+| location | varchar(255) | | | Yes |
+| created_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
+
+| UserGame | Data Type | Constraints | Key | Nullable |
+|-------------|-----------|-------------|-----|----------|
+| user_id | int | | PK, FK (User) | No |
+| game_id | int | | PK, FK (Game) | No |
+| added_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
 
 #### Target Audience
 
