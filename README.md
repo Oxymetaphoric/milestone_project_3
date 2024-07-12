@@ -125,7 +125,7 @@ I will utilise postgreSQL to build the moultiple tables within the database that
 - add_review.html
 - 404.html
 
-![Hierarchy diagram](docs/quest_log_heirarchy_diagram.png)
+![Hierarchy diagram](docs/quest_log_structure_chart.png)
 
 ---
 
