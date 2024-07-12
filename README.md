@@ -112,23 +112,52 @@ I will utilise postgreSQL to build the multiple tables within the database that 
 ### Page Hierarchy 
 
 - base.html
+
+Contains header and footer of site, the rest of the pages will extend from this page. Header to contain login/sign-up links, footer to contain social links, links to tos etc. design credits
+
 - signup.html
+
+sign up form 
+
 - login.html
+
+login page for users with account, 
+
 - user_profile.html
+
+allow users to change account details such as screenname, update password, view number of reviews/games posted, edit/delete posted content.  
+
 - games.html
+
+gallery page for games added to the data base, displayed in a grid with information modals over the top of large images. 
+
 - game.html
+
+information page for a given game, including image, title, publisher/developer information etc. 
+
 - add_game.html
+
+form with details required to add a game to the database, possibly pending admininstrative approval. 
+
 - edit_game.html
-- delete_game.html
-- edit_review.html
-- delete_review.html
+
+edit a game you have added to the database. This functionality will be exclusive to games that users have added to the database not all games. 
+
 - add_review.html
+
+form to attach a review to a given game. 
+
+- edit_review.html
+
+form to edit an existing review
+
 - 404.html
+
+page to send users to if a game/review is somehow not found in the database
 
 ![Hierarchy diagram](docs/quest_log_structure_chart.png)
 
 ---
-
 
 ### Database Structure
 
@@ -158,7 +187,6 @@ Review Table
 | rating | int | CHECK (rating BETWEEN 1 AND 10) | | No |
 | created_at | datetime | CURRENT TIMESTAMP | | No |
 
-
  User Table  
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
@@ -169,7 +197,6 @@ Review Table
 | location | string(255) | | | Yes |
 | created_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
 
-
  user > game / game > users  
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
@@ -178,7 +205,6 @@ Review Table
 | added_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
 
 I converted the above markup tables into DBML (Database Markup Language) and used [dbdiagram.io](https://dbdiagram.io) to generate a .sql file of my schema to potentially use further into coding my project
-
 
 ![Schema Diagram](docs/database_schema.png) 
 
@@ -190,13 +216,13 @@ I converted the above markup tables into DBML (Database Markup Language) and use
 
 #### Mobile Wireframes
 
-
 ### Features
 
 [] CRUD functionality for reviews
 [] CRU functionality for games (deleting games will not be a userland feature)
 [] account creation
 [] account deletion
+[] account edits
 [] game score aggregation
 [] user statistics
 
@@ -212,10 +238,7 @@ I will be using the Materialize framework for the structure and styling of this 
 
 #### Typography
 
-
-
 #### Colour Palettes
-
 
 ### Technologies and Tools used
 
@@ -241,13 +264,11 @@ I will be using the Materialize framework for the structure and styling of this 
 - **[amiresponsive](https://ui.dev/amiresponsive)**
 - **[postgrSQL](xxxxxxxxxxxxx.xxx)
 
-
 ---
 
 ## :microscope: Testing
 
 ---
-
 
 ### Testing Procedure
 
@@ -256,17 +277,13 @@ I will be using the Materialize framework for the structure and styling of this 
 | test                                           | verified |
 | ---------------------------------------------- | -------- |
 
-
 ### User Stories Testing
 
 #### - First Time User Testing
 
-
 #### - Returning User Testing
 
-
 #### - Site Owner Testing
-
 
 ### Desktop
 
@@ -275,11 +292,9 @@ I will be using the Materialize framework for the structure and styling of this 
 ### WAVE
 
 ### Lighthouse
-
 ---
 
 ### Mobile Testing
-
 
 ### Bug fixes
 
@@ -288,7 +303,6 @@ I will be using the Materialize framework for the structure and styling of this 
 --------------------------------
 --------------------------------
 --------------------------------
-
 
 ## :loudspeaker: Deployment
 
