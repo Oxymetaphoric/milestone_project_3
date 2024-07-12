@@ -124,7 +124,7 @@ Table UserGame {
   added_at datetime [not null, default: `CURRENT_TIMESTAMP`]
 }
 
-[Schema Diagram](docs/database_schema.png) 
+![Schema Diagram](docs/database_schema.png) 
 
 
 #### Target Audience
