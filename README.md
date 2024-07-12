@@ -86,43 +86,8 @@ I will utilise postgreSQL to build the moultiple tables within the database that
 | game_id | int | | PK, FK (Game) | No |
 | added_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
 
-I converted the above markup tables into DBML (Database Markup Language) and used this to generate a .sql file of my schema to use in my project: 
+I converted the above markup tables into DBML (Database Markup Language) and used [dbdiagram.io](https://dbdiagram.io) to generate a .sql file of my schema to use in my project
 
-Table Game {
-  game_id int [pk, increment]
-  title varchar(255) [not null]
-  publisher varchar(255)
-  developer varchar(255)
-  release_date date
-  genre varchar(100)
-  image_url varchar(512)
-}
-
-Table Review {
-  review_id int [pk, increment]
-  game_id int [not null, ref: > Game.game_id]
-  user_id int [not null, ref: > User.user_id]
-  content text [not null]
-  hours_played float [not null]
-  completed boolean [not null]
-  rating int [not null, note: 'CHECK (rating BETWEEN 1 AND 10)']
-  created_at datetime [not null, default: `CURRENT_TIMESTAMP`]
-}
-
-Table User {
-  user_id int [pk, increment]
-  username varchar(50) [not null, unique]
-  email varchar(255) [not null, unique]
-  password_hash varchar(255) [not null]
-  location varchar(255)
-  created_at datetime [not null, default: `CURRENT_TIMESTAMP`]
-}
-
-Table UserGame {
-  user_id int [pk, ref: > User.user_id]
-  game_id int [pk, ref: > Game.game_id]
-  added_at datetime [not null, default: `CURRENT_TIMESTAMP`]
-}
 
 ![Schema Diagram](docs/database_schema.png) 
 
