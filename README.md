@@ -49,8 +49,7 @@ The site will be styled using the materialise toolkit to provide a consistent an
 
 I will utilise postgreSQL to build the moultiple tables within the database that will be necessary. These models will be: 
 
-| Game Table |
-|------------------|
+ Game Table 
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
 | game_id | int | AUTO_INCREMENT | PK | No |
@@ -61,8 +60,7 @@ I will utilise postgreSQL to build the moultiple tables within the database that
 | genre | string(100) | | | Yes |
 | image_url | string(512) | | | Yes |
 
-| Review Table |
-|-------------|
+Review Table 
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
 | review_id | int | AUTO_INCREMENT | PK | No |
@@ -75,8 +73,7 @@ I will utilise postgreSQL to build the moultiple tables within the database that
 | created_at | datetime | CURRENT TIMESTAMP | | No |
 
 
-| User Table | 
-| --------|
+ User Table  
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
 | user_id | int | AUTO_INCREMENT | PK | No |
@@ -87,8 +84,7 @@ I will utilise postgreSQL to build the moultiple tables within the database that
 | created_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
 
 
-| user > game / game > users | 
-| --------------------------|
+ user > game / game > users  
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
 | user_id | int | | PK, FK (User) | No |
