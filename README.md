@@ -47,7 +47,7 @@ The site will be styled using the materialise toolkit to provide a consistent an
 
 #### Back end 
 
-I will utilise postgreSQL to build the moultiple tables within the database that will be necessary 
+I will utilise postgreSQL to build the multiple tables within the database that will be necessary 
 
 
 #### Target Audience
@@ -67,7 +67,7 @@ I will utilise postgreSQL to build the moultiple tables within the database that
 ##### - First Time User
 
 1. As a first time user I want to encounter a landing page that succinclty and clearly explains the functionality of the site 
-2. As a first time user I want to be able to brwose review of games I am interested in
+2. As a first time user I want to be able to browse review of games I am interested in
 3. As a first time user I want to be able to sign up to the site in order to login and start posting reviews 
 4. As a first time user I want to be able navigate the site easily and intuitively 
 
@@ -129,6 +129,12 @@ I will utilise postgreSQL to build the moultiple tables within the database that
 
 ---
 
+
+### Database Structure
+
+The database will contain 4 tables. One for the games, one for reviews, one for users, and a join table that gives me access to all games reviewed for a given user and all reviews from users for a given game.  
+
+
  Game Table 
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
@@ -171,7 +177,7 @@ Review Table
 | game_id | int | | PK, FK (Game) | No |
 | added_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
 
-I converted the above markup tables into DBML (Database Markup Language) and used [dbdiagram.io](https://dbdiagram.io) to generate a .sql file of my schema to use in my project
+I converted the above markup tables into DBML (Database Markup Language) and used [dbdiagram.io](https://dbdiagram.io) to generate a .sql file of my schema to potentially use further into coding my project
 
 
 ![Schema Diagram](docs/database_schema.png) 
@@ -180,11 +186,19 @@ I converted the above markup tables into DBML (Database Markup Language) and use
 
 #### Desktop Wireframes
 
+#### Tablet Wireframes
+
 #### Mobile Wireframes
 
 
 ### Features
 
+[] CRUD functionality for reviews
+[] CRU functionality for games (deleting games will not be a userland feature)
+[] account creation
+[] account deletion
+[] game score aggregation
+[] user statistics
 
 ---
 
@@ -194,7 +208,10 @@ I converted the above markup tables into DBML (Database Markup Language) and use
 
 ### Design
 
+I will be using the Materialize framework for the structure and styling of this project. This will allow me to more easily focus on the data and functionality of the app while still maintaining an aesthetically pleasing and intuitve to navigate web app.  
+
 #### Typography
+
 
 
 #### Colour Palettes
@@ -204,19 +221,26 @@ I converted the above markup tables into DBML (Database Markup Language) and use
 
 #### Languages
 
+- HTML5
+- CSS3
+- JavaScript
+- Python 
+- Flask/Jinja
+- SQL
+
 #### Tools
 
 - **[Google Chrome](https://www.chrome.com/)**
 - **[Firefox](https://www.firefox.com)**
 - **[git](https://git-scm.com/)**
-- **[VSCode for linux](https://code.visualstudio.com/)**
+- **[lunarVim](https://xxxxxxxxxxxxx.xxx)**
 - **[GitHub](https://www.github.com)**
 - **[Pencil](https://pencil.evolus.vn/)**
-- **[Coolors](https://coolors.co/)**
 - **[Google Fonts](https://fonts.google.com/)**
 - **[Photopea](https://www.photopea.com/)**
-- **[hextorgba](https://rgbacolorpicker.com/hex-to-rgba)**
 - **[amiresponsive](https://ui.dev/amiresponsive)**
+- **[postgrSQL](xxxxxxxxxxxxx.xxx)
+
 
 ---
 
