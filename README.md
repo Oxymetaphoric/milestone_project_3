@@ -53,12 +53,12 @@ I will utilise postgreSQL to build the moultiple tables within the database that
 | Game | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
 | game_id | int | AUTO_INCREMENT | PK | No |
-| title | varchar(255) | | | No |
-| publisher | varchar(255) | | | Yes |
-| developer | varchar(255) | | | Yes |
+| title | string(255) | | | No |
+| publisher | string(255) | | | Yes |
+| developer | string(255) | | | Yes |
 | release_date | date | | | Yes |
-| genre | varchar(100) | | | Yes |
-| image_url | varchar(512) | | | Yes |
+| genre | string(100) | | | Yes |
+| image_url | string(512) | | | Yes |
 
 | Review | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
@@ -74,10 +74,10 @@ I will utilise postgreSQL to build the moultiple tables within the database that
 | User | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
 | user_id | int | AUTO_INCREMENT | PK | No |
-| username | varchar(50) | UNIQUE | | No |
-| email | varchar(255) | UNIQUE | | No |
-| password_hash | varchar(255) | | | No |
-| location | varchar(255) | | | Yes |
+| username | string(50) | UNIQUE | | No |
+| email | string(255) | UNIQUE | | No |
+| password_hash | string(255) | | | No |
+| location | string(255) | | | Yes |
 | created_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
 
 | UserGame | Data Type | Constraints | Key | Nullable |
@@ -85,6 +85,47 @@ I will utilise postgreSQL to build the moultiple tables within the database that
 | user_id | int | | PK, FK (User) | No |
 | game_id | int | | PK, FK (Game) | No |
 | added_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
+
+I converted the above markup tables into DBML (Database Markup Language) and used this to generate a .sql file of my schema to use in my project: 
+
+Table Game {
+  game_id int [pk, increment]
+  title varchar(255) [not null]
+  publisher varchar(255)
+  developer varchar(255)
+  release_date date
+  genre varchar(100)
+  image_url varchar(512)
+}
+
+Table Review {
+  review_id int [pk, increment]
+  game_id int [not null, ref: > Game.game_id]
+  user_id int [not null, ref: > User.user_id]
+  content text [not null]
+  hours_played float [not null]
+  completed boolean [not null]
+  rating int [not null, note: 'CHECK (rating BETWEEN 1 AND 10)']
+  created_at datetime [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table User {
+  user_id int [pk, increment]
+  username varchar(50) [not null, unique]
+  email varchar(255) [not null, unique]
+  password_hash varchar(255) [not null]
+  location varchar(255)
+  created_at datetime [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table UserGame {
+  user_id int [pk, ref: > User.user_id]
+  game_id int [pk, ref: > Game.game_id]
+  added_at datetime [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+[Schema Diagram](docs/database_schema.png) 
+
 
 #### Target Audience
 
@@ -121,18 +162,18 @@ I will utilise postgreSQL to build the moultiple tables within the database that
 
 | Features                                  |      Importance (1 -5) |
 |----------------------------------------------|-------------------|
-| site is easy to navigate ||
-| site is responsive ||
-| browsing the collection of games | |
-| browsing all reviews of a given game ||
-| user profiles that can be securely logged in to ||
-| user profiles allow viewing/manipulation of existing reviews   | |
-| allow users to edit games to the database  ||
-| profile pages for each user, detailing reviews and some user stats (no. of reviews etc.)    ||
-| site is accessible  ||
-| site stores user information securely  ||
-| site sends useers to a 404 with links to home if game/review/user not found ||
-| search existing games   ||
+| site is easy to navigate | 5 |
+| site is responsive | 5 |
+| browsing the collection of games | 5 |
+| browsing all reviews of a given game | 4 |
+| user profiles that can be securely logged in to | 3 |
+| user profiles allow viewing/manipulation of existing reviews   | 3 |
+| allow users to edit games to the database  | 2 |
+| profile pages for each user, detailing reviews and some user stats (no. of reviews etc.)    | 3 |
+| site is accessible  | 5 |
+| site stores user information securely  | 5 |
+| site sends useers to a 404 with links to home if game/review/user not found | 4 |
+| search existing games   | 5 |
 
 
 #### Accessibility
