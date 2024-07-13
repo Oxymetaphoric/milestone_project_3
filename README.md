@@ -115,9 +115,17 @@ I will utilise postgreSQL to build the multiple tables within the database that 
 
 Contains header and footer of site, the rest of the pages will extend from this page. Header to contain login/sign-up links, footer to contain social links, links to tos etc. design credits
 
+![desktop landing page](./docs/quest-log-desktop-wireframes/1.1-Screen1.png)
+![mobile landing page](./docs/quest-log-mobile-wireframes/2.1-Screen1.png)
+![tablet landing page](./docs/quest-log-tablet-wireframes/1.1-Screen1.png)
+
 - signup.html
 
 sign up form 
+
+![desktop landing page](./docs/quest-log-desktop-wireframes/2.1-Screen4.png)
+![mobile landing page](./docs/quest-log-mobile-wireframes/2.1-Screen2.png)
+![tablet landing page](./docs/quest-log-tablet-wireframes/2.1-Screen2.png)
 
 - login.html
 
@@ -131,13 +139,26 @@ allow users to change account details such as screenname, update password, view 
 
 gallery page for games added to the data base, displayed in a grid with information modals over the top of large images. 
 
+![desktop landing page](./docs/quest-log-desktop-wireframes/3.1-Screen2.png)
+![mobile landing page](./docs/quest-log-mobile-wireframes/3.1-Screen3.png)
+![tablet landing page](./docs/quest-log-tablet-wireframes/3.1-Screen3.png)
+
+
 - game.html
 
 information page for a given game, including image, title, publisher/developer information etc. 
 
+![desktop landing page](./docs/quest-log-desktop-wireframes/4.1-screen5.png)
+![mobile landing page](./docs/quest-log-mobile-wireframes/4.1-screen4.png)
+![tablet landing page](./docs/quest-log-tablet-wireframes/4.1-Screen4.png)
+
 - add_game.html
 
 form with details required to add a game to the database, possibly pending admininstrative approval. 
+
+![desktop landing page](./docs/quest-log-desktop-wireframes/6.1-screen7.png)
+![mobile landing page](./docs/quest-log-mobile-wireframes/5.1-screen5.png)
+![tablet landing page](./docs/quest-log-tablet-wireframes/5.1-Screen5.png)
 
 - edit_game.html
 
@@ -146,6 +167,10 @@ edit a game you have added to the database. This functionality will be exclusive
 - add_review.html
 
 form to attach a review to a given game. 
+
+![desktop landing page](./docs/quest-log-desktop-wireframes/5.1-screen6.png)
+![mobile landing page](./docs/quest-log-mobile-wireframes/6.1-screen6.png)
+![tablet landing page](./docs/quest-log-tablet-wireframes/6.1-Screen6.png)
 
 - edit_review.html
 
@@ -207,14 +232,6 @@ Review Table
 I converted the above markup tables into DBML (Database Markup Language) and used [dbdiagram.io](https://dbdiagram.io) to generate a .sql file of my schema to potentially use further into coding my project
 
 ![Schema Diagram](docs/database_schema.png) 
-
-### Wireframes
-
-#### Desktop Wireframes
-
-#### Tablet Wireframes
-
-#### Mobile Wireframes
 
 ### Features
 
