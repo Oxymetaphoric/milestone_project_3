@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
-    <link href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/materialize.min.css')}}">  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
   </head>
   <body>
     <h1>Bonjour Le Monde</h1>
+    {% block content %}
+
+    {% endblock %}
+
   </body>
 
-<script src="../static/js/script.js">
-</script>
+  <script src="{{url_for('static', filename='js/script.js')}}"></script>
+  <script src="{{url_for('static', filename='materialize.min.js')}}"></script>
 </html>
