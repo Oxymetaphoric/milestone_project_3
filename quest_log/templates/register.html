@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+  
+<div class="row">
+  <form class="col s12 m8 offset-m2" method="POST" action="{{url_for('login')}}">
+    <h2 class="center-align"> Login </h2>
+    <div class="card-panel">
+      <div class="row">
+        <div class="row">
+          <div class="input-field col s6">
+            <input name="username" id="username" type="text" class="validate">
+            <label for="username">User Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input name="password" id="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">Log in</button>
+      </div>     
+    </div>
+  </form>
+</div>
+
+<div class="row">
+  <form class="col s12 m8 offset-m2" method="POST" action="{{url_for('register')}}">
+    <h2 class="center-align"> Sign Up </h2>
+    <div class="card-panel">
+      <div class="row">
+        <div class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input name="first_name" id="first_name" type="text" class="validate">
+              <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input name="last_name" id="last_name" type="text" class="validate">
+              <label for="last_name">Last Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input name="username" id="username" type="text" class="validate">
+              <label for="username">User Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input name="set_password" id="set_password" type="password" class="validate">
+              <label for="set_password">Choose a password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+      </div>
+    </div>
+  <div class="row">
+    <button type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
+      Sign Up
+    </button>
+  </div>
+  </div>
+  </form>
+</div>
+
+{% endblock %}

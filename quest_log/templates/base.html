@@ -16,23 +16,19 @@
           <a href="#!" class="brand-logo">QuestLog <i class="large material-icons logo">videogame_asset</i></a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="{{url_for('home')}}">My Profile</a></li>
+            <li><a href="{{url_for('register')}}">login/register</a></li>
             <li><a href="{{url_for('home')}}">Games</a></li>
           </ul>
         </div>
       </nav>
     </div>
     <ul class="sidenav" id="mobile-demo">
-      <li><a href="{{url_for('home')}}">My Profile</a></li>
+      <li><a href="{{url_for('register')}}">login/register</a></li>
       <li><a href="{{url_for('home')}}">Games</a></li>
     </ul>
-          
-
-    <h1>Bonjour Le Monde</h1>
     {% block content %}
 
     {% endblock %}
-
     <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
   </body>
