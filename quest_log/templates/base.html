@@ -28,7 +28,7 @@
             <ul class="right hide-on-med-and-down">
               <li><a href="{{url_for('logout')}}">logout</a></li>
               <li><a href="{{url_for('games')}}">Games</a></li>
-              <li><a href="{{url_for('home')}}">My Profile</a></li>
+              <li><a href="{{url_for('profile')}}">My Profile</a></li>
             </ul>
           {% else %}
             <ul class="right hide-on-med-and-down">
@@ -43,7 +43,7 @@
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{url_for('logout')}}">logout</a></li>
         <li><a href="{{url_for('games')}}">Games</a></li>
-        <li><a href="{{url_for('home')}}">My Profile</a></li>
+        <li><a href="{{url_for('profile')}}">My Profile</a></li>
       </ul>
     {% else %}
       <ul class="sidenav" id="mobile-demo">
