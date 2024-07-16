@@ -20,7 +20,7 @@ class Game(db.Model):
     release_date = db.Column(db.DateTime,  default = lambda: datetime.now(timezone.utc), nullable = False) 
     genre = db.Column(db.String(50), nullable = False)
     image_url = db.Column(db.String(512), nullable = False)
-    rating = db.Column(db.Float, nullable = True)
+    rating = db.Column(db.Float)
     __table_args__ = (
         CheckConstraint('rating >= 0 AND rating <= 10', name='check_rating_range'),
     )
