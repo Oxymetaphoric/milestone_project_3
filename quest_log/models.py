@@ -1,16 +1,35 @@
 from datetime import datetime, timezone
-
+from flask_login import UserMixin
 from sqlalchemy import ForeignKey, CheckConstraint
 from quest_log import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
-class User(db.Model):
-    user_id =  db.Column(db.Integer, primary_key = True, nullable = False) 
-    username =  db.Column(db.String(50), unique = True, nullable = False) 
+class User(UserMixin, db.Model):
+    user_id =  db.Column(db.Integer, autoincrement=True, primary_key = True, nullable = False) 
+    username =  db.Column(db.String(50), unique = True, nullable = False)
+    first_name = db.Column(db.String(50), nullable = False)
+    last_name = db.Column(db.String(50), nullable= False)
     email =  db.Column(db.String(50), unique = True, nullable = False)
-    password_hash =  db.Column(db.String(20), nullable = False) 
+    password_hash =  db.Column(db.String(256), nullable = False) 
     location =  db.Column(db.String(50), nullable = True) 
-    created_at = db.Column(db.DateTime, default = lambda: datetime.now(timezone.utc), nullable = False)
+    created_at = db.Column(db.DateTime, default = lambda: datetime.now(timezone.utc), nullable = True)
     avatar_url = db.Column(db.String(512), nullable = True)
+    
+    def __init__(self, username, email, first_name, last_name, password, location=None, avatar_url=None):
+        self.username = username
+        self.email = email
+        self.first_name = first_name
+        self.last_name = last_name
+        self.set_password(password)
+        self.location = location
+        self.avatar_url = avatar_url
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+    def get_id(self):
+        return str(self.user_id)
 
 class Game(db.Model):
     game_id = db.Column(db.Integer, primary_key = True)
