@@ -79,7 +79,7 @@ def new_game():
     genre = request.form.get('genre')
     image_url = request.form.get('image_url')
 
-    existing_game = Game.query.filter_by(game_title=game_title),first()
+    existing_game = Game.query.filter_by(game_title=game_title).first()
     if existing_game is None:
         new_game = Game(
                 game_title = game_title,

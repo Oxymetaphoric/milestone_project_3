@@ -236,12 +236,16 @@ I converted the above markup tables into DBML (Database Markup Language) and use
 ### Features
 
 [] CRUD functionality for reviews
-[] CRU functionality for games (deleting games will not be a userland feature)
-[] account creation
+[x] Create games functionality
+[ ] R functionality for games (deleting games will not be a userland feature)
+[x] account creation
 [] account deletion
-[] account edits
+[x] account edits
 [] game score aggregation
 [] user statistics
+
+
+
 
 ---
 
@@ -315,9 +319,9 @@ I will be using the Materialize framework for the structure and styling of this 
 
 ### Bug fixes
 
-1. while writing the profile page, I encountered a bug where the browser would autofill the new password box, I solved this by changing the type of input to text from password and processing it as a password in my routes,py
-
---------------------------------
+1. while writing the profile page, I encountered a bug where the browser would autofill the new password box, I solved this by changing the type of input to text from password and processing it as a passwor
+2. while working on the Add Game functionality, I encountered a bug where the date would only validate if given in a specific format. I solved this by implementing a datepicker that submits to the from in the correct format
+-------------------------------
 --------------------------------
 --------------------------------
 --------------------------------
