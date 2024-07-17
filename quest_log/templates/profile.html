@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col s12 m8 offset-m2">
     <div class="card-panel">
-      <img src={{user.avatar_url}}>
+      <img class="avatar" src={{user.avatar_url}}>
       <span><p><b>Username:  </b>{{user.username}}</p></span>
       <span><p><b>account created:  </b>{{user.created_at}}</p></span>
       <span><p><b>number of games:  </b>{{user.games}}</p></span>
@@ -25,26 +25,26 @@
 {% if owns_profile %} 
 <div class="row">
   <form class="col s12 m8 offset-m2" method="POST" action="{{url_for('profile', user_id=user.user_id)}}">
-    <h2 class="center-align"> change account details</h2>
+    <h2 class="center-align"> update account details</h2>
     <div class="card-panel">
       <div class="row">
         <div class="col s12">
           <div class="row">  
             <div class="input-field col s12">
               <input name="newauth" id="newauth" type="text" class="validate">
-              <label for="newauth">new password</label>
+              <label for="newauth">update password</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <input default="{{user.email}}" name="email" id="email" type="text" class="validate">
-              <label for="email">{{user.email}}</label>
+              <label for="email">update email address</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input default="{{user.avatar_url}}" name="avatar_url" id="avatar_url" type="text">
-              <label for="avatar url">avatar URL: {{user.avatar_url}}</label>
+              <input default="new avatar link" name="avatar_url" id="avatar_url" type="text">
+              <label for="avatar_url">update avatar link</label>
             </div>
           </div>
         </div>
