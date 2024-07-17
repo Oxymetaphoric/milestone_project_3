@@ -64,6 +64,17 @@ def logout():
 def games():
     return render_template('games.html')
 
+@app.route('/add_game')
+@login_required
+def add_game():
+    return render_template('add_game.html')
+
+@app.route('/new_game')
+@login_required
+def new_game():
+    pass
+
+
 @app.route('/profile/<int:user_id>', methods=["GET", "POST"])
 @login_required
 def profile(user_id):

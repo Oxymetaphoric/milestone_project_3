@@ -13,12 +13,14 @@
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="{{url_for('home')}}" class="brand-logo" id="brand-logo"><b>QuestLog</b> <i class="large material-icons logo">videogame_asset</i></a>
+          <a href="{{url_for('home')}}" class="brand-logo" id="brand-logo"><b>QuestLog</b><i class="fa-solid fa-ghost"></i></a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           {% if current_user.is_authenticated %}
             <ul class="right hide-on-med-and-down">
               <li><a href="{{url_for('logout')}}">logout</a></li>
-              <li><a href="{{url_for('games')}}">Games</a></li>
+              <li><a href="{{url_for('games')}}">All Games</a></li>
+              <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Games</a></li>
+              <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Reviews</a></li>
               <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Profile</a></li>
             </ul>
           {% else %}
@@ -32,9 +34,11 @@
     </div>
     {% if current_user.is_authenticated %}
       <ul class="sidenav" id="mobile-demo">
-        <li><a href="{{url_for('logout')}}">logout</a></li>
-        <li><a href="{{url_for('games')}}">Games</a></li>
+        <li><a href="{{url_for('games')}}">All Games</a></li>
+        <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Games</a></li>
+        <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Reviews</a></li>
         <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Profile</a></li>
+        <li><a href="{{url_for('logout')}}">logout</a></li>
       </ul>
     {% else %}
       <ul class="sidenav" id="mobile-demo">
