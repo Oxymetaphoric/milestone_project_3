@@ -12,9 +12,9 @@ def register():
     if request.method == "POST":
         first_name = request.form.get('first_name')
         last_name = request.form.get('last_name')
-        username = request.form.get('username')
+        username = request.form.get('newuser-username')
         email = request.form.get('email')
-        password = request.form.get('password')
+        password = request.form.get('newuser-password')
 
         if not username or not email or not password or not first_name or not last_name:
             flash('All fields are required.', 'error')
@@ -63,6 +63,21 @@ def logout():
 def games():
     return render_template('games.html')
 
-@app.route('/profile')
-def profile():
-    return render_template('profile.html')
+@app.route('/profile/<int:user_id>', methods=["GET", "POST"])
+@login_required
+def profile(user_id):
+    user = User.query.get_or_404(user_id)
+    
+    owns_profile = user.user_id == current_user.user_id
+    if request.method == "POST" and owns_profile:
+         user.username = request.form.get('username')
+         user.email = request.form.get('email')
+         user.password = request.form.get('password')
+         db.session.commit()
+         flash('Profile updated successfully', 'success')
+    return render_template('profile.html', user=user, owns_profile=owns_profile)
+    
+
+
+
+

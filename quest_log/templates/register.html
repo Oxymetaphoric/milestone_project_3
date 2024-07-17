@@ -29,7 +29,7 @@
 </div>
 
 <div class="row">
-  <form class="col s12 m8 offset-m2" method="POST" action="{{url_for('register')}}">
+  <form autocomplete="off" class="col s12 m8 offset-m2" method="POST" action="{{url_for('register')}}">
     <h2 class="center-align"> Sign Up </h2>
     <div class="card-panel">
       <div class="row">
@@ -46,12 +46,12 @@
           </div>
           <div class="row">
             <div class="input-field col s6">
-              <input name="username" id="username" type="text" class="validate">
-              <label for="username">User Name</label>
+              <input name="newuser-username" id="newuser-username" type="text" class="validate">
+              <label for="newuser-username">User Name</label>
             </div>
             <div class="input-field col s6">
-              <input name="password" id="password" type="password" class="validate">
-              <label for="password">Choose a password</label>
+              <input name="newuser-password" id="newuser-password" type="password" class="validate">
+              <label for="newuser-password">Choose a password</label>
             </div>
           </div>
           <div class="row">

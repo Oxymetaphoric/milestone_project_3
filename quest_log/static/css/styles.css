@@ -1,3 +1,13 @@
-.logo {
-  font-size:60px
+#brand-logo  {
+  font-family: "", "Mono"; 
+}
+
+.input-group{
+  display:table;
+  width:100%;
+}
+.input-group .input-field,
+.input-group .input-group-addon{
+  display:table-cell;
+  padding-right: 20px;
 }

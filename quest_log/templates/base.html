@@ -10,29 +10,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css' )}}">
   </head>
   <body>
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul class="flashes">
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-  {% endwith %}
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="{{url_for('home')}}" class="brand-logo">QuestLog <i class="large material-icons logo">videogame_asset</i></a>
+          <a href="{{url_for('home')}}" class="brand-logo" id="brand-logo"><strong>QuestLog</strong> <i class="large material-icons logo">videogame_asset</i></a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           {% if current_user.is_authenticated %}
             <ul class="right hide-on-med-and-down">
               <li><a href="{{url_for('logout')}}">logout</a></li>
               <li><a href="{{url_for('games')}}">Games</a></li>
-              <li><a href="{{url_for('profile')}}">My Profile</a></li>
+              <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Profile</a></li>
             </ul>
           {% else %}
             <ul class="right hide-on-med-and-down">
-              <li><a href="{{url_for('home')}}">Games</a></li>
+              <li><a href="{{url_for('games')}}">Games</a></li>
               <li><a href="{{url_for('register')}}">login/register</a></li>
             </ul>
           {% endif %}
@@ -43,7 +34,7 @@
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{url_for('logout')}}">logout</a></li>
         <li><a href="{{url_for('games')}}">Games</a></li>
-        <li><a href="{{url_for('profile')}}">My Profile</a></li>
+        <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Profile</a></li>
       </ul>
     {% else %}
       <ul class="sidenav" id="mobile-demo">
@@ -51,6 +42,16 @@
         <li><a href="{{url_for('register')}}">login/register</a></li>
       </ul>
     {% endif %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flashes">
+      {% for message in messages %}
+
+      <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+  {% endwith %}
     {% block content %}
 
     {% endblock %}
