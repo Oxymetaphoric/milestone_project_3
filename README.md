@@ -315,6 +315,8 @@ I will be using the Materialize framework for the structure and styling of this 
 
 ### Bug fixes
 
+1. while writing the profile page, I encountered a bug where the browser would autofill the new password box, I solved this by changing the type of input to text from password and processing it as a password in my routes,py
+
 --------------------------------
 --------------------------------
 --------------------------------

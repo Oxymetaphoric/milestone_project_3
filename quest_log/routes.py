@@ -2,6 +2,7 @@ from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_user, login_required, logout_user, current_user
 from quest_log import app, db
 from quest_log.models import Game, Review, User, UserGame
+from werkzeug.security import generate_password_hash 
 
 @app.route("/")
 def home():
@@ -70,11 +71,19 @@ def profile(user_id):
     
     owns_profile = user.user_id == current_user.user_id
     if request.method == "POST" and owns_profile:
-         user.username = request.form.get('username')
-         user.email = request.form.get('email')
-         user.password = request.form.get('password')
-         db.session.commit()
-         flash('Profile updated successfully', 'success')
+        # Get the data from the form
+        new_email = request.form.get('email')
+        new_password = request.form.get('newauth')
+        new_avatar_url = request.form.get('avatar_url')
+        if new_email and new_email != user.email:
+            user.email = new_email
+        if new_password:
+            user.password_hash = generate_password_hash(new_password)
+        if new_avatar_url:
+            user.avatar_url = new_avatar_url
+        db.session.commit()
+        flash('Profile updated successfully', 'success')
+        return redirect(url_for('profile', user_id=user.user_id))
     return render_template('profile.html', user=user, owns_profile=owns_profile)
     
 
