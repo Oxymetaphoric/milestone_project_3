@@ -69,10 +69,32 @@ def games():
 def add_game():
     return render_template('add_game.html')
 
-@app.route('/new_game')
+@app.route('/new_game', methods=["POST"])
 @login_required
 def new_game():
-    pass
+    game_title = request.form.get('game_title')
+    game_publisher = request.form.get('game_publisher')
+    developer = request.form.get('developer')
+    release_date = request.form.get('release_date')
+    genre = request.form.get('genre')
+    image_url = request.form.get('image_url')
+
+    existing_game = Game.query.filter_by(game_title=game_title),first()
+    if existing_game is None:
+        new_game = Game(
+                game_title = game_title,
+                game_publisher = game_publisher,
+                developer = developer,
+                release_date = release_date,
+                genre = genre,
+                image_url = image_url
+                )
+        db.session.add(new_game)
+        db.session.commit()
+        flash('Game added to database', 'success')
+    else:
+        flash('Game already exists')
+    return redirect(url_for('games'))
 
 
 @app.route('/profile/<int:user_id>', methods=["GET", "POST"])
