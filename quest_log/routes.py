@@ -98,6 +98,24 @@ def new_game():
         flash('Game already exists')
     return redirect(url_for('games'))
 
+@app.route('/add_library/<int:game_id>', methods=['POST'])
+@login_required
+def add_library(game_id):
+    game = Game.query.get_or_404(game_id)
+    already_in_lib = Game.query.filter_by(user_id=current_user.id, game_id=game_id).first()
+    if already_in_lib is None:
+        new_lib = UserGame(
+                user_id=current_user.id,
+                game_id=game_id,
+                )
+        db.session.add(new_lib)
+        db.session.commit()
+        flash('Game added to library', 'success')
+    else:
+        flash('Game already in library')
+    return redirect(url_for('games'))
+    
+
 
 @app.route('/profile/<int:user_id>', methods=["GET", "POST"])
 @login_required
