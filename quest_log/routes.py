@@ -188,6 +188,50 @@ def profile(user_id):
     return render_template('profile.html', user=user, owns_profile=owns_profile)
     
 
+@app.route('/my_reviews/<int:user_id>')
+def my_reviews(user_id):
+    reviews = Review.query.filter_by(user_id=user_id).all()
+    return render_template('my_reviews.html', my_reviews=reviews)
 
+@app.route('/edit_review/<int:review_id>', methods=['GET', 'POST'])
+@login_required
+def edit_review(review_id):
+    review = Review.query.get_or_404(review_id)
+    if review.user_id != current_user.user_id:
+        flash('You can only edit your own reviews.', 'error')
+        return redirect(url_for('my_reviews'))
+    
+    if request.method == 'POST':
+        review.review_content = request.form.get('review_content')
+        review.hours_played = int(request.form.get('hours_played', 0))
+        review.completed = request.form.get('completed') == 'on'
+        review.rating = int(request.form.get('rating', 0))
+        
+        try:
+            db.session.commit()
+            flash('Your review has been updated successfully', 'success')
+            return redirect(url_for('my_reviews'))
+        except Exception as e:
+            db.session.rollback()
+            flash('An error occurred while updating your review. Please try again.', 'error')
+    
+    return render_template('edit_review.html', review=review)
 
+@app.route('/delete_review/<int:review_id>', methods=['POST'])
+@login_required
+def delete_review(review_id):
+    review = Review.query.get_or_404(review_id)
+    if review.user_id != current_user.user_id:
+        flash('You can only delete your own reviews.', 'error')
+        return redirect(url_for('my_reviews'))
+    
+    try:
+        db.session.delete(review)
+        db.session.commit()
+        flash('Your review has been deleted successfully', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash('An error occurred while deleting your review. Please try again.', 'error')
+    
+    return redirect(url_for('my_reviews', user_id=current_user.user_id))
 
