@@ -1,55 +1,43 @@
 {% extends "base.html" %}
 {% block content %}
-
 <div class="row">
   <form class="col s12 m8 offset-m2" method="POST" action="{{url_for('add_review', game_id=game.game_id)}}">
     <h2 class="center-align">add a review for {{game.game_title}}</h2>
     <div class="card-panel">
       <div class="row">
         <form class="col s12">
-
           <div class="row">
             <div class="input-field col s12">
               <input name="rating" id="rating" type="number" min="0" max="100" required>
               <label for="game_title">rating (0-100)</label>
             </div>
           </div>
-
           <div class="row">
             <div class="input-field col s12">
               <input name="completed" id="completed" type="checkbox">
               <label for="completed">completed</label>
             </div>
           </div>
-
           <div class="row">
             <div class="input-field col s12">
               <input name="hours_played" id="hours_played" type="number" min="1" required>
               <label for="hours_played">hours played</label>
             </div>
           </div>
-
           <div class="row">
             <div class="input-field col s12">
               <label for="review_content">review</label>
               <textarea name="review_content" id="review_content" required></textarea>
             </div>
           </div>
-
           <div class="row">
             <button class="col offset-m2 s8 red btn-large waves-effect waves-light" type="submit">Submit
               <i class="material-icons right">send</i>
             </button>
           </div>
         </form>
-
-            
-
       </div>
     </div>
   </form>
 </div>
-
-
-
 {% endblock %}
