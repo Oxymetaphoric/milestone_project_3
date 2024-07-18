@@ -154,7 +154,6 @@ def add_review(game_id):
                 completed=completed,
                 rating=rating
                 )
-
         try:
             db.session.add(new_review)
             db.session.commit()

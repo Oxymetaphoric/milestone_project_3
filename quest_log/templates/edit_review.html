@@ -2,8 +2,8 @@
 {% block content %}
 
 <div class="row">
-  <form class="col s12 m8 offset-m2" method="POST" action="{{url_for('add_review', game_id=game.game_id)}}">
-    <h2 class="center-align">add a review for {{game.game_title}}</h2>
+  <form class="col s12 m8 offset-m2" method="POST" action="{{url_for('edit_review', review_id=review.review_id)}}">
+    <h2 class="center-align">edit your review of {{review.game.game_title}}</h2>
     <div class="card-panel">
       <div class="row">
         <form class="col s12">
