@@ -19,7 +19,7 @@
             <ul class="right hide-on-med-and-down">
               <li><a href="{{url_for('logout')}}">logout</a></li>
               <li><a href="{{url_for('games')}}">All Games</a></li>
-              <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Games</a></li>
+              <li><a href="{{url_for('my_games', user_id=current_user.user_id)}}">My Games</a></li>
               <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Reviews</a></li>
               <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Profile</a></li>
             </ul>
@@ -35,7 +35,7 @@
     {% if current_user.is_authenticated %}
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{url_for('games')}}">All Games</a></li>
-        <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Games</a></li>
+        <li><a href="{{url_for('my_games', user_id=current_user.user_id)}}">My Games</a></li>
         <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Reviews</a></li>
         <li><a href="{{url_for('profile', user_id=current_user.user_id)}}">My Profile</a></li>
         <li><a href="{{url_for('logout')}}">logout</a></li>
