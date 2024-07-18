@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
 {% for game in my_games %}
-    <div class="col l4 s12 m4">
+    <div class="col l4 s12 m6">
       <div class="card">
         <div class="card-image">
           <img src="{{game.image_url}}">
@@ -16,8 +16,9 @@
           <p><b>Publisher: </b>{{game.game_publisher}}</p>
           <p><b>Release date: </b>{{ game.release_date.strftime('%d %m %Y') }}</p>
           <p><b>Genre: </b>{{game.genre}}</p>
-          <form action="{{url_for('add_review', game_id=game.game_id)}}" method="POST"> 
-            <button class="offset-m2 s8 btn waves-effect waves-light" type="submit" name="action">Add review
+          <form action="{{url_for('new_review', game_id=game.game_id)}}"> 
+            <button type="submit" class="btn waves-effect waves-light red" >
+              Add review
             </button>
           </form>
         </div>

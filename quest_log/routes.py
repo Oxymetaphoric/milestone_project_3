@@ -129,17 +129,22 @@ def add_library(game_id):
         flash('Game already in library', 'info')
     return redirect(url_for('games'))
 
+@app.route('/new_review/<int:game_id>')
+@login_required
+def new_review(game_id):
+    game = Game.query.get_or_404(game_id)
+    return render_template('add_review.html', game=game)
+
+
 @app.route('/add_review/<int:game_id>', methods=["GET","POST"])
 @login_required
 def add_review(game_id):
     game = Game.query.get_or_404(game_id)
-    if game is None: 
-        return redirect(url_for('add_game'))
     if request.method == "POST":
         review_content = request.form.get('review_content')
-        hours_played = request.form.get('hours_played')
-        completed = True if request.form.get('completed') else False
-        rating = request.form.get('rating')
+        hours_played = int(request.form.get('hours_played'), 0)
+        completed = request.form.get('completed') == 'on'
+        rating = int(request.form.get('rating'), 0)
 
         new_review = Review(
                 game_id=game_id,
@@ -154,17 +159,11 @@ def add_review(game_id):
             db.session.add(new_review)
             db.session.commit()
             flash('Your review has been added succesfully', 'success')
-            return redirect(url_for('my_games'))
+            return redirect(url_for('my_games', user_id=current_user.user_id))
         except IntegrityError:
             db.session.rollback()
             flash('An error occured while adding your review to the database')
     return render_template('add_review.html', game=game)
-
-
-
-
-
-
 
 @app.route('/profile/<int:user_id>', methods=["GET", "POST"])
 @login_required
