@@ -3,7 +3,8 @@ from flask_login import login_user, login_required, logout_user, current_user
 from quest_log import app, db
 from quest_log.models import Game, Review, User, UserGame
 from werkzeug.security import generate_password_hash
-from datetime import datetime
+from datetime import datetime, timezone
+from sqlalchemy.exc import IntegrityError
 
 @app.route("/")
 def home():
@@ -102,19 +103,24 @@ def new_game():
 @login_required
 def add_library(game_id):
     game = Game.query.get_or_404(game_id)
-    already_in_lib = Game.query.filter_by(user_id=current_user.id, game_id=game_id).first()
+    if game is None:
+        return redirect(url_for('add_game'))
+    already_in_lib = UserGame.query.get((current_user.user_id, game_id))
     if already_in_lib is None:
         new_lib = UserGame(
-                user_id=current_user.id,
+                user_id=current_user.user_id,
                 game_id=game_id,
                 )
-        db.session.add(new_lib)
-        db.session.commit()
-        flash('Game added to library', 'success')
+        try:
+            db.session.add(new_lib)
+            db.session.commit()
+            flash('Game added to library', 'success')
+        except IntegrityError:
+            db.session.rollback()
+            flash('Game already in Library', 'info')
     else:
-        flash('Game already in library')
+        flash('Game already in library', 'info')
     return redirect(url_for('games'))
-    
 
 
 @app.route('/profile/<int:user_id>', methods=["GET", "POST"])
