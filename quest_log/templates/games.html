@@ -23,23 +23,22 @@
 <div class="container">
   <div class="row">
 {% for game in games %}
-    <div class="col l8 s5">
-      <div class="row">
+    <div class="col l4 s12 m6">
       <div class="card">
         <div class="card-image">
-        <img src="{{game.image_url}}">
+          <img src="{{game.image_url}}">
+          <a class="btn-floating halfway-fab waves-effect waves-light red" ><i class="material-icons">add</i></a>
         </div>
         <div class="card-content">
-        <h3><b>{{game.game_title}}</b></h3>
-        <p><b>Developer: </b>{{game.developer}}</p>
-        <p><b>Publisher: </b>{{game.game_publisher}}</p>
-        <p><b>Release date: </b>{{game.release_date}}</p>
-        <p><b>Genre: </b>{{game.genre}}</p>
+          <h4 class="center-align">{{game.game_title}}</h4>
+          <p><b>Developer: </b>{{game.developer}}</p>
+          <p><b>Publisher: </b>{{game.game_publisher}}</p>
+          <p><b>Release date: </b>{{ game.release_date.strftime('%d %m %Y') }}</p>
+          <p><b>Genre: </b>{{game.genre}}</p>
         </div>
       </div>
-      </div>
     </div>
-    {% endfor %}
+{% endfor %}
   </div>
 </div>
 {% endblock %} 

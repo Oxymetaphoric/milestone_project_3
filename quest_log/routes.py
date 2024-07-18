@@ -2,7 +2,8 @@ from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_user, login_required, logout_user, current_user
 from quest_log import app, db
 from quest_log.models import Game, Review, User, UserGame
-from werkzeug.security import generate_password_hash 
+from werkzeug.security import generate_password_hash
+from datetime import datetime
 
 @app.route("/")
 def home():
