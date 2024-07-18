@@ -62,7 +62,8 @@ def logout():
 
 @app.route('/games')
 def games():
-    return render_template('games.html')
+    games = Game.query.order_by(Game.game_title).all()
+    return render_template('games.html', games=games)
 
 @app.route('/add_game')
 @login_required

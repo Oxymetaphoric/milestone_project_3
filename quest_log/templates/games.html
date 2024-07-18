@@ -15,27 +15,31 @@
         <form class="col s4">
           <a href="{{url_for('add_game')}}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </form> 
-        {% endif %}
       </div>
     </div>
+    </div>
   </div>
-</div>
-
-{% for game in games %}
+        {% endif %}
+<div class="container">
   <div class="row">
-    <div class="col s4 m2 s1">
+{% for game in games %}
+    <div class="col l8 s5">
+      <div class="row">
       <div class="card">
         <div class="card-image">
-          <img src="images/sample-1.jpg">
-          <span class="card-title">Card Title</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <img src="{{game.image_url}}">
         </div>
         <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        <h3><b>{{game.game_title}}</b></h3>
+        <p><b>Developer: </b>{{game.developer}}</p>
+        <p><b>Publisher: </b>{{game.game_publisher}}</p>
+        <p><b>Release date: </b>{{game.release_date}}</p>
+        <p><b>Genre: </b>{{game.genre}}</p>
         </div>
       </div>
+      </div>
     </div>
+    {% endfor %}
   </div>
-{% endfor %}
-
+</div>
 {% endblock %} 
