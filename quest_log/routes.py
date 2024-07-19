@@ -104,7 +104,10 @@ def my_games(user_id):
     user_games = UserGame.query.filter_by(user_id=user_id).all()
     games = [user_game.game for user_game in user_games]
     return render_template('my_games.html', my_games=games)
-    
+
+@app.route('/game_detail/<int:game_id>')
+def game_detail(game_id):
+    return render_template('game_detail.html', game_id=game_id)
 
 @app.route('/add_library/<int:game_id>', methods=['POST'])
 @login_required
@@ -205,14 +208,10 @@ def edit_review(review_id):
         review.hours_played = int(request.form.get('hours_played', 0))
         review.completed = request.form.get('completed') == 'on'
         review.rating = int(request.form.get('rating', 0))
-        
-        try:
-            db.session.commit()
-            flash('Your review has been updated successfully', 'success')
-            return redirect(url_for('my_reviews'))
-        except Exception as e:
-            db.session.rollback()
-            flash('An error occurred while updating your review. Please try again.', 'error')
+ 
+        db.session.commit()
+        flash('Your review has been updated successfully', 'success')
+        return redirect(url_for('my_reviews', user_id=current_user.user_id))
     
     return render_template('edit_review.html', review=review)
 

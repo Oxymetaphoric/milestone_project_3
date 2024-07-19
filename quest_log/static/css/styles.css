@@ -27,3 +27,12 @@ h3 {
 .avatar{
   border-radius: 20%;
 }
+
+.card-link {
+  color: inherit; /* Inherit the color from the card */
+  text-decoration: none; /* Remove underline */
+}
+
+.card-link:hover .card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: Add a hover effect */
+}

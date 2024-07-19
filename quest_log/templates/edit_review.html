@@ -8,26 +8,31 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12">
-              <input name="rating" id="rating" type="number" min="0" max="100" required>
+              <input name="rating" value={{review.rating}} id="rating" type="number" min="0" max="100" required>
               <label for="game_title">rating (0-100)</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input name="completed" id="completed" type="checkbox">
-              <label for="completed">completed</label>
+              <p>
+                <label>
+                  <input name="completed" id="completed" type="checkbox" {% if review.completed %}checked{% endif %} />
+                  <span>Completed?</span>
+                </label>
+              </p>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input name="hours_played" id="hours_played" type="number" min="1" required>
+              <input name="hours_played" value={{review.hours_played}} id="hours_played" type="number" min="1" required>
               <label for="hours_played">hours played</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <label for="review_content">review</label>
-              <textarea name="review_content" id="review_content" required></textarea>
+              <textarea name="review_content" id="review_content" 
+                class="materialize-textarea" required>{{ review.review_content  }}</textarea>
             </div>
           </div>
           <div class="row">

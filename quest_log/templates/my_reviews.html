@@ -13,7 +13,9 @@
             <p>Rating: {{ review.rating }}/100</p>
             <p>Hours Played: {{ review.hours_played }}</p>
             <p>Completed: {{ "Yes" if review.completed else "No" }}</p>
+            <br>
             <p>{{ review.review_content }}</p>
+            <br>
             <p><small>Posted on: {{ review.review_created_at.strftime('%d/%m/%Y') }}</small></p>
           </div>
           <div class="center-align card-action">
