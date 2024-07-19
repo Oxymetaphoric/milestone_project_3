@@ -107,7 +107,12 @@ def my_games(user_id):
 
 @app.route('/game_detail/<int:game_id>')
 def game_detail(game_id):
-    return render_template('game_detail.html', game_id=game_id)
+    game = Game.query.get_or_404(game_id)
+    reviews = Review.query.filter_by(game_id=game_id).all()
+    user_review = None
+    if current_user.is_authenticated:
+        user_review = Review.query.filter_by(game_id=game_id, user_id=current_user.user_id).first()
+    return render_template('game_detail.html', reviews=reviews, game=game, user_review=user_review)
 
 @app.route('/add_library/<int:game_id>', methods=['POST'])
 @login_required

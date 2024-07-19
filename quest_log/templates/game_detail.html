@@ -2,7 +2,6 @@
 {% block content %}
 <div class="container">
   <div class="row">
-{% for game in games %}
     <div class="col l3 s12 m6">
       <div class="card">
         <div class="card-image">
@@ -22,7 +21,42 @@
         </div>
       </div>
     </div>
-{% endfor %}
+    <div class="col l8 s12 m6">
+      <h4 class="center-align">Reviews</h4>
+        {% if game.reviews %}
+          {% for review in game.reviews %}
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Rating: {{ review.rating }}/100</span>
+                <p>Hours Played: {{ review.hours_played }}</p>
+                <p>Completed: {{ "Yes" if review.completed else "No" }}</p>
+                <p>{{ review.review_content }}</p>
+                <p><small>By {{ review.user.username }} on {{ review.review_created_at.strftime('%d/%m/%Y') }}</small></p>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No reviews yet. Be the first to review this game!</p>
+        {% endif %}
+
+        {% if current_user.is_authenticated %}
+          {% set user_reviewed = false %}
+          {% for review in game.reviews %}
+            {% if review.user_id == current_user.user_id %}
+              {% set user_reviewed = true %}
+            {% else %}
+              {% set user_reviewed = false %}
+            {% endif %}
+          {% endfor %}
+          
+          {% if user_reviewed %}
+            <p>You have already reviewed this game.</p>
+            <a href="{{ url_for('edit_review', review_id=user_review.review_id) }}" class="btn waves-effect waves-light">Edit Your Review</a>
+          {% else %}
+            <a href="{{ url_for('add_review', game_id=game.game_id) }}" class="btn waves-effect waves-light">Write a Review</a>
+          {% endif %}
+        {% endif %}
+    </div>
   </div>
 </div>
 {% endblock %}
