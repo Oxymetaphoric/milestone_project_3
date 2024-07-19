@@ -7,9 +7,13 @@
         <div class="card-image">
           <img src="{{game.image_url}}">
           <form  action="{{url_for('add_library', game_id=game.game_id)}}" method="POST"> 
-            <button type="submit" class="btn-floating halfway-fab waves-effect waves-light red" >
-              <i class="material-icons">add</i>
-            </button>
+            {% if current_user.user_authenticated and user_reviewed %}
+              <button type="submit" class="btn-floating tooltipped halfway-fab waves-effect waves-light red"
+              data-position="right"
+              data-tooltip="add game to My Games">
+                <i class="material-icons">add</i>
+              </button>
+            {% endif %}
           </form>
         </div>
         <div class="card-content">
@@ -43,9 +47,9 @@
           {% set user_reviewed = false %}
           {% for review in game.reviews %}
             {% if review.user_id == current_user.user_id %}
-              {% set user_reviewed = true %}
+              {% set user_reviewed = True %}
             {% else %}
-              {% set user_reviewed = false %}
+              {% set user_reviewed = False %}
             {% endif %}
           {% endfor %}
           

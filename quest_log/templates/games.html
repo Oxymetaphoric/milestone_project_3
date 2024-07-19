@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 {% block content %}
 <h1>Games</h1>
 <div class="container">
@@ -27,11 +27,21 @@
           <div class="card">
             <div class="card-image">
               <img src="{{game.image_url}}">
-              <form  action="{{url_for('add_library', game_id=game.game_id)}}" method="POST"> 
-                <button type="submit" class="btn-floating halfway-fab waves-effect waves-light red" >
-                  <i class="material-icons">add</i>
-                </button>
-              </form>
+              {% if current_user.is_authenticated %}
+                {% if game not in in_my_games %}
+                  <form  action="{{url_for('add_library', game_id=game.game_id)}}" method="POST"> 
+                    <button type="submit" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" 
+                    data-position="left"
+                    data-tooltip="add game to My Games">
+                      <i class="material-icons">add</i>
+                    </button>
+                  </form>   
+                {% else %}
+                  <span class="btn-floating halfway-fab waves-effect waves-light green">
+                    <i class="material-icons">check</i>
+                  </span>
+                {% endif %}
+              {% endif %}
             </div>
             <div class="card-content">
               <h4 class="center-align">{{game.game_title}}</h4>
