@@ -8,7 +8,7 @@ from sqlalchemy.exc import IntegrityError
 
 @app.route("/")
 def home():
-    return render_template("base.html")
+    return redirect(url_for('games'))
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
@@ -53,7 +53,7 @@ def login():
         else:
             flash('Invalid username or password')
 
-    return render_template('register.html')
+    return render_template('login.html')
 
 @app.route('/logout')
 @login_required

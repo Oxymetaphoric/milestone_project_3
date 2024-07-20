@@ -13,6 +13,9 @@ h3 {
   font-family:'BigBlueTermPlus', system-ui, -apple-system, sans-serif;
 }
 
+#rating{
+  font-size: 20px;
+}
 
 .input-group{
   display:table;

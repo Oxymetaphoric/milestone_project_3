@@ -321,6 +321,7 @@ I will be using the Materialize framework for the structure and styling of this 
 
 1. while writing the profile page, I encountered a bug where the browser would autofill the new password box, I solved this by changing the type of input to text from password and processing it as a passwor
 2. while working on the Add Game functionality, I encountered a bug where the date would only validate if given in a specific format. I solved this by implementing a datepicker that submits to the from in the correct format
+3. getting the conditional checks to correctly display contextually relevent buttons 
 -------------------------------
 --------------------------------
 --------------------------------

@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col l3 s12 m6">
+    <div class="col l6 s12 m6">
       <div class="card">
         <div class="card-image">
           <img src="{{game.image_url}}">
@@ -14,13 +14,7 @@
               data-tooltip="add to My Games">
                   <i class="material-icons">add</i>
                 </button>
-              </form>   
-            {% else %}
-              <span class="btn-floating tooltipped halfway-fab waves-effect waves-light green"
-            data-position="left"
-            data-tooltip="in My Games">
-                <i class="material-icons">check</i>
-              </span>
+              </form>
             {% endif %}
           {% endif %}
         </div>
@@ -33,13 +27,16 @@
         </div>
       </div>
     </div>
-    <div class="col l8 s12 m6">
+    <div class="col l6 s12 m6">
       <h4 class="center-align">Reviews</h4>
         {% if game.reviews %}
           {% for review in game.reviews %}
             <div class="card">
-              <div class="card-content">
-                <span class="card-title">Rating: {{ review.rating }}/100</span>
+            <div class="card-content">
+          {% if review.user.avatar_url %}
+            <img src="{{ review.user.avatar_url }}"></img>
+          {% endif %}
+          <span class="card-title">Rating: <span id="rating">{{ review.rating }}/100</span></span>
                 <p>Hours Played: {{ review.hours_played }}</p>
                 <p>Completed: {{ "Yes" if review.completed else "No" }}</p>
                 <p>{{ review.review_content }}</p>

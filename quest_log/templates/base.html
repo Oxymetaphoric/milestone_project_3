@@ -15,8 +15,8 @@
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="{{url_for('home')}}" class="brand-logo" id="brand-logo"><b>QuestLog</b><i class="fa-solid fa-gamepad"></i></a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <a href="{{url_for('games')}}" class="brand-logo" id="brand-logo"><b>QuestLog</b><i class="fa-solid fa-gamepad"></i></a>
+          <a href="{{url_for('games')}}" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           {% if current_user.is_authenticated %}
             <ul class="right hide-on-med-and-down">
               <li><a href="{{url_for('logout')}}">logout</a></li>
@@ -28,7 +28,8 @@
           {% else %}
             <ul class="right hide-on-med-and-down">
               <li><a href="{{url_for('games')}}">Games</a></li>
-              <li><a href="{{url_for('register')}}">login/register</a></li>
+              <li><a href="{{url_for('login')}}">Login</a></li>  
+            <li><a href="{{url_for('register')}}">Register</a></li>
             </ul>
           {% endif %}
         </div>
@@ -46,7 +47,8 @@
     {% else %}
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{url_for('games')}}">Games</a></li>
-        <li><a href="{{url_for('register')}}">login/register</a></li>
+        <li><a href="{{url_for('login')}}">Login</a></li>  
+        <li><a href="{{url_for('register')}}">Register</a></li>
       </ul>
     {% endif %}
   {% with messages = get_flashed_messages() %}

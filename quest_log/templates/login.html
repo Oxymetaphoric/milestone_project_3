@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <form class="col s12 m8 offset-m2" method="POST" action="{{url_for('login')}}">
+    <h2 class="center-align"> Login </h2>
+    <div class="card-panel">
+      <div class="row">
+        <div class="row">
+          <div class="input-field col s6">
+            <input name="login-username" id="login-username" type="text" class="validate">
+            <label for="login-username">User Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input name="login-password" id="login-password" type="password" class="validate">
+            <label for="login-password">Password</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button 
+          type="submit" 
+          class="col s12 btn-large light-blue darken-4 text-shadow">
+          Log in
+        </button>
+      </div>     
+    </div>
+  </form>
+</div>
+{% endblock %}
