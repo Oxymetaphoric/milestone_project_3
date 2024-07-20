@@ -65,7 +65,13 @@ def logout():
 @app.route('/games')
 def games():
     games = Game.query.order_by(Game.game_title).all()
-    return render_template('games.html', games=games)
+    if current_user.is_authenticated:
+        user_game_ids = db.session.query(UserGame.game_id).filter(UserGame.user_id == current_user.user_id).all()
+        in_my_games = [game_id for (game_id,) in user_game_ids]
+    else:
+        in_my_games = []
+
+    return render_template('games.html', games=games, in_my_games=in_my_games)
 
 @app.route('/add_game')
 @login_required

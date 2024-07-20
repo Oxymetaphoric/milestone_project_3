@@ -36,6 +36,7 @@
     </div>
     {% if current_user.is_authenticated %}
       <ul class="sidenav" id="mobile-demo">
+        <li><h3 class="center-align">Hi, {{current_user.first_name}}</h3></li> 
         <li><a href="{{url_for('games')}}">All Games</a></li>
         <li><a href="{{url_for('my_games', user_id=current_user.user_id)}}">My Games</a></li>
         <li><a href="{{url_for('my_reviews', user_id=current_user.user_id)}}">My Reviews</a></li>
@@ -44,7 +45,7 @@
       </ul>
     {% else %}
       <ul class="sidenav" id="mobile-demo">
-        <li><a href="{{url_for('home')}}">Games</a></li>
+        <li><a href="{{url_for('games')}}">Games</a></li>
         <li><a href="{{url_for('register')}}">login/register</a></li>
       </ul>
     {% endif %}

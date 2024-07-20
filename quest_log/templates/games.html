@@ -28,7 +28,7 @@
             <div class="card-image">
               <img src="{{game.image_url}}">
               {% if current_user.is_authenticated %}
-                {% if game not in in_my_games %}
+                {% if game.game_id not in in_my_games %}
                   <form  action="{{url_for('add_library', game_id=game.game_id)}}" method="POST"> 
                     <button type="submit" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" 
                     data-position="left"
