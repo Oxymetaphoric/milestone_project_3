@@ -1,10 +1,4 @@
-# ████████╗ ██████╗     ██████╗  ██████╗ 
-# ╚══██╔══╝██╔═══██╗    ██╔══██╗██╔═══██╗
-#    ██║   ██║   ██║    ██║  ██║██║   ██║
-#    ██║   ██║   ██║    ██║  ██║██║   ██║
-#    ██║   ╚██████╔╝    ██████╔╝╚██████╔╝
-#    ╚═╝    ╚═════╝     ╚═════╝  ╚═════╝                                         
-
+# TO DO
 
 - [ ] remove add game button from main page
 - [ ] add redirect to search functopm. such that game not found redirects to add_game
