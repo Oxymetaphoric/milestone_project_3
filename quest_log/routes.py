@@ -99,6 +99,14 @@ def api_games():
 def add_game():
     return render_template('add_game.html')
 
+@app.route('/remove_game/<int:game_id>')
+@login_required
+def delete_game(game_id):
+    game = Game.query.get_or_404(game_id)
+    db.session.delete(game)
+    db.session.commit()
+    return redirect(url_for('games'))
+
 @app.route('/new_game', methods=["POST"])
 @login_required
 def new_game():
