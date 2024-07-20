@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template, request, url_for
+from flask import flash, redirect, render_template, request, url_for, jsonify
 from flask_login import login_user, login_required, logout_user, current_user
 from quest_log import app, db
 from quest_log.models import Game, Review, User, UserGame
@@ -71,7 +71,24 @@ def games():
     else:
         in_my_games = []
 
-    return render_template('games.html', games=games, in_my_games=in_my_games)
+    return render_template('games.html', inMyGames=in_my_games,
+                           isUserAuthenticated=current_user.is_authenticated,
+                           games=games, 
+                           in_my_games=in_my_games)
+
+@app.route('/api/games')
+def api_games():
+    query = request.args.get('query', '')
+    games = Game.query.filter(Game.game_title.ilike(f'%{query}%')).all()
+    return jsonify([{
+        'game_id': game.game_id,
+        'game_title': game.game_title,
+        'developer': game.developer,
+        'genre': game.genre,
+        'image_url': game.image_url,
+        'game_publisher': game.game_publisher,
+        'release_date': game.release_date.isoformat()        
+    } for game in games])
 
 @app.route('/add_game')
 @login_required
