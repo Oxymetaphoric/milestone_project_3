@@ -6,15 +6,23 @@
       <div class="card">
         <div class="card-image">
           <img src="{{game.image_url}}">
-          <form  action="{{url_for('add_library', game_id=game.game_id)}}" method="POST"> 
-            {% if current_user.user_authenticated and user_reviewed %}
-              <button type="submit" class="btn-floating tooltipped halfway-fab waves-effect waves-light red"
-              data-position="right"
-              data-tooltip="add game to My Games">
-                <i class="material-icons">add</i>
-              </button>
+          {% if current_user.is_authenticated %}
+            {% if game.game_id not in in_my_games %}
+              <form  action="{{url_for('add_library', game_id=game.game_id)}}" method="POST"> 
+                <button type="submit" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" 
+              data-position="left"
+              data-tooltip="add to My Games">
+                  <i class="material-icons">add</i>
+                </button>
+              </form>   
+            {% else %}
+              <span class="btn-floating tooltipped halfway-fab waves-effect waves-light green"
+            data-position="left"
+            data-tooltip="in My Games">
+                <i class="material-icons">check</i>
+              </span>
             {% endif %}
-          </form>
+          {% endif %}
         </div>
         <div class="card-content">
           <h4 class="center-align">{{game.game_title}}</h4>
@@ -42,20 +50,13 @@
         {% else %}
           <p>No reviews yet. Be the first to review this game!</p>
         {% endif %}
-
         {% if current_user.is_authenticated %}
-          {% set user_reviewed = false %}
-          {% for review in game.reviews %}
-            {% if review.user_id == current_user.user_id %}
-              {% set user_reviewed = True %}
+          {% if game.game_id in reviewed_games %}
+            {% if user_review %}
+              <a href="{{ url_for('edit_review', review_id=user_review.review_id) }}" class="btn waves-effect waves-light">Edit Your Review</a>
             {% else %}
-              {% set user_reviewed = False %}
+              <p>there was an issue loading your review. PLease refresh the page</p>
             {% endif %}
-          {% endfor %}
-          
-          {% if user_reviewed %}
-            <p>You have already reviewed this game.</p>
-            <a href="{{ url_for('edit_review', review_id=user_review.review_id) }}" class="btn waves-effect waves-light">Edit Your Review</a>
           {% else %}
             <a href="{{ url_for('add_review', game_id=game.game_id) }}" class="btn waves-effect waves-light">Write a Review</a>
           {% endif %}
@@ -64,4 +65,3 @@
   </div>
 </div>
 {% endblock %}
-

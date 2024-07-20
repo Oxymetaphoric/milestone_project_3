@@ -109,17 +109,32 @@ def new_game():
 def my_games(user_id):
     user_games = UserGame.query.filter_by(user_id=user_id).all()
     games = [user_game.game for user_game in user_games]
+
     return render_template('my_games.html', my_games=games)
 
 @app.route('/game_detail/<int:game_id>')
 def game_detail(game_id):
     game = Game.query.get_or_404(game_id)
     reviews = Review.query.filter_by(game_id=game_id).all()
-    in_my_games = UserGame.query.filter_by(user_id=current_user.user_id).all()
+    in_my_games = []
+    reviewed_games = []
     user_review = None
+
     if current_user.is_authenticated:
-        user_review = Review.query.filter_by(game_id=game_id, user_id=current_user.user_id).first()
-    return render_template('game_detail.html', in_my_games=in_my_games, reviews=reviews, game=game, user_review=user_review)
+        user_game = UserGame.query.filter_by(user_id = current_user.user_id, game_id=game_id).first()
+        in_my_games = [game_id] if user_game else []
+
+        user_review = Review.query.filter_by(user_id=current_user.user_id, game_id=game_id).first()
+        reviewed_games = [game_id] if user_review else []
+        if user_review:
+            reviewed_games = [game_id]
+
+    return render_template('game_detail.html',
+                           in_my_games=in_my_games,
+                           reviews=reviews,
+                           game=game,
+                           user_review=user_review,
+                           reviewed_games=reviewed_games)
 
 @app.route('/add_library/<int:game_id>', methods=['POST'])
 @login_required
