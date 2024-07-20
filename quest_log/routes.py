@@ -82,7 +82,8 @@ def api_games():
     query = request.args.get('query', '')
     if query:
         games = Game.query.filter(Game.game_title.ilike(f'%{query}%')).all()
-
+    else: 
+        games = None
     return jsonify([{
         'game_id': game.game_id,
         'game_title': game.game_title,
