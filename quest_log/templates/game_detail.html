@@ -5,7 +5,10 @@
     <div class="col l6 s12 m6">
       <div class="card">
         <div class="card-image">
-          <img src="{{game.image_url}}">
+          <img src="{{game.image_url}}">  
+          <a class="center-align btn-floating halfway-fab waves-light red" id="avg_score">
+            <span class="score">{{ avg_rating }}</span>
+          </a>
           {% if current_user.is_authenticated %}
             {% if game.game_id not in in_my_games %}
               <form  action="{{url_for('add_library', game_id=game.game_id)}}" method="POST"> 
@@ -33,13 +36,14 @@
           {% for review in game.reviews %}
             <div class="card">
             <div class="card-content">
-          {% if review.user.avatar_url %}
-            <img class="avatar" src="{{ review.user.avatar_url }}"></img>
-          {% endif %}
           <span class="card-title">Rating: <span id="rating">{{ review.rating }}/100</span></span>
                 <p>Hours Played: {{ review.hours_played }}</p>
                 <p>Completed: {{ "Yes" if review.completed else "No" }}</p>
+                <br>
                 <p>{{ review.review_content }}</p>
+          {% if review.user.avatar_url %}
+            <img class="avatar" src="{{ review.user.avatar_url }}"></img>
+          {% endif %}
                 <p><small>By {{ review.user.username }} on {{ review.review_created_at.strftime('%d/%m/%Y') }}</small></p>
               </div>
             </div>

@@ -40,3 +40,8 @@ h3 {
 .card-link:hover .card {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: Add a hover effect */
 }
+
+#avg_score {
+  font-size: 1.2rem;
+  font-weight: bold; 
+}

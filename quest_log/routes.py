@@ -5,6 +5,7 @@ from quest_log.models import Game, Review, User, UserGame
 from werkzeug.security import generate_password_hash
 from datetime import datetime, timezone
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.sql import func
 
 @app.route("/")
 def home():
@@ -138,6 +139,12 @@ def game_detail(game_id):
     in_my_games = []
     reviewed_games = []
     user_review = None
+    avg_rating = db.session.query(func.avg(Review.rating)).filter(Review.game_id == game_id).scalar()
+    if avg_rating is not None:
+        avg_rating = avg_rating/10
+        avg_rating = round(avg_rating, 1)
+    else: 
+        avg_rating = "N/A"
 
     if current_user.is_authenticated:
         user_game = UserGame.query.filter_by(user_id = current_user.user_id, game_id=game_id).first()
@@ -153,7 +160,8 @@ def game_detail(game_id):
                            reviews=reviews,
                            game=game,
                            user_review=user_review,
-                           reviewed_games=reviewed_games)
+                           reviewed_games=reviewed_games,
+                           avg_rating=avg_rating)
 
 @app.route('/add_library/<int:game_id>', methods=['POST'])
 @login_required
