@@ -79,7 +79,9 @@ def games():
 @app.route('/api/games')
 def api_games():
     query = request.args.get('query', '')
-    games = Game.query.filter(Game.game_title.ilike(f'%{query}%')).all()
+    if query:
+        games = Game.query.filter(Game.game_title.ilike(f'%{query}%')).all()
+
     return jsonify([{
         'game_id': game.game_id,
         'game_title': game.game_title,

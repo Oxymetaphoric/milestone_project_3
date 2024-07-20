@@ -19,7 +19,9 @@
 {% endif %}
   </div>
   <div class="container" id="game-results">
-    <!-- Game cards will be dynamically inserted here -->
+    <div class="row">
+      <!-- Game cards will be dynamically inserted here -->
+    </div>
   </div>
 </div>
 <div class="container">
@@ -63,6 +65,6 @@
 </div>
 <script>
 var isUserAuthenticated = {{ 'true' if current_user.is_authenticated else 'false'}};
-var inMyGames = {{in_my_games|tojson|safe}};
+var inMyGames = {{in_my_games|tojson|safe}}
 </script>
 {% endblock %} 

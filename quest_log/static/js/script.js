@@ -32,8 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     gameResults.innerHTML = '';
     games.forEach(game => {
         const gameCard = `
-      <div class="row">
-        <div class="col offset-2 l6 s6 m6">
+        <div class="l4 s4 m4">
             <a href="/game_detail/${game.game_id}" class="card-link">
                 <div class="card">
                     <div class="card-image">

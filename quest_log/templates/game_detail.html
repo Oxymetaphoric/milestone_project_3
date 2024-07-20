@@ -34,7 +34,7 @@
             <div class="card">
             <div class="card-content">
           {% if review.user.avatar_url %}
-            <img src="{{ review.user.avatar_url }}"></img>
+            <img class="avatar" src="{{ review.user.avatar_url }}"></img>
           {% endif %}
           <span class="card-title">Rating: <span id="rating">{{ review.rating }}/100</span></span>
                 <p>Hours Played: {{ review.hours_played }}</p>
