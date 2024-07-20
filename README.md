@@ -235,14 +235,14 @@ I converted the above markup tables into DBML (Database Markup Language) and use
 
 ### Features
 
-[] CRUD functionality for reviews
-[x] Create games functionality
-[ ] R functionality for games (deleting games will not be a userland feature)
-[x] account creation
-[] account deletion
-[x] account edits
-[] game score aggregation
-[] user statistics
+- [x] CRUD functionality for reviews
+- [x] Create games functionality
+- [x] Read functionality for games (deleting games will not be a userland feature)
+- [x] account creation
+- [ ] account deletion
+- [x] account edits
+- [x] game score aggregation
+- [ ] user statistics
 
 
 
