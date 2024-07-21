@@ -1,7 +1,7 @@
 # TO DO
 
-- [ ] remove add game button from main page
-- [ ] add redirect to search function. such that game not found redirects to add_game
+- [x] remove add game button from main page
+- [x] add redirect to search function. such that game not found redirects to add_game
 - [x] format dates on 'games' page
 - [ ] add superuser functionality
 - [ ] restrict add/edit/remove games to superuser
