@@ -30,4 +30,4 @@ from quest_log.models import User
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-from quest_log import routes #noqa
+from quest_log import routes, models #noqa
