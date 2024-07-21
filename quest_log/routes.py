@@ -140,7 +140,7 @@ def my_games(user_id):
     user_games = UserGame.query.filter_by(user_id=user_id).all()
     games = [user_game.game for user_game in user_games]
 
-    return render_template('my_games.html', user=user, my_games=games)
+    return render_template('my_games.html', current_user=current_user, user=user, my_games=games)
 
 @app.route('/game_detail/<int:game_id>')
 def game_detail(game_id):
@@ -195,6 +195,20 @@ def add_library(game_id):
     else:
         flash('Game already in library', 'info')
     return redirect(url_for('games'))
+
+@app.route('/remove_from_library/<int:game_id>', methods=['POST'])
+@login_required
+def remove_from_library(game_id):
+    user_game=UserGame.query.filter_by(user_id=current_user.user_id, game_id=game_id).first_or_404()
+    try:
+        db.session.delete(user_game)
+        db.session.commit()
+        flash('game removed from your library successfully', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash('An error occurred while deleting your review. Please try again.', 'error')
+        
+    return redirect(url_for('my_games', user_id=current_user.user_id))
 
 @app.route('/new_review/<int:game_id>')
 @login_required

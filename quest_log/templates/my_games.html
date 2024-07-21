@@ -8,7 +8,17 @@
       <a href="{{url_for('game_detail', game_id=game.game_id)}}" class="card-link">
         <div class="card">
           <div class="card-image">
-            <img src="{{game.image_url}}">
+            <img src="{{game.image_url}}"</img>
+            {% if current_user.is_authenticated and current_user.user_id == user.user_id %}
+            <form  action="{{url_for('remove_from_library', game_id=game.game_id)}}" method="POST"> 
+              <button type="submit" 
+                class="btn-floating tooltipped halfway-fab waves-effect waves-light red" 
+                data-position="left"
+                data-tooltip="remove My Games">
+                <i class="material-icons">remove</i>
+              </button>
+            </form>
+            {% endif %}
           </div>
           <div class="card-content">
             <h4 class="center-align">{{game.game_title}}</h4>
