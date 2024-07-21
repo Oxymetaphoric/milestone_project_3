@@ -32,24 +32,23 @@ document.addEventListener('DOMContentLoaded', function() {
     gameResults.innerHTML = '';
     games.forEach(game => {
         const gameCard = `
-        <div class="l4 s4 m4">
-            <a href="/game_detail/${game.game_id}" class="card-link">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="${game.image_url}">
-                        ${renderGameButton(game)}
-                    </div>
-                    <div class="card-content">
-                        <h4 class="center-align">${game.game_title}</h4>
-                        <p><b>Developer: </b>${game.developer}</p>
-                        <p><b>Publisher: </b>${game.game_publisher}</p>
-                        <p><b>Release date: </b>${formatDate(game.release_date)}</p>
-                        <p><b>Genre: </b>${game.genre}</p>
-                    </div>
-                </div>
-            </a>
+        <div>
+          <a href="/game_detail/${game.game_id}" class="card-link">
+            <div class="card">
+              <div class="card-image">
+                <img src="${game.image_url}">
+                  ${renderGameButton(game)}
+              </div>
+              <div class="card-content">
+                <h4 class="center-align">${game.game_title}</h4>
+                  <p><b>Developer: </b>${game.developer}</p>
+                  <p><b>Publisher: </b>${game.game_publisher}</p>
+                  <p><b>Release date: </b>${formatDate(game.release_date)}</p>
+                  <p><b>Genre: </b>${game.genre}</p>
+              </div>
+            </div>
+          </a>
         </div>
-      </div>
         `;
         gameResults.innerHTML += gameCard;
     });
