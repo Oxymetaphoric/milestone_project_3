@@ -39,8 +39,8 @@
           {% else %}
             <a href="{{ url_for('add_review', game_id=game.game_id) }}" class="btn waves-effect waves-light">Write a Review</a>
           {% endif %}
+          <a href="{{ url_for('delete_game', game_id=game.game_id)}}" class="btn waves-effect waves-light">remove game</a>
         {% endif %}
-        <a href="{{ url_for('delete_game', game_id=game.game_id)}}" class="btn waves-effect waves-light">remove game</a>
 </div>
     <div class="col l6 s12 m6">
       <h4 class="center-align">Reviews</h4>
