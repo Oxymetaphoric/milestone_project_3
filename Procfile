@@ -1,2 +1,2 @@
-web: gunicorn quest_log:app
+web: gunicorn wsgi:app
 release: flask db upgrade
