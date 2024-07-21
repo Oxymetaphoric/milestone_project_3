@@ -72,7 +72,7 @@ def games():
     else:
         in_my_games = []
 
-    return render_template('games.html', 
+    return render_template('games.html',
                            inMyGames=in_my_games,
                            isUserAuthenticated=current_user.is_authenticated,
                            games=games, 

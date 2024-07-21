@@ -8,12 +8,6 @@
           <i class="material-icons prefix">search</i>
           <input type="search" name="game-search" id="game-search" class="autocomplete">
           <label for="game-search">Game title</label>
-          {% if current_user.is_authenticated %}
-            <form class="col s4">
-              <a href="{{url_for('add_game')}}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-            </form> 
-          {% endif %}
-          </div>
         </div>
       </div>
     </div>

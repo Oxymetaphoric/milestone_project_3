@@ -19,9 +19,9 @@
   });
 
 document.addEventListener('DOMContentLoaded', function() {
+  const addGameUrl = "{{ add_game_url }}";
   const searchInput = document.getElementById('game-search');
   const gameResults = document.getElementById('game-results');
-
   // Function to fetch games from the server
   async function fetchGames(query = '') {
     const response = await fetch(`/api/games?query=${query}`);
@@ -33,11 +33,17 @@ document.addEventListener('DOMContentLoaded', function() {
     if (games == 0){
        const gameCard =`
         <div>
-          <a href="{{url_for('home')}}">
+          <a href="/add_game">
             <div class="card">
-              <p>No game found</p>
+              <div class="row card-image">
+              </div>
+              <i class="col offset-m6 m12 s12 l12 fa-solid fa-plus"></i>
+              <div class="card-content">
+                <p class="center-align">Add game to database</p>
+              </div>
             </div>
           </a>
+        </div>
 `;
        gameResults.innerHTML = gameCard;
      }
@@ -98,9 +104,6 @@ function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-GB'); // This will format the date as dd/mm/yyyy
 }
-  // Initial load of all games
-  renderGames([]);
-
   // Handle search input
 searchInput.addEventListener('input', function() {
     const query = this.value.trim();
