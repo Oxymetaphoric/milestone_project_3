@@ -6,17 +6,11 @@
     <div class="card-panel">
       <img class="avatar" src={{user.avatar_url}}>
       <span><p><b>Username:  </b>{{user.username}}</p></span>
-      <span><p><b>account created:  </b>{{user.created_at}}</p></span>
-      <span><p><b>number of games:  </b>{{user.games}}</p></span>
-      <span><p><b>number of reviews: </b>{{user.reviews}}</p></span>
-      <p><b>Games: </b>  </p>
-      {% for game in UserGame %}
-        pass
-      {% endfor %}
-      <p><b>Reviews: </b></p>
-      {% for review in UserReview %}
-        pass
-      {% endfor %}
+      <span><p><b>account created:  </b> {{user.created_at.strftime('%d/%m/%Y') }}</p></span>
+      <span><p><b>number of games:  </b> {{user.user_games|length}}</p></span>
+      <span><p><b>number of reviews: </b> {{user.reviews|length}}</p></span>
+      <a href="{{url_for('my_games', user_id=user.user_id)}}"<p><b>My Games</b></p></a>
+      <a href="{{url_for('my_reviews',user_id=user.user_id)}}"<p><b>My Reviews</b></p></a>
     </div>
   </div>
 </div>

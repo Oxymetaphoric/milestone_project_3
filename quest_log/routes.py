@@ -136,10 +136,11 @@ def new_game():
 
 @app.route('/my_games/<int:user_id>')
 def my_games(user_id):
+    user = User.query.get_or_404(user_id) 
     user_games = UserGame.query.filter_by(user_id=user_id).all()
     games = [user_game.game for user_game in user_games]
 
-    return render_template('my_games.html', my_games=games)
+    return render_template('my_games.html', user=user, my_games=games)
 
 @app.route('/game_detail/<int:game_id>')
 def game_detail(game_id):
@@ -256,7 +257,8 @@ def profile(user_id):
 @app.route('/my_reviews/<int:user_id>')
 def my_reviews(user_id):
     reviews = Review.query.filter_by(user_id=user_id).all()
-    return render_template('my_reviews.html', my_reviews=reviews)
+    user = User.query.get_or_404(user_id)
+    return render_template('my_reviews.html', user=user, my_reviews=reviews)
 
 @app.route('/edit_review/<int:review_id>', methods=['GET', 'POST'])
 @login_required

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>My Games</h1>
+<h1 class="center-align">{{user.username}}'s games</h1>
 <div class="container">
   <div class="row">
 {% for game in my_games %}

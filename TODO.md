@@ -9,12 +9,15 @@
 - [ ] add ability for users to 'like' reviews' 
 - [x] links for users to view the profile of others by clicking reviews they have written
 - [x] move write reviews / remove game buttons to under game card in game_detail
-- [ ] profile stats 
-- [ ] links in profile to a users library and reviews
+- [x] profile stats 
+- [x] format dates in profile correctly
+- [x] links in profile to a users library and reviews
 - [ ] highest, lowest and average score given by users
 - [ ] an avatar picker with some dummy examples to choose from hosted in static
 - [ ] consistent site-wide styling
     - [ ] fonts
     - [ ] background image?
-    - [ ] headers
+    - [ ] header
+    - [ ] flash messages
 - [x] sort layout on All Games
+- [x] remove ability for unauthenticated users to delete games
