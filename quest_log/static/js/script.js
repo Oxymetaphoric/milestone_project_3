@@ -30,6 +30,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
  function renderGames(games) {
     gameResults.innerHTML = '';
+    if (games == 0){
+       const gameCard =`
+        <div>
+          <a href="{{url_for('home')}}">
+            <div class="card">
+              <p>No game found</p>
+            </div>
+          </a>
+`;
+       gameResults.innerHTML = gameCard;
+     }
+    else{
     games.forEach(game => {
         const gameCard = `
         <div>
@@ -55,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Reinitialize Materialize tooltips
     var elems = document.querySelectorAll('.tooltipped');
     M.Tooltip.init(elems, {});
-}
+     }}
 
 function renderGameButton(game) {
     if (!isUserAuthenticated) {
@@ -87,11 +99,15 @@ function formatDate(dateString) {
     return date.toLocaleDateString('en-GB'); // This will format the date as dd/mm/yyyy
 }
   // Initial load of all games
-  fetchGames().then(renderGames);
+  renderGames([]);
 
   // Handle search input
-  searchInput.addEventListener('input', function() {
-    const query = this.value;
-    fetchGames(query).then(renderGames);
+searchInput.addEventListener('input', function() {
+    const query = this.value.trim();
+    if (query) {
+      fetchGames(query).then(renderGames);
+  } else {
+  renderGames([]);
+     }
   });
 });

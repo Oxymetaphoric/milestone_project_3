@@ -72,7 +72,8 @@ def games():
     else:
         in_my_games = []
 
-    return render_template('games.html', inMyGames=in_my_games,
+    return render_template('games.html', 
+                           inMyGames=in_my_games,
                            isUserAuthenticated=current_user.is_authenticated,
                            games=games, 
                            in_my_games=in_my_games)
@@ -82,17 +83,19 @@ def api_games():
     query = request.args.get('query', '')
     if query:
         games = Game.query.filter(Game.game_title.ilike(f'%{query}%')).all()
+        game_list=[{
+            'game_id': game.game_id,
+            'game_title': game.game_title,
+            'developer': game.developer,
+            'genre': game.genre,
+            'image_url': game.image_url,
+            'game_publisher': game.game_publisher,
+            'release_date': game.release_date.isoformat()        
+        } for game in games]
     else: 
-        games = None
-    return jsonify([{
-        'game_id': game.game_id,
-        'game_title': game.game_title,
-        'developer': game.developer,
-        'genre': game.genre,
-        'image_url': game.image_url,
-        'game_publisher': game.game_publisher,
-        'release_date': game.release_date.isoformat()        
-    } for game in games])
+        game_list = []
+
+    return jsonify(game_list)
 
 @app.route('/add_game')
 @login_required

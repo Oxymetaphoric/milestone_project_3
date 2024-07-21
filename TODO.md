@@ -5,7 +5,7 @@
 - [x] format dates on 'games' page
 - [ ] add superuser functionality
 - [ ] restrict add/edit/remove games to superuser
-- [ ] add ability to remove games from My Games
+- [x] add ability to remove games from My Games
 - [ ] add ability for users to 'like' reviews' 
 - [x] links for users to view the profile of others by clicking reviews they have written
 - [x] move write reviews / remove game buttons to under game card in game_detail
