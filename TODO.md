@@ -2,13 +2,13 @@
 
 - [ ] remove add game button from main page
 - [ ] add redirect to search function. such that game not found redirects to add_game
-- [ ] format dates on 'games' page
+- [x] format dates on 'games' page
 - [ ] add superuser functionality
 - [ ] restrict add/edit/remove games to superuser
 - [ ] add ability to remove games from My Games
 - [ ] add ability for users to 'like' reviews' 
-- [ ] links for users to view the my_games and profile of others by clicking reviews they have written
-- [ ] move write reviews / remove game buttons to under game card in game_detail
+- [x] links for users to view the profile of others by clicking reviews they have written
+- [x] move write reviews / remove game buttons to under game card in game_detail
 - [ ] profile stats 
 - [ ] links in profile to a users library and reviews
 - [ ] highest, lowest and average score given by users
@@ -17,4 +17,4 @@
     - [ ] fonts
     - [ ] background image?
     - [ ] headers
-
+- [ ] sort layout on All Games

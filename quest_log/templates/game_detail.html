@@ -25,32 +25,10 @@
           <h4 class="center-align">{{game.game_title}}</h4>
           <p><b>Developer: </b>{{game.developer}}</p>
           <p><b>Publisher: </b>{{game.game_publisher}}</p>
-          <p><b>Release date: </b>{{ game.release_date.strftime('%d %m %Y') }}</p>
+          <p><b>Release date: </b>{{ game.release_date.strftime('%d/%m/%Y') }}</p>
           <p><b>Genre: </b>{{game.genre}}</p>
         </div>
       </div>
-    </div>
-    <div class="col l6 s12 m6">
-      <h4 class="center-align">Reviews</h4>
-        {% if game.reviews %}
-          {% for review in game.reviews %}
-            <div class="card">
-            <div class="card-content">
-          <span class="card-title">Rating: <span id="rating">{{ review.rating }}/100</span></span>
-                <p>Hours Played: {{ review.hours_played }}</p>
-                <p>Completed: {{ "Yes" if review.completed else "No" }}</p>
-                <br>
-                <p>{{ review.review_content }}</p>
-          {% if review.user.avatar_url %}
-            <img class="avatar" src="{{ review.user.avatar_url }}"></img>
-          {% endif %}
-                <p><small>By {{ review.user.username }} on {{ review.review_created_at.strftime('%d/%m/%Y') }}</small></p>
-              </div>
-            </div>
-          {% endfor %}
-        {% else %}
-          <p>No reviews yet. Be the first to review this game!</p>
-        {% endif %}
         {% if current_user.is_authenticated %}
           {% if game.game_id in reviewed_games %}
             {% if user_review %}
@@ -63,6 +41,33 @@
           {% endif %}
         {% endif %}
         <a href="{{ url_for('delete_game', game_id=game.game_id)}}" class="btn waves-effect waves-light">remove game</a>
+</div>
+    <div class="col l6 s12 m6">
+      <h4 class="center-align">Reviews</h4>
+        {% if game.reviews %}
+          {% for review in game.reviews %}
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">
+                  Rating: <span id="rating">{{ review.rating }}/100</span>
+                </span>
+                <p>Hours Played: {{ review.hours_played }}</p>
+                <p>Completed: {{ "Yes" if review.completed else "No" }}</p>
+                <br>
+                <p>{{ review.review_content }}</p>
+                {% if review.user.avatar_url %}
+                  <img class="avatar" src="{{ review.user.avatar_url }}"></img>
+                {% endif %}
+                <p>
+                  <small>By <a href="{{url_for('profile', user_id=review.user_id)}}">{{ review.user.username }}</a> on {{ review.review_created_at.strftime('%d/%m/%Y') }}
+                  </small>
+                </p>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+        <p>No reviews yet. Be the first to review this game!</p>
+        {% endif %}
     </div>
   </div>
 </div>
