@@ -17,4 +17,4 @@
     - [ ] fonts
     - [ ] background image?
     - [ ] headers
-- [ ] sort layout on All Games
+- [x] sort layout on All Games
