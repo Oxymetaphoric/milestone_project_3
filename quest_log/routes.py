@@ -188,13 +188,9 @@ def add_library(game_id):
                 user_id=current_user.user_id,
                 game_id=game_id,
                 )
-        try:
-            db.session.add(new_lib)
-            db.session.commit()
-            flash('Game added to library', 'success')
-        except IntegrityError:
-            db.session.rollback()
-            flash('Game already in Library', 'info')
+        db.session.add(new_lib)
+        db.session.commit()
+        flash('Game added to library', 'success')
     else:
         flash('Game already in library', 'info')
     return redirect(url_for('games'))
@@ -203,13 +199,9 @@ def add_library(game_id):
 @login_required
 def remove_from_library(game_id):
     user_game=UserGame.query.filter_by(user_id=current_user.user_id, game_id=game_id).first_or_404()
-    try:
-        db.session.delete(user_game)
-        db.session.commit()
-        flash('game removed from your library successfully', 'success')
-    except Exception as e:
-        db.session.rollback()
-        flash('An error occurred while deleting your review. Please try again.', 'error')
+    db.session.delete(user_game)
+    db.session.commit()
+    flash('game removed from your library successfully', 'success')
         
     return redirect(url_for('my_games', user_id=current_user.user_id))
 
@@ -238,14 +230,10 @@ def add_review(game_id):
                 completed=completed,
                 rating=rating
                 )
-        try:
-            db.session.add(new_review)
-            db.session.commit()
-            flash('Your review has been added succesfully', 'success')
-            return redirect(url_for('my_games', user_id=current_user.user_id))
-        except IntegrityError:
-            db.session.rollback()
-            flash('An error occured while adding your review to the database')
+        db.session.add(new_review)
+        db.session.commit()
+        flash('Your review has been added succesfully', 'success')
+        return redirect(url_for('my_games', user_id=current_user.user_id))
     return render_template('add_review.html', game=game)
 
 @app.route('/profile/<int:user_id>', methods=["GET", "POST"])
@@ -304,14 +292,9 @@ def delete_review(review_id):
     if review.user_id != current_user.user_id:
         flash('You can only delete your own reviews.', 'error')
         return redirect(url_for('my_reviews'))
-    
-    try:
-        db.session.delete(review)
-        db.session.commit()
-        flash('Your review has been deleted successfully', 'success')
-    except Exception as e:
-        db.session.rollback()
-        flash('An error occurred while deleting your review. Please try again.', 'error')
+    db.session.delete(review)
+    db.session.commit()
+    flash('Your review has been deleted successfully', 'success')
     
     return redirect(url_for('my_reviews', user_id=current_user.user_id))
 
