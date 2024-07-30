@@ -235,13 +235,27 @@ I converted the above markup tables into DBML (Database Markup Language) and use
 
 ### Features
 
-- [x] CRUD functionality for reviews
-- [x] Create games functionality
-- [x] Read functionality for games (deleting games will not be a userland feature)
 - [x] account creation
 - [ ] account deletion
-- [x] account edits
-- [x] game score aggregation
+- [x] login/logout functionality
+- [x] main page displaying all games in database
+- [x] search bar querying app api as user types
+- [x] if no game is found on searching the db, users are given the option to add a new game
+- [x] button to add to My Games on each game not currently in user's My Games collection
+- [x] indicator that game is currently in My Games
+- [x] cards displaying an image and information on each game and link to each games page
+- [x] games in My Games are displayed and can be removed from My Games
+- [x] My Review page, aggregating all of a users reviews
+- [x] Individual reviews can be edited/deleted from My reviews
+- [x] Game Detail page displays game details, aggregate user score, and all reviews of the game
+- [x] Game detail page contains contextually appropriate Edit/Add Review buttons
+- [x] Games can be deleted from the database from the game detail page
+- [x] reviews on Game Detail page display user avatar and link to profile
+- [x] User Profiles can be viewed and contain:
+        - user stats
+        - links to users My Games and My Review pages
+- [x] users that are not logged in may browse the game collection but not change any of the present data
+- [x] users navigating to their own My Profile page can update password, email and avatar link
 - [ ] user statistics
 
 

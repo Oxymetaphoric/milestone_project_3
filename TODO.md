@@ -6,10 +6,10 @@
 - [ ] add superuser functionality
 - [ ] restrict add/edit/remove games to superuser
 - [x] add ability to remove games from My Games
-- [ ] add ability for users to 'like' reviews' 
+- [ ] add ability for users to 'like' reviews 
 - [x] links for users to view the profile of others by clicking reviews they have written
 - [x] move write reviews / remove game buttons to under game card in game_detail
-- [x] profile stats 
+- [x] profile stats
 - [x] format dates in profile correctly
 - [x] links in profile to a users library and reviews
 - [ ] highest, lowest and average score given by users
@@ -39,12 +39,12 @@ L02 – Model and manage data.
 
 L03: Query and manipulate data.
 
-- [ ] add a button to add new games to database
-- [ ] prevent users from accesing accounts of others by URL manipulation
+- [x] add a button to add new games to database
+- [x] prevent users from accesing accounts of others by URL manipulation
 
 LO4: Deploy a Full Stack web application to a Cloud platform.
 
-- [ ] detail the deployment process
+- [x] detail the deployment process
 
 LO5: Identify and apply security features
 
