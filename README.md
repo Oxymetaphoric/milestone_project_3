@@ -319,9 +319,10 @@ I will be using the Materialize framework for the structure and styling of this 
 
 ### Bug fixes
 
-1. while writing the profile page, I encountered a bug where the browser would autofill the new password box, I solved this by changing the type of input to text from password and processing it as a passwor
+1. while writing the profile page, I encountered a bug where the browser would autofill the new password box, I solved this by changing the type of input to text from password and processing it as a password
 2. while working on the Add Game functionality, I encountered a bug where the date would only validate if given in a specific format. I solved this by implementing a datepicker that submits to the from in the correct format
 3. getting the conditional checks to correctly display contextually relevent buttons 
+4. during deployment I ran into an issue in which I was not able to get flask-migrate to function correctly during deployment to heroku, it led to a lot of inexplicable tracebacks and weird build errors. I believe the issue was something to do with the order in which flask-migrate was used, in that it seemed to be trying to access a table that didn't currently exist.  
 -------------------------------
 --------------------------------
 --------------------------------
@@ -331,6 +332,58 @@ I will be using the Materialize framework for the structure and styling of this 
 ## :loudspeaker: Deployment
 
 ---
+
+- clone the repo:
+    - > git clone https://github.com/Oxymetaphoric/milestone_project_3
+
+- if you wish to make changes and/or run locally prior to deploying. Some of these steps, especially those related to system packages may vary depending on your operating system: 
+    - navigate to the repo:
+        > cd path/to/milestone_project_3
+    - create a python virtual environment: 
+        > python -m venv . 
+        > source bin/activate
+    - create and populate env.py:
+        > touch env.py
+        > vim env.py 
+        
+        import os   
+        
+        os.environ.setdefault("IP","0.0.0.0")
+        os.environ.setdefault("PORT","5000")
+        os.environ.setdefault("SECRET_KEY","_your secret key_")
+        os.environ.setdefault("DEBUG","True")
+        os.environ.setdefault("DEVELOPMENT","True")
+        os.environ.setdefault("DB_URL","postgres:///quest_log")
+
+    - install postgresql and create a quest_log database:
+        > pacman -S postgresql
+        > sudo -u postgres psql
+        > CREATE DATABASE [user] quest_log 
+    
+    - from this point you can run locally with: 
+        > python3 app.py 
+
+
+- navigate to the heroku website and create an account/login. 
+- create a new app, and in the Settings page click 'Show Environment Vars', and input: 
+    
+    |   variable    |     value     |
+    |---------------|-----------|
+    |IP|0.0.0.0|
+    |PORT|5000|
+    |SECRET_KEY| _your secret key_ |
+    | DATABASE_URL | _your remotely accessible postgres db's url_ |   
+
+- navigate to the Deployment section of Heroku and follow the instructions to deploy via cli or from a github repo. 
+- once deployed the db will need to be built, click the More menu button on the project pages header and then Run to open the heroku commandline webtool and enter:
+    > python3
+    > from quest_log import app, db
+    > with app.app_context():
+    >    db.create_all()
+
+ it is important to note that the white spaces prior to the 'db.create_all()' command must be typed out or the command will not run due to the python interpreter receiving incorrectly indented instructions
+
+- Once the build process has completed the project should now be accessible online 
 
 ---
 

@@ -22,12 +22,12 @@
 - [x] sort layout on All Games
 - [x] remove ability for unauthenticated users to delete games
 
-## submission feedback 
-LO1: Design, develop and implement a Back end for a web application using Python and a micro-
-framework.
+## submission feedback
+
+Learning Objective 1: Design, develop and implement a Back end for a web application using Python and a microframework.
 
 - [ ] add facility to delete account
-- [ ] adda more obvious way to add games to site
+- [ ] add a more obvious way to add games to site
 - [ ] size images
 - [ ] more user feedback
 - [ ] design work, colours/images
