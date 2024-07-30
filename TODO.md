@@ -21,3 +21,32 @@
     - [ ] flash messages
 - [x] sort layout on All Games
 - [x] remove ability for unauthenticated users to delete games
+
+## submission feedback 
+LO1: Design, develop and implement a Back end for a web application using Python and a micro-
+framework.
+
+- [ ] add facility to delete account
+- [ ] adda more obvious way to add games to site
+- [ ] size images
+- [ ] more user feedback
+- [ ] design work, colours/images
+
+L02 – Model and manage data.
+
+- [ ] describe data scheme fully in readme
+- [ ] add ERD schema (done?)
+
+L03: Query and manipulate data.
+
+- [ ] add a button to add new games to database
+- [ ] prevent users from accesing accounts of others by URL manipulation
+
+LO4: Deploy a Full Stack web application to a Cloud platform.
+
+- [ ] detail the deployment process
+
+LO5: Identify and apply security features
+
+- [ ] finish rationale and user stories 
+- [ ] credits
