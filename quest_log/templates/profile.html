@@ -45,7 +45,18 @@
         <button type="update user information" class="col s12 btn-large light-blue darken-4 text-shadow">
           Submit changes
         </button>
-      </div>
+      </div>      
+
+    </div>
+    <div>
+  </form>
+  <form class="col s12 m8 offset-m2"
+    method="POST"
+    action="{{ url_for('delete_user', user_id=user.user_id) }}">
+    <div class="row">
+      <button type="submit" class="col s12 btn-large red darken-4 text-shadow">
+        Delete User Account
+      </button>
     </div>
   </form>
 </div>

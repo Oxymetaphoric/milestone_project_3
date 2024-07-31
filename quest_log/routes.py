@@ -9,61 +9,78 @@ from sqlalchemy.sql import func
 
 @app.route("/")
 def home():
-    return redirect(url_for('games'))
+    return redirect(url_for("games"))
 
-@app.route('/register', methods=["GET", "POST"])
+@app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        first_name = request.form.get('first_name')
-        last_name = request.form.get('last_name')
-        username = request.form.get('newuser-username')
-        email = request.form.get('email')
-        password = request.form.get('newuser-password')
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
+        username = request.form.get("newuser-username")
+        email = request.form.get("email")
+        password = request.form.get("newuser-password")
 
         if not username or not email or not password or not first_name or not last_name:
-            flash('All fields are required.', 'error')
-            return redirect(url_for('register'))
+            flash("All fields are required.", "error")
+            return redirect(url_for("register"))
 
         user = User.query.filter_by(username=username).first()
         if user:
-            flash('User already exists')
-            return redirect(url_for('register'))
+            flash("User already exists")
+            return redirect(url_for("register"))
 
-        new_user = User(first_name=first_name, last_name=last_name, username=username, email=email, password=password)
+        new_user = User(first_name=first_name,
+                        last_name=last_name,
+                        username=username,
+                        email=email,
+                        password=password)
         new_user.set_password(password)
 
         db.session.add(new_user)
         db.session.commit()
 
-        flash('Registration Successful')
-        return redirect(url_for('login'))
+        flash("Registration Successful")
+        return redirect(url_for("login"))
 
     return render_template("register.html")
 
+@app.route("/delete_user/<int:user_id>", methods=["POST"])
+@login_required
+def delete_user(user_id):
+    user = User.query.get_or_404(user_id)
+    if user.user_id == current_user.user_id:
+            db.session.delete(user)
+            db.session.commit()
+            flash("Your account has been successfully deleted.", "success")
+            return redirect(url_for("home"))
+    else: 
+        flash("You don't have permission to delete this account.", "error")
+    return redirect(url_for("profile", user_id=user_id))
+    
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        username = request.form.get('login-username')
-        password = request.form.get('login-password')
+        username = request.form.get("login-username")
+        password = request.form.get("login-password")
 
         user = User.query.filter_by(username=username).first()
         if user and user.check_password(password):
             login_user(user)
-            flash('logged in successfully')
-            return redirect(url_for('home'))
+            flash("logged in successfully")
+            return redirect(url_for("home"))
         else:
-            flash('Invalid username or password')
+            flash("Invalid username or password")
 
-    return render_template('login.html')
+    return render_template("login.html")
 
-@app.route('/logout')
+@app.route("/logout")
 @login_required
 def logout():
     logout_user()
-    flash('Logged out successfully')
-    return redirect(url_for('home'))
+    flash("Logged out successfully")
+    return redirect(url_for("home"))
 
-@app.route('/games')
+@app.route("/games")
 def games():
     games = Game.query.order_by(Game.game_title).all()
     if current_user.is_authenticated:
@@ -72,53 +89,53 @@ def games():
     else:
         in_my_games = []
 
-    return render_template('games.html',
+    return render_template("games.html",
                            inMyGames=in_my_games,
                            isUserAuthenticated=current_user.is_authenticated,
                            games=games, 
                            in_my_games=in_my_games)
 
-@app.route('/api/games')
+@app.route("/api/games")
 def api_games():
-    query = request.args.get('query', '')
+    query = request.args.get("query", "")
     if query:
-        games = Game.query.filter(Game.game_title.ilike(f'%{query}%')).all()
+        games = Game.query.filter(Game.game_title.ilike(f"%{query}%")).all()
         game_list=[{
-            'game_id': game.game_id,
-            'game_title': game.game_title,
-            'developer': game.developer,
-            'genre': game.genre,
-            'image_url': game.image_url,
-            'game_publisher': game.game_publisher,
-            'release_date': game.release_date.isoformat()        
+            "game_id": game.game_id,
+            "game_title": game.game_title,
+            "developer": game.developer,
+            "genre": game.genre,
+            "image_url": game.image_url,
+            "game_publisher": game.game_publisher,
+            "release_date": game.release_date.isoformat()        
         } for game in games]
     else: 
         game_list = []
 
     return jsonify(game_list)
 
-@app.route('/add_game')
+@app.route("/add_game")
 @login_required
 def add_game():
-    return render_template('add_game.html')
+    return render_template("add_game.html")
 
-@app.route('/remove_game/<int:game_id>')
+@app.route("/remove_game/<int:game_id>")
 @login_required
 def delete_game(game_id):
     game = Game.query.get_or_404(game_id)
     db.session.delete(game)
     db.session.commit()
-    return redirect(url_for('games'))
+    return redirect(url_for("games"))
 
-@app.route('/new_game', methods=["POST"])
+@app.route("/new_game", methods=["POST"])
 @login_required
 def new_game():
-    game_title = request.form.get('game_title')
-    game_publisher = request.form.get('game_publisher')
-    developer = request.form.get('developer')
-    release_date = request.form.get('release_date')
-    genre = request.form.get('genre')
-    image_url = request.form.get('image_url')
+    game_title = request.form.get("game_title")
+    game_publisher = request.form.get("game_publisher")
+    developer = request.form.get("developer")
+    release_date = request.form.get("release_date")
+    genre = request.form.get("genre")
+    image_url = request.form.get("image_url")
 
     existing_game = Game.query.filter_by(game_title=game_title).first()
     if existing_game is None:
@@ -132,20 +149,20 @@ def new_game():
                 )
         db.session.add(new_game)
         db.session.commit()
-        flash('Game added to database', 'success')
+        flash("Game added to database", "success")
     else:
-        flash('Game already exists')
-    return redirect(url_for('games'))
+        flash("Game already exists")
+    return redirect(url_for("games"))
 
-@app.route('/my_games/<int:user_id>')
+@app.route("/my_games/<int:user_id>")
 def my_games(user_id):
     user = User.query.get_or_404(user_id) 
     user_games = UserGame.query.filter_by(user_id=user_id).all()
     games = [user_game.game for user_game in user_games]
 
-    return render_template('my_games.html', current_user=current_user, user=user, my_games=games)
+    return render_template("my_games.html", current_user=current_user, user=user, my_games=games)
 
-@app.route('/game_detail/<int:game_id>')
+@app.route("/game_detail/<int:game_id>")
 def game_detail(game_id):
     game = Game.query.get_or_404(game_id)
     reviews = Review.query.filter_by(game_id=game_id).all()
@@ -168,7 +185,7 @@ def game_detail(game_id):
         if user_review:
             reviewed_games = [game_id]
 
-    return render_template('game_detail.html',
+    return render_template("game_detail.html",
                            in_my_games=in_my_games,
                            reviews=reviews,
                            game=game,
@@ -176,12 +193,12 @@ def game_detail(game_id):
                            reviewed_games=reviewed_games,
                            avg_rating=avg_rating)
 
-@app.route('/add_library/<int:game_id>', methods=['POST'])
+@app.route("/add_library/<int:game_id>", methods=["POST"])
 @login_required
 def add_library(game_id):
     game = Game.query.get_or_404(game_id)
     if game is None:
-        return redirect(url_for('add_game'))
+        return redirect(url_for("add_game"))
     already_in_lib = UserGame.query.get((current_user.user_id, game_id))
     if already_in_lib is None:
         new_lib = UserGame(
@@ -190,37 +207,37 @@ def add_library(game_id):
                 )
         db.session.add(new_lib)
         db.session.commit()
-        flash('Game added to library', 'success')
+        flash("Game added to library", "success")
     else:
-        flash('Game already in library', 'info')
-    return redirect(url_for('games'))
+        flash("Game already in library", "info")
+    return redirect(url_for("games"))
 
-@app.route('/remove_from_library/<int:game_id>', methods=['POST'])
+@app.route("/remove_from_library/<int:game_id>", methods=["POST"])
 @login_required
 def remove_from_library(game_id):
     user_game=UserGame.query.filter_by(user_id=current_user.user_id, game_id=game_id).first_or_404()
     db.session.delete(user_game)
     db.session.commit()
-    flash('game removed from your library successfully', 'success')
+    flash("game removed from your library successfully", "success")
         
-    return redirect(url_for('my_games', user_id=current_user.user_id))
+    return redirect(url_for("my_games", user_id=current_user.user_id))
 
-@app.route('/new_review/<int:game_id>')
+@app.route("/new_review/<int:game_id>")
 @login_required
 def new_review(game_id):
     game = Game.query.get_or_404(game_id)
-    return render_template('add_review.html', game=game)
+    return render_template("add_review.html", game=game)
 
 
-@app.route('/add_review/<int:game_id>', methods=["GET","POST"])
+@app.route("/add_review/<int:game_id>", methods=["GET","POST"])
 @login_required
 def add_review(game_id):
     game = Game.query.get_or_404(game_id)
     if request.method == "POST":
-        review_content = request.form.get('review_content')
-        hours_played = int(request.form.get('hours_played'), 0)
-        completed = request.form.get('completed') == 'on'
-        rating = int(request.form.get('rating'), 0)
+        review_content = request.form.get("review_content")
+        hours_played = int(request.form.get("hours_played"), 0)
+        completed = request.form.get("completed") == "on"
+        rating = int(request.form.get("rating"), 0)
 
         new_review = Review(
                 game_id=game_id,
@@ -232,11 +249,11 @@ def add_review(game_id):
                 )
         db.session.add(new_review)
         db.session.commit()
-        flash('Your review has been added succesfully', 'success')
-        return redirect(url_for('my_games', user_id=current_user.user_id))
-    return render_template('add_review.html', game=game)
+        flash("Your review has been added succesfully", "success")
+        return redirect(url_for("my_games", user_id=current_user.user_id))
+    return render_template("add_review.html", game=game)
 
-@app.route('/profile/<int:user_id>', methods=["GET", "POST"])
+@app.route("/profile/<int:user_id>", methods=["GET", "POST"])
 @login_required
 def profile(user_id):
     user = User.query.get_or_404(user_id)
@@ -244,9 +261,9 @@ def profile(user_id):
     owns_profile = user.user_id == current_user.user_id
     if request.method == "POST" and owns_profile:
         # Get the data from the form
-        new_email = request.form.get('email')
-        new_password = request.form.get('newauth')
-        new_avatar_url = request.form.get('avatar_url')
+        new_email = request.form.get("email")
+        new_password = request.form.get("newauth")
+        new_avatar_url = request.form.get("avatar_url")
         if new_email and new_email != user.email:
             user.email = new_email
         if new_password:
@@ -254,47 +271,47 @@ def profile(user_id):
         if new_avatar_url:
             user.avatar_url = new_avatar_url
         db.session.commit()
-        flash('Profile updated successfully', 'success')
-        return redirect(url_for('profile', user_id=user.user_id))
-    return render_template('profile.html', user=user, owns_profile=owns_profile)
+        flash("Profile updated successfully", "success")
+        return redirect(url_for("profile", user_id=user.user_id))
+    return render_template("profile.html", user=user, owns_profile=owns_profile)
     
 
-@app.route('/my_reviews/<int:user_id>')
+@app.route("/my_reviews/<int:user_id>")
 def my_reviews(user_id):
     reviews = Review.query.filter_by(user_id=user_id).all()
     user = User.query.get_or_404(user_id)
-    return render_template('my_reviews.html', user=user, my_reviews=reviews)
+    return render_template("my_reviews.html", user=user, my_reviews=reviews)
 
-@app.route('/edit_review/<int:review_id>', methods=['GET', 'POST'])
+@app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
 @login_required
 def edit_review(review_id):
     review = Review.query.get_or_404(review_id)
     if review.user_id != current_user.user_id:
-        flash('You can only edit your own reviews.', 'error')
-        return redirect(url_for('my_reviews'))
+        flash("You can only edit your own reviews.", "error")
+        return redirect(url_for("my_reviews"))
     
-    if request.method == 'POST':
-        review.review_content = request.form.get('review_content')
-        review.hours_played = int(request.form.get('hours_played', 0))
-        review.completed = request.form.get('completed') == 'on'
-        review.rating = int(request.form.get('rating', 0))
+    if request.method == "POST":
+        review.review_content = request.form.get("review_content")
+        review.hours_played = int(request.form.get("hours_played", 0))
+        review.completed = request.form.get("completed") == "on"
+        review.rating = int(request.form.get("rating", 0))
  
         db.session.commit()
-        flash('Your review has been updated successfully', 'success')
-        return redirect(url_for('my_reviews', user_id=current_user.user_id))
+        flash("Your review has been updated successfully", "success")
+        return redirect(url_for("my_reviews", user_id=current_user.user_id))
     
-    return render_template('edit_review.html', review=review)
+    return render_template("edit_review.html", review=review)
 
-@app.route('/delete_review/<int:review_id>', methods=['POST'])
+@app.route("/delete_review/<int:review_id>", methods=["POST"])
 @login_required
 def delete_review(review_id):
     review = Review.query.get_or_404(review_id)
     if review.user_id != current_user.user_id:
-        flash('You can only delete your own reviews.', 'error')
-        return redirect(url_for('my_reviews'))
+        flash("You can only delete your own reviews.", "error")
+        return redirect(url_for("my_reviews"))
     db.session.delete(review)
     db.session.commit()
-    flash('Your review has been deleted successfully', 'success')
+    flash("Your review has been deleted successfully", "success")
     
-    return redirect(url_for('my_reviews', user_id=current_user.user_id))
+    return redirect(url_for("my_reviews", user_id=current_user.user_id))
 
