@@ -30,7 +30,7 @@ This is my milestone two project for the [Code Institute's](http://www.codeinsti
 
 - develop further skill working with postgres and Flask
 - develop a site that satisfies goals of the user and site operator and fulfils the project goals 
-- create a good UX for users 
+- create a good UX 
 - build a performant and efficient site that has room for extensibility
 
 ---
@@ -41,14 +41,14 @@ This is my milestone two project for the [Code Institute's](http://www.codeinsti
 
 ### User Experience
 
-#### Front End 
 
-The site will be styled using the materialise toolkit to provide a consistent and aesthetic UI. I will use template inheritance using Jinja and Flask in order to create pages that have a consistent and accessible layout with minimal code to ensure a good UX. 
+#### Front End
 
-#### Back end 
+The site's user interface will be designed using the Materialize CSS framework, ensuring a consistent and visually appealing appearance across all pages. To maintain a uniform layout and enhance user experience, I will implement template inheritance using Jinja2, Flask's templating engine. This approach allows for the creation of a base template containing common elements (such as header and footer), which can then be extended by individual pages. This method not only ensures consistency but also reduces code duplication, leading to more maintainable and efficient front-end development.
 
-I will utilise postgreSQL to build the multiple tables within the database that will be necessary 
+#### Back End
 
+For the database management system, I will employ PostgreSQL. This robust, open-source relational database will be used to create and manage multiple tables necessary for storing user data, game information, reviews, and the relationships between these entities. PostgreSQL's advanced features and reliability make it a good choice for handling complex queries and maintaining data integrity in a web application of this scale.
 
 #### Target Audience
 
@@ -56,10 +56,10 @@ I will utilise postgreSQL to build the multiple tables within the database that 
 
 #### User Requirements and Expectations
 
-- easy and intiuitive navigation 
+- easy and intuitive navigation 
 - secure login procedures 
 - accessible 
-- able to browse review by catagory (game, author, aggregate score etc. )
+- able to browse review by category (game, author, aggregate score etc. )
 - able to write, delete, edit reviews 
 
 #### User Stories
@@ -76,7 +76,7 @@ I will utilise postgreSQL to build the multiple tables within the database that 
 1. As a returning visitor I want to be able to login quickly and easily
 2. As a returning visitor I want to be able to intuitively find all my prior reviews
 3. As a returning visitor I want to be able to delete reviews I have previously written
-4. As a returning visitor I want to be able to view the profile of others 
+4. As a returning visitor I want to be able to view the profiles of others 
 5. As a returning visitor I want to be able to write new reviews
 6. As a returning visitor I want to be able to edit games to the database if they are not currently there
 
@@ -137,7 +137,7 @@ allow users to change account details such as screenname, update password, view 
 
 - games.html
 
-gallery page for games added to the data base, displayed in a grid with information modals over the top of large images. 
+gallery page for games added to the data base, displayed in a grid with information modals over the top of large images. Search bar for users to query the database at the top of the page. 
 
 ![desktop landing page](./docs/quest-log-desktop-wireframes/3.1-Screen2.png)
 ![mobile landing page](./docs/quest-log-mobile-wireframes/3.1-Screen3.png)
@@ -188,6 +188,7 @@ page to send users to if a game/review is somehow not found in the database
 
 The database will contain 4 tables. One for the games, one for reviews, one for users, and a join table that gives me access to all games reviewed for a given user and all reviews from users for a given game.  
 
+The game table will need a primary key that is an assigned id number that is auto-incrementing, then the data for each game (publisher, developer etc.) these fields should all be required, as users should not be able to add games with incomplete information into the db. image_url is a development feature, and would need to be replaced with an image upload dialogue linking to some backend storage. This is for many reasons, not least that hotlinking images is both impolite and very slow.    
 
  Game Table 
 | Column Name | Data Type | Constraints | Key | Nullable |
@@ -199,6 +200,9 @@ The database will contain 4 tables. One for the games, one for reviews, one for 
 | release_date | date | | | Yes |
 | genre | string(100) | | | Yes |
 | image_url | string(512) | | | Yes |
+
+
+The review table will need to assign each review an ID that is autoincrementing, and will again be the primary key. However it will additionally require the foreignn keys of user_id and game_id to link the review to the user to the game. we will also need to assign the current date/tiem to the review. 
 
 Review Table 
 | Column Name | Data Type | Constraints | Key | Nullable |
@@ -212,6 +216,9 @@ Review Table
 | rating | int | CHECK (rating BETWEEN 1 AND 10) | | No |
 | created_at | datetime | CURRENT TIMESTAMP | | No |
 
+
+The user table, like the other tables, will use an auto-incrementing integer and assign this to users as an ID which serves as the tables primary key, The rest of the information will relate to the user themselves, username, email address etc.  
+
  User Table  
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
@@ -221,6 +228,8 @@ Review Table
 | password_hash | string(255) | | | No |
 | location | string(255) | | | Yes |
 | created_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
+
+The final table is a junction table that implements a composite primary key. This key consists of two columns: user_id and game_id. Each of these columns serves as both a foreign key and part of the primary key. The user_id references the User table, while the game_id references the Game table. This table will be crucial for features such as the user's "My Games" and "My Reviews" pages. By using this structure, we transform the many-to-many relationship between users and games into two one-to-many relationships: one user can have many games, and one game can be associated with many users. This allows for efficient querying of user-game associations and simplifies the implementation of user-specific game collections and reviews.
 
  user > game / game > users  
 | Column Name | Data Type | Constraints | Key | Nullable |
@@ -257,9 +266,6 @@ I converted the above markup tables into DBML (Database Markup Language) and use
 - [x] users that are not logged in may browse the game collection but not change any of the present data
 - [x] users navigating to their own My Profile page can update password, email and avatar link
 - [ ] user statistics
-
-
-
 
 ---
 
@@ -353,9 +359,11 @@ I will be using the Materialize framework for the structure and styling of this 
 - if you wish to make changes and/or run locally prior to deploying. Some of these steps, especially those related to system packages may vary depending on your operating system: 
     - navigate to the repo:
         > cd path/to/milestone_project_3
-    - create a python virtual environment: 
+    - create and activate a python virtual environment: 
         > python -m venv . 
         > source bin/activate
+    - use pip to install the projects required dependencies: 
+        > pip install -r requirements.txt
     - create and populate env.py:
         > touch env.py
         > vim env.py 
@@ -390,10 +398,10 @@ I will be using the Materialize framework for the structure and styling of this 
 
 - navigate to the Deployment section of Heroku and follow the instructions to deploy via cli or from a github repo. 
 - once deployed the db will need to be built, click the More menu button on the project pages header and then Run to open the heroku commandline webtool and enter:
-    > python3
-    > from quest_log import app, db
-    > with app.app_context():
-    >    db.create_all()
+    >$ python3  
+    >$ from quest_log import app, db  
+    >$ with app.app_context():  
+    >$ &nbsp&nbspdb.create_all()
 
  it is important to note that the white spaces prior to the 'db.create_all()' command must be typed out or the command will not run due to the python interpreter receiving incorrectly indented instructions
 

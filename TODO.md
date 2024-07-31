@@ -34,8 +34,8 @@ Learning Objective 1: Design, develop and implement a Back end for a web applica
 
 L02 – Model and manage data.
 
-- [ ] describe data scheme fully in readme
-- [ ] add ERD schema (done?)
+- [x] describe data scheme fully in readme
+- [x] add ERD schema (done?)
 
 L03: Query and manipulate data.
 
