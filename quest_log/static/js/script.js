@@ -28,6 +28,46 @@ document.addEventListener('DOMContentLoaded', function() {
     return await response.json();
   }
 
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB'); // This will format the date as dd/mm/yyyy
+}
+  // Handle search input
+searchInput.addEventListener('input', function() {
+    const query = this.value.trim();
+    if (query) {
+      fetchGames(query).then(renderGames);
+  } else {
+  renderGames([]);
+     }
+  });
+});
+
+function renderGameButton(game) {
+    if (!isUserAuthenticated) {
+        return '';
+    }
+    if (inMyGames.includes(game.game_id)) {
+        return `
+            <span class="btn-floating tooltipped halfway-fab waves-effect waves-light green"
+                data-position="left"
+                data-tooltip="in My Games">
+                <i class="material-icons">check</i>
+            </span>
+        `;
+    } else {
+        return `
+            <form action="/add_library/${game.game_id}" method="POST"> 
+                <button type="submit" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" 
+                    data-position="left"
+                    data-tooltip="add to My Games">
+                    <i class="material-icons">add</i>
+                </button>
+            </form>
+        `;
+    }
+}
+
  function renderGames(games) {
     gameResults.innerHTML = '';
     if (games == 0){
@@ -74,43 +114,3 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.tooltipped');
     M.Tooltip.init(elems, {});
      }}
-
-function renderGameButton(game) {
-    if (!isUserAuthenticated) {
-        return '';
-    }
-    if (inMyGames.includes(game.game_id)) {
-        return `
-            <span class="btn-floating tooltipped halfway-fab waves-effect waves-light green"
-                data-position="left"
-                data-tooltip="in My Games">
-                <i class="material-icons">check</i>
-            </span>
-        `;
-    } else {
-        return `
-            <form action="/add_library/${game.game_id}" method="POST"> 
-                <button type="submit" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" 
-                    data-position="left"
-                    data-tooltip="add to My Games">
-                    <i class="material-icons">add</i>
-                </button>
-            </form>
-        `;
-    }
-}
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB'); // This will format the date as dd/mm/yyyy
-}
-  // Handle search input
-searchInput.addEventListener('input', function() {
-    const query = this.value.trim();
-    if (query) {
-      fetchGames(query).then(renderGames);
-  } else {
-  renderGames([]);
-     }
-  });
-});

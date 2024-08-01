@@ -3,26 +3,19 @@
   src: url('../fonts/BigBlueTermPlusNerdFontPropo-Regular.ttf') format('truetype');
 }
 
-.halfway-fab { 
-  margin-bottom: 25px;
-  margin-right: -20px;
-  box-shadow: 2px;
-}
-
-hr{
-  color: lightgray;
-  opacity: 50%;
-}
-
 h1 { 
   font-size: large; 
 }
-
 
 h2, h3, h4 {
   font-size: medium;
   margin-top: 5px;
   padding-top: 0px;
+}
+
+hr{
+  color: lightgray;
+  opacity: 50%;
 }
 
 #brand-logo  {
@@ -31,6 +24,12 @@ h2, h3, h4 {
 
 #rating{
   font-size: 20px;
+}
+
+.halfway-fab { 
+  margin-bottom: 25px;
+  margin-right: -20px;
+  box-shadow: 2px;
 }
 
 .input-group{
@@ -53,7 +52,7 @@ h2, h3, h4 {
   text-decoration: none;
 }
 
-.card-link:hover .card {
+.card:hover{
   box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
 

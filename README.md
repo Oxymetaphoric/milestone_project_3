@@ -392,37 +392,40 @@ I will be using the Materialize framework for the structure and styling of this 
 ---
 
 - clone the repo:
-    - > git clone https://github.com/Oxymetaphoric/milestone_project_3
+    - > `git clone https://github.com/Oxymetaphoric/milestone_project_3`
 
 - if you wish to make changes and/or run locally prior to deploying. Some of these steps, especially those related to system packages may vary depending on your operating system: 
     - navigate to the repo:
-        > cd path/to/milestone_project_3
+        > `cd path/to/milestone_project_3`
     - create and activate a python virtual environment: 
-        > python -m venv . 
-        > source bin/activate
-    - use pip to install the projects required dependencies: 
-        > pip install -r requirements.txt
-    - create and populate env.py:
-        > touch env.py
-        > vim env.py 
+        > `python -m venv .`  
+        >
+        > `source bin/activate`  
+    - use pip to install the projects required dependencies:   
+        > `pip install -r requirements.txt`  
+    - create and populate env.py:  
+        > `touch env.py`
+        >
+        > `vim env.py`   
         
         import os   
         
-        os.environ.setdefault("IP","0.0.0.0")
-        os.environ.setdefault("PORT","5000")
-        os.environ.setdefault("SECRET_KEY","_your secret key_")
-        os.environ.setdefault("DEBUG","True")
-        os.environ.setdefault("DEVELOPMENT","True")
-        os.environ.setdefault("DB_URL","postgres:///quest_log")
-
-    - install postgresql and create a quest_log database:
-        > pacman -S postgresql
-        > sudo -u postgres psql
-        > CREATE DATABASE [user] quest_log 
+        os.environ.setdefault("IP","0.0.0.0")  
+        os.environ.setdefault("PORT","5000")  
+        os.environ.setdefault("SECRET_KEY","_your secret key_")  
+        os.environ.setdefault("DEBUG","True")  
+        os.environ.setdefault("DEVELOPMENT","True")  
+        os.environ.setdefault("DB_URL","postgres:///quest_log")  
+  
+    - install postgresql and create a quest_log database:  
+        > `pacman -S postgresql`  
+        >  
+        > `sudo -u postgres psql`  
+        >  
+        > `CREATE DATABASE [user] quest_log`  
     
     - from this point you can run locally with: 
-        > python3 app.py 
-
+        > `python3 app.py`  
 
 - navigate to the heroku website and create an account/login. 
 - create a new app, and in the Settings page click 'Show Environment Vars', and input: 
@@ -436,10 +439,13 @@ I will be using the Materialize framework for the structure and styling of this 
 
 - navigate to the Deployment section of Heroku and follow the instructions to deploy via cli or from a github repo. 
 - once deployed the db will need to be built, click the More menu button on the project pages header and then Run to open the heroku commandline webtool and enter:
-    >$ python3  
-    >$ from quest_log import app, db  
-    >$ with app.app_context():  
-    >$ &nbsp&nbspdb.create_all()
+    >`$ python3`
+    >
+    >`$ from quest_log import app, db`
+    >
+    >`$ with app.app_context():`  
+    >  
+    >`$ &nbsp&nbspdb.create_all()`
 
  it is important to note that the white spaces prior to the 'db.create_all()' command must be typed out or the command will not run due to the python interpreter receiving incorrectly indented instructions
 
