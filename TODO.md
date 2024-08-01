@@ -5,6 +5,7 @@
 - [x] format dates on 'games' page
 - [ ] add superuser functionality
 - [ ] restrict add/edit/remove games to superuser
+- [ ] 'add game to library' checkbox on adding game to library
 - [x] add ability to remove games from My Games
 - [ ] add ability for users to 'like' reviews 
 - [x] links for users to view the profile of others by clicking reviews they have written
@@ -26,13 +27,14 @@
 
 Learning Objective 1: Design, develop and implement a Back end for a web application using Python and a microframework.
 
-- [-] add facility to delete account
+- [-] add facility to delete account: 
+    - route and html implementation created, however will need to rebuild the db with changes to the model. need to make UserGame cascade delete
 - [x] add a more obvious way to add games to site
 - [x] size images
 - [ ] more user feedback
 - [ ] design work, colours/images
 
-L02 – Model and manage data.
+L02 – Model and manage data
 
 - [x] describe data scheme fully in readme
 - [x] add ERD schema (done?)

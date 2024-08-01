@@ -188,6 +188,12 @@ page to send users to if a game/review is somehow not found in the database
 
 The database will contain 4 tables. One for the games, one for reviews, one for users, and a join table that gives me access to all games reviewed for a given user and all reviews from users for a given game.  
 
+#### Entity Relationship diagram
+
+![Schema Diagram](docs/database_schema.png) 
+
+#### Database models 
+
 The game table will need a primary key that is an assigned id number that is auto-incrementing, then the data for each game (publisher, developer etc.) these fields should all be required, as users should not be able to add games with incomplete information into the db. image_url is a development feature, and would need to be replaced with an image upload dialogue linking to some backend storage. This is for many reasons, not least that hotlinking images is both impolite and very slow.    
 
  Game Table 
@@ -202,7 +208,7 @@ The game table will need a primary key that is an assigned id number that is aut
 | image_url | string(512) | | | Yes |
 
 
-The review table will need to assign each review an ID that is autoincrementing, and will again be the primary key. However it will additionally require the foreignn keys of user_id and game_id to link the review to the user to the game. we will also need to assign the current date/tiem to the review. 
+The review table will need to assign each review an ID that is autoincrementing, and will again be the primary key. However it will additionally require the foreign keys of user_id and game_id to link the review to the user to the game. we will also need to assign the current date/time to the review. 
 
 Review Table 
 | Column Name | Data Type | Constraints | Key | Nullable |
@@ -240,9 +246,8 @@ The final table is a junction table that implements a composite primary key. Thi
 
 I converted the above markup tables into DBML (Database Markup Language) and used [dbdiagram.io](https://dbdiagram.io) to generate a .sql file of my schema to potentially use further into coding my project
 
-![Schema Diagram](docs/database_schema.png) 
 
-### Features
+### Site Features
 
 - [x] account creation
 - [ ] account deletion
@@ -283,17 +288,41 @@ I will be using the Materialize framework for the structure and styling of this 
 
 ### Technologies and Tools used
 
-#### Languages
+#### Languages/Frameworks
 
-- HTML5
-- CSS3
+- HTML
+- CSS
 - JavaScript
 - Python 
-- Flask/Jinja
 - SQL
+
+- Flask/Jinja2
+- MaterializeCSS
+
+#### Dependencies 
+
+- alembic==1.13.2
+- blinker==1.8.2
+- click==8.1.7
+- Flask==3.0.3
+- Flask-Login==0.6.3
+- Flask-Migrate==4.0.7
+- Flask-SQLAlchemy==3.1.1
+- greenlet==3.0.3
+- gunicorn==22.0.0
+- itsdangerous==2.2.0
+- Jinja2==3.1.4
+- Mako==1.3.5
+- MarkupSafe==2.1.5
+- packaging==24.1
+- psycopg2-binary==2.9.9
+- SQLAlchemy==2.0.31
+- typing_extensions==4.12.2
+- Werkzeug==3.0.3
 
 #### Tools
 
+- **[postgreSQL](https://postgresql.org)**
 - **[Google Chrome](https://www.chrome.com/)**
 - **[Firefox](https://www.firefox.com)**
 - **[git](https://git-scm.com/)**
@@ -303,7 +332,6 @@ I will be using the Materialize framework for the structure and styling of this 
 - **[Google Fonts](https://fonts.google.com/)**
 - **[Photopea](https://www.photopea.com/)**
 - **[amiresponsive](https://ui.dev/amiresponsive)**
-- **[postgrSQL](xxxxxxxxxxxxx.xxx)
 
 ---
 
@@ -320,22 +348,32 @@ I will be using the Materialize framework for the structure and styling of this 
 
 ### User Stories Testing
 
+
 #### - First Time User Testing
+
+1. As a first time user I want to encounter a landing page that succinclty and clearly explains the functionality of the site 
+2. As a first time user I want to be able to browse review of games I am interested in
+3. As a first time user I want to be able to sign up to the site in order to login and start posting reviews 
+4. As a first time user I want to be able navigate the site easily and intuitively 
 
 #### - Returning User Testing
 
-#### - Site Owner Testing
+1. As a returning visitor I want to be able to login quickly and easily
+2. As a returning visitor I want to be able to intuitively find all my prior reviews
+3. As a returning visitor I want to be able to delete reviews I have previously written
+4. As a returning visitor I want to be able to view the profiles of others 
+5. As a returning visitor I want to be able to write new reviews
+6. As a returning visitor I want to be able to edit games to the database if they are not currently there
 
-### Desktop
+### HTML/CSS/JS/Python Validators
 
-### HTML/CSS Validators
+
 
 ### WAVE
 
 ### Lighthouse
 ---
 
-### Mobile Testing
 
 ### Bug fixes
 

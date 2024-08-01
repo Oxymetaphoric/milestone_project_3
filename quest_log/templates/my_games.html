@@ -6,7 +6,7 @@
 {% for game in my_games %}
     <div class="col l4 s12 m6">
       <a href="{{url_for('game_detail', game_id=game.game_id)}}" class="card-link">
-        <div class="card">
+        <div class="card large">
           <div class="card-image">
             <img src="{{game.image_url}}"</img>
             {% if current_user.is_authenticated and current_user.user_id == user.user_id %}
@@ -14,7 +14,7 @@
               <button type="submit" 
                 class="btn-floating tooltipped halfway-fab waves-effect waves-light red" 
                 data-position="left"
-                data-tooltip="remove My Games">
+                data-tooltip="remove from My Games">
                 <i class="material-icons">remove</i>
               </button>
             </form>
