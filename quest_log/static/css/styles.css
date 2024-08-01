@@ -6,7 +6,7 @@
 .halfway-fab { 
   margin-bottom: 25px;
   margin-right: -20px;
-  box-shadow: 2px, 10px;
+  box-shadow: 2px;
 }
 
 hr{
@@ -15,7 +15,7 @@ hr{
 }
 
 h1 { 
-  font-size: largest; 
+  font-size: large; 
 }
 
 
