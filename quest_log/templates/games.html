@@ -24,11 +24,10 @@
       <hr>
     <h1 class="center-align">Games</h1>
     {% for game in games %}
-      <div class="col l3 s12 m6">
+      <div class="col l5 s12 m6">
         <a href="{{url_for('game_detail', game_id=game.game_id)}}" class="card-link">
-          <div class="card">
+          <div class="card large">
             <div class="card-image">
-              <img src="{{game.image_url}}">
               {% if current_user.is_authenticated %}
                 {% if game.game_id not in in_my_games %}
                   <form  action="{{url_for('add_library', game_id=game.game_id)}}" method="POST"> 
@@ -46,6 +45,7 @@
                   </span>
                 {% endif %}
               {% endif %}
+              <img src="{{game.image_url}}">
             </div>
             <div class="card-content">
               <h4 class="center-align">{{game.game_title}}</h4>

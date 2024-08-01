@@ -26,9 +26,9 @@
 
 Learning Objective 1: Design, develop and implement a Back end for a web application using Python and a microframework.
 
-- [ ] add facility to delete account
-- [ ] add a more obvious way to add games to site
-- [ ] size images
+- [-] add facility to delete account
+- [x] add a more obvious way to add games to site
+- [x] size images
 - [ ] more user feedback
 - [ ] design work, colours/images
 

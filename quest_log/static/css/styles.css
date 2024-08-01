@@ -2,14 +2,29 @@
   font-family: 'BigBlueTermPlus';
   src: url('../fonts/BigBlueTermPlusNerdFontPropo-Regular.ttf') format('truetype');
 }
+
+.halfway-fab { 
+  margin-bottom: 25px;
+  margin-right: -20px;
+  box-shadow: 2px, 10px;
+}
+
 hr{
   color: lightgray;
   opacity: 50%;
 }
-h3 {
-  font-size: large;
+
+h1 { 
+  font-size: largest; 
+}
+
+
+h2, h3, h4 {
+  font-size: medium;
   margin-top: 5px;
   padding-top: 0px;
+  color: 0b0b0b0b;
+  font-style: bold;
 }
 
 #brand-logo  {
@@ -36,15 +51,16 @@ h3 {
 }
 
 .card-link {
-  color: inherit; /* Inherit the color from the card */
-  text-decoration: none; /* Remove underline */
+  color: inherit; 
+  text-decoration: none;
 }
 
 .card-link:hover .card {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: Add a hover effect */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
 
 #avg_score {
   font-size: 1.2rem;
   font-weight: bold; 
 }
+
