@@ -18,60 +18,38 @@
     var instances = M.Tooltip.init(elems);
   });
 
+
 document.addEventListener('DOMContentLoaded', function() {
   const addGameUrl = "{{ add_game_url }}";
   const searchInput = document.getElementById('game-search');
   const gameResults = document.getElementById('game-results');
+
   // Function to fetch games from the server
   async function fetchGames(query = '') {
-    const response = await fetch(`/api/games?query=${query}`);
-    return await response.json();
+    try {
+      const response = await fetch(`/api/games?query=${query}`);
+      if (!response.ok) throw new Error('Network response was not ok');
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching games:', error);
+      return [];
+    }
   }
 
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB'); // This will format the date as dd/mm/yyyy
-}
   // Handle search input
-searchInput.addEventListener('input', function() {
+  searchInput.addEventListener('input', function() {
     const query = this.value.trim();
     if (query) {
       fetchGames(query).then(renderGames);
-  } else {
-  renderGames([]);
-     }
-  });
-});
-
-function renderGameButton(game) {
-    if (!isUserAuthenticated) {
-        return '';
-    }
-    if (inMyGames.includes(game.game_id)) {
-        return `
-            <span class="btn-floating tooltipped halfway-fab waves-effect waves-light green"
-                data-position="left"
-                data-tooltip="in My Games">
-                <i class="material-icons">check</i>
-            </span>
-        `;
     } else {
-        return `
-            <form action="/add_library/${game.game_id}" method="POST"> 
-                <button type="submit" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" 
-                    data-position="left"
-                    data-tooltip="add to My Games">
-                    <i class="material-icons">add</i>
-                </button>
-            </form>
-        `;
+      renderGames([]);
     }
-}
+  });
 
- function renderGames(games) {
+  function renderGames(games) {
     gameResults.innerHTML = '';
-    if (games == 0){
-       const gameCard =`
+    if (games.length === 0) {
+      const gameCard = `
         <div>
           <a href="/add_game">
             <div class="card">
@@ -84,33 +62,72 @@ function renderGameButton(game) {
             </div>
           </a>
         </div>
-`;
-       gameResults.innerHTML = gameCard;
-     }
-    else{
-    games.forEach(game => {
+      `;
+      gameResults.innerHTML = gameCard;
+    } else {
+      let gameCardsHTML = '';
+      games.forEach(game => {
         const gameCard = `
-        <div>
-          <a href="/game_detail/${game.game_id}" class="card-link">
-            <div class="card">
-              <div class="card-image">
-                <img src="${game.image_url}">
+          <div>
+            <a href="/game_detail/${game.game_id}" class="card-link">
+              <div class="card">
+                <div class="card-image">
+                  <img src="${game.image_url}">
                   ${renderGameButton(game)}
-              </div>
-              <div class="card-content">
-                <h4 class="center-align">${game.game_title}</h4>
+                </div>
+                <div class="card-content">
+                  <h4 class="center-align">${game.game_title}</h4>
                   <p><b>Developer: </b>${game.developer}</p>
                   <p><b>Publisher: </b>${game.game_publisher}</p>
                   <p><b>Release date: </b>${formatDate(game.release_date)}</p>
                   <p><b>Genre: </b>${game.genre}</p>
+                </div>
               </div>
-            </div>
-          </a>
-        </div>
+            </a>
+          </div>
         `;
-        gameResults.innerHTML += gameCard;
-    });
-    // Reinitialize Materialize tooltips
-    var elems = document.querySelectorAll('.tooltipped');
-    M.Tooltip.init(elems, {});
-     }}
+        gameCardsHTML += gameCard;
+      });
+      gameResults.innerHTML = gameCardsHTML;
+
+      // Reinitialize Materialize tooltips
+      var elems = document.querySelectorAll('.tooltipped');
+      M.Tooltip.init(elems, {});
+    }
+  }
+
+  function renderGameButton(game) {
+    if (typeof isUserAuthenticated === 'undefined' || typeof inMyGames === 'undefined') {
+      console.error('isUserAuthenticated or inMyGames is not defined.');
+      return '';
+    }
+
+    if (!isUserAuthenticated) {
+      return '';
+    }
+    if (inMyGames.includes(game.game_id)) {
+      return `
+        <span class="btn-floating tooltipped halfway-fab waves-effect waves-light green"
+            data-position="left"
+            data-tooltip="in My Games">
+          <i class="material-icons">check</i>
+        </span>
+      `;
+    } else {
+      return `
+        <form action="/add_library/${game.game_id}" method="POST"> 
+          <button type="submit" class="btn-floating tooltipped halfway-fab waves-effect waves-light red" 
+              data-position="left"
+              data-tooltip="add to My Games">
+            <i class="material-icons">add</i>
+          </button>
+        </form>
+      `;
+    }
+  }
+
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB'); // This will format the date as dd/mm/yyyy
+  }
+});
