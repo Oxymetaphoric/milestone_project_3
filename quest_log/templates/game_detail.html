@@ -50,9 +50,7 @@
       {% if game.reviews %}
         {% for review in game.reviews %}
           <a href="{{url_for('profile', user_id=review.user_id)}}">
-            <div class="card linkcard tooltipped"
-          data-position="right"
-          data-tooltip="go to User Profile">
+            <div class="card linkcard">
               <div class="card-content">
                 <span class="card-title">
                   Rating: <span id="rating">{{ review.rating }}/100</span>

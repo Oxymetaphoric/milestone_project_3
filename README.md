@@ -250,7 +250,7 @@ I converted the above markup tables into DBML (Database Markup Language) and use
 ### Site Features
 
 - [x] account creation
-- [ ] account deletion
+- [x] account deletion
 - [x] login/logout functionality
 - [x] main page displaying all games in database
 - [x] search bar querying app api as user types
@@ -299,34 +299,16 @@ I will be using the Materialize framework for the structure and styling of this 
 - Flask/Jinja2
 - MaterializeCSS
 
-#### Dependencies 
-
-- alembic==1.13.2
-- blinker==1.8.2
-- click==8.1.7
-- Flask==3.0.3
-- Flask-Login==0.6.3
-- Flask-Migrate==4.0.7
-- Flask-SQLAlchemy==3.1.1
-- greenlet==3.0.3
-- gunicorn==22.0.0
-- itsdangerous==2.2.0
-- Jinja2==3.1.4
-- Mako==1.3.5
-- MarkupSafe==2.1.5
-- packaging==24.1
-- psycopg2-binary==2.9.9
-- SQLAlchemy==2.0.31
-- typing_extensions==4.12.2
-- Werkzeug==3.0.3
-
+see [requirements.txt](requirements.txt)
+ 
 #### Tools
 
+- **[fontAwesome](http;//fontawesome.com)**
 - **[postgreSQL](https://postgresql.org)**
 - **[Google Chrome](https://www.chrome.com/)**
 - **[Firefox](https://www.firefox.com)**
 - **[git](https://git-scm.com/)**
-- **[lunarVim](https://xxxxxxxxxxxxx.xxx)**
+- **[lunarVim](https://lunarvim.org)**
 - **[GitHub](https://www.github.com)**
 - **[Pencil](https://pencil.evolus.vn/)**
 - **[Google Fonts](https://fonts.google.com/)**
@@ -399,21 +381,21 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
 ---
 
 - clone the repo:
-    - > `git clone https://github.com/Oxymetaphoric/milestone_project_3`
+    - >$ `git clone https://github.com/Oxymetaphoric/milestone_project_3`
 
 - if you wish to make changes and/or run locally prior to deploying. Some of these steps, especially those related to system packages may vary depending on your operating system: 
     - navigate to the repo:
-        > `cd path/to/milestone_project_3`
+        >$ `cd path/to/milestone_project_3`
     - create and activate a python virtual environment: 
-        > `python -m venv .`  
+        >$ `python -m venv .`  
         >
-        > `source bin/activate`  
+        >$ `source bin/activate`  
     - use pip to install the projects required dependencies:   
-        > `pip install -r requirements.txt`  
+        >$ `pip install -r requirements.txt`  
     - create and populate env.py:  
-        > `touch env.py`
+        >$ `touch env.py`
         >
-        > `vim env.py`   
+        >$ `vim env.py`   
         
         import os   
         
@@ -425,14 +407,14 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
         os.environ.setdefault("DB_URL","postgres:///quest_log")  
   
     - install postgresql and create a quest_log database:  
-        > `pacman -S postgresql`  
+        >$ `pacman -S postgresql`  
         >  
-        > `sudo -u postgres psql`  
+        >$ `sudo -u postgres psql`  
         >  
-        > `CREATE DATABASE [user] quest_log`  
+        >$ `CREATE DATABASE [user] quest_log`  
     
     - from this point you can run locally with: 
-        > `python3 app.py`  
+        >$ `python3 app.py`  
 
 - navigate to the heroku website and create an account/login. 
 - create a new app, and in the Settings page click 'Show Environment Vars', and input: 
@@ -447,13 +429,13 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
 - navigate to the Deployment section of Heroku and follow the instructions to deploy via cli or from a github repo. 
 - once deployed the db will need to be built, click the More menu button on the project pages header and then Run to open the heroku commandline webtool and enter:  
   
-    >`python3`
+    >$ `python3`
     >
-    >`from quest_log import app, db`
+    >$ `from quest_log import app, db`
     >
-    >`with app.app_context():`  
+    >$ `with app.app_context():`  
     >  
-    >`    db.create_all()`
+    >$ `    db.create_all()`
 
  it is important to note that the white spaces prior to the 'db.create_all()' command must be typed out or the command will not run due to the python interpreter receiving incorrectly indented instructions
 

@@ -27,11 +27,10 @@
 
 Learning Objective 1: Design, develop and implement a Back end for a web application using Python and a microframework.
 
-- [-] add facility to delete account: 
-    - route and html implementation created, however will need to rebuild the db with changes to the model. need to make UserGame cascade delete
+- [x] add facility to delete account: 
 - [x] add a more obvious way to add games to site
 - [x] size images
-- [ ] more user feedback
+- [x] more user feedback
 - [ ] design work, colours/images
 
 L02 – Model and manage data
@@ -50,5 +49,5 @@ LO4: Deploy a Full Stack web application to a Cloud platform.
 
 LO5: Identify and apply security features
 
-- [ ] finish rationale and user stories 
+- [-] finish rationale and user stories 
 - [ ] credits
