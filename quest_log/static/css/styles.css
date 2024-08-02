@@ -4,13 +4,15 @@
 }
 
 h1 { 
-  font-size: large; 
+  font-size: large;
+  font-family: 'BigBlueTermPlus';
 }
 
 h2, h3, h4 {
+  font-family: 'BigBlueTermPlus';
   font-size: medium;
   margin-top: 5px;
-  padding-top: 0px;
+  padding-top: 5px;
 }
 
 hr{
@@ -24,6 +26,11 @@ hr{
 
 #rating{
   font-size: 20px;
+}
+
+nav .brand-logo #logo-icon{
+  float: none;
+  margin: 0;
 }
 
 .halfway-fab { 
@@ -53,7 +60,7 @@ hr{
 }
 
 .card:hover{
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.8); 
 }
 
 #avg_score {

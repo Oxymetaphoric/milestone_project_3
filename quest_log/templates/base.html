@@ -14,9 +14,14 @@
   <body>
     <div class="navbar-fixed">
       <nav>
-        <div class="nav-wrapper">
-          <a href="{{url_for('games')}}" class="brand-logo" id="brand-logo"><b>QuestLog</b><i class="fa-solid fa-gamepad"></i></a>
-          <a href="{{url_for('games')}}" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <div class="nav-wrapper green">
+          <span>
+            <a href="{{url_for('games')}}" class="brand-logo" id="brand-logo">
+                <b>QuestLog</b>
+                <i id="logo-icon" class="fa-solid fa-gamepad"></i>
+            </a>
+            <a href="{{url_for('games')}}" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          </span>
           {% if current_user.is_authenticated %}
             <ul class="right hide-on-med-and-down">
               <li><a href="{{url_for('logout')}}">logout</a></li>
