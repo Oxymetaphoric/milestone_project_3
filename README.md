@@ -351,19 +351,30 @@ I will be using the Materialize framework for the structure and styling of this 
 
 #### - First Time User Testing
 
-1. As a first time user I want to encounter a landing page that succinclty and clearly explains the functionality of the site 
-2. As a first time user I want to be able to browse review of games I am interested in
+1. I want to encounter a landing page that succinctly and clearly explains the functionality of the site
+
+
+
+2. I want to be able to browse review of games I am interested in
+
+first time users can browse the catalogue of games and view the reviews of any games without he need for sign-up, and are presented with the catalogue of games immedietely on page load. 
+
 3. As a first time user I want to be able to sign up to the site in order to login and start posting reviews 
+
+The signup page is clearly signposted in the navigation of the page 
+
 4. As a first time user I want to be able navigate the site easily and intuitively 
+
+The site is simple and intuitive to navigate. Navigation elements are obvious and accessible at all screen sizes. Pages are clearly labelled, and functionality is explained through the use of tooltips and big, chunky UI elements. 
 
 #### - Returning User Testing
 
-1. As a returning visitor I want to be able to login quickly and easily
-2. As a returning visitor I want to be able to intuitively find all my prior reviews
-3. As a returning visitor I want to be able to delete reviews I have previously written
-4. As a returning visitor I want to be able to view the profiles of others 
-5. As a returning visitor I want to be able to write new reviews
-6. As a returning visitor I want to be able to edit games to the database if they are not currently there
+1. I want to be able to login quickly and easily
+2. I want to be able to intuitively find all my prior reviews
+3. I want to be able to delete reviews I have previously written
+4. I want to be able to view the profiles of others 
+5. I want to be able to write new reviews
+6. I want to be able to edit games to the database if they are not currently there
 
 ### HTML/CSS/JS/Python Validators
 
@@ -381,10 +392,6 @@ I will be using the Materialize framework for the structure and styling of this 
 2. while working on the Add Game functionality, I encountered a bug where the date would only validate if given in a specific format. I solved this by implementing a datepicker that submits to the from in the correct format
 3. getting the conditional checks to correctly display contextually relevent buttons 
 4. during deployment I ran into an issue in which I was not able to get flask-migrate to function correctly during deployment to heroku, it led to a lot of inexplicable tracebacks and weird build errors. I believe the issue was something to do with the order in which flask-migrate was used, in that it seemed to be trying to access a table that didn't currently exist.  
--------------------------------
---------------------------------
---------------------------------
---------------------------------
 --------------------------------
 
 ## :loudspeaker: Deployment
@@ -438,14 +445,15 @@ I will be using the Materialize framework for the structure and styling of this 
     | DATABASE_URL | _your remotely accessible postgres db's url_ |   
 
 - navigate to the Deployment section of Heroku and follow the instructions to deploy via cli or from a github repo. 
-- once deployed the db will need to be built, click the More menu button on the project pages header and then Run to open the heroku commandline webtool and enter:
-    >`$ python3`
+- once deployed the db will need to be built, click the More menu button on the project pages header and then Run to open the heroku commandline webtool and enter:  
+  
+    >`python3`
     >
-    >`$ from quest_log import app, db`
+    >`from quest_log import app, db`
     >
-    >`$ with app.app_context():`  
+    >`with app.app_context():`  
     >  
-    >`$ &nbsp&nbspdb.create_all()`
+    >`    db.create_all()`
 
  it is important to note that the white spaces prior to the 'db.create_all()' command must be typed out or the command will not run due to the python interpreter receiving incorrectly indented instructions
 
@@ -456,5 +464,5 @@ I will be using the Materialize framework for the structure and styling of this 
 ## :heart: Credits and Acknowledgments
 
 ---
-favicon from: https://favicon.io/emoji-favicons/alien-monster
-My wonderful family!
+- favicon from: https://favicon.io/emoji-favicons/alien-monster
+- My wonderful family!
