@@ -6,7 +6,10 @@
       <div class="card detail" id="detail-card">
         <div class="card-image">
           <img src="{{game.image_url}}">  
-          <a class="center-align btn-floating halfway-fab waves-light red" id="avg_score">
+          <a class="center-align btn-floating halfway-fab waves-light red tooltipped"
+            id="avg_score"
+            data-tooltip="average user score"
+            data-position="left">
             <span class="score">{{ avg_rating }}</span>
           </a>
           {% if current_user.is_authenticated %}
@@ -41,13 +44,15 @@
         {% endif %}
         <a href="{{ url_for('delete_game', game_id=game.game_id)}}" class="btn waves-effect waves-light">remove game</a>
       {% endif %}
-</div>
+    </div>
     <div class="col l6 s12 m6">
       <h4 class="center-align">Reviews</h4>
       {% if game.reviews %}
         {% for review in game.reviews %}
           <a href="{{url_for('profile', user_id=review.user_id)}}">
-            <div class="card linkcard">
+            <div class="card linkcard tooltipped"
+          data-position="right"
+          data-tooltip="go to User Profile">
               <div class="card-content">
                 <span class="card-title">
                   Rating: <span id="rating">{{ review.rating }}/100</span>
