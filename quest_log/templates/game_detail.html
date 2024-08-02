@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col l6 s12 m6">
-      <div class="card">
+      <div class="card detail" id="detail-card">
         <div class="card-image">
           <img src="{{game.image_url}}">  
           <a class="center-align btn-floating halfway-fab waves-light red" id="avg_score">
@@ -29,24 +29,25 @@
           <p><b>Genre: </b>{{game.genre}}</p>
         </div>
       </div>
-        {% if current_user.is_authenticated %}
-          {% if game.game_id in reviewed_games %}
-            {% if user_review %}
-              <a href="{{ url_for('edit_review', review_id=user_review.review_id) }}" class="btn waves-effect waves-light">Edit Your Review</a>
-            {% else %}
-              <p>there was an issue loading your review. Please refresh the page</p>
-            {% endif %}
+      {% if current_user.is_authenticated %}
+        {% if game.game_id in reviewed_games %}
+          {% if user_review %}
+            <a href="{{ url_for('edit_review', review_id=user_review.review_id) }}" class="btn waves-effect waves-light">Edit Your Review</a>
           {% else %}
-            <a href="{{ url_for('add_review', game_id=game.game_id) }}" class="btn waves-effect waves-light">Write a Review</a>
+            <p>there was an issue loading your review. Please refresh the page</p>
           {% endif %}
-          <a href="{{ url_for('delete_game', game_id=game.game_id)}}" class="btn waves-effect waves-light">remove game</a>
+        {% else %}
+          <a href="{{ url_for('add_review', game_id=game.game_id) }}" class="btn waves-effect waves-light">Write a Review</a>
         {% endif %}
+        <a href="{{ url_for('delete_game', game_id=game.game_id)}}" class="btn waves-effect waves-light">remove game</a>
+      {% endif %}
 </div>
     <div class="col l6 s12 m6">
       <h4 class="center-align">Reviews</h4>
-        {% if game.reviews %}
-          {% for review in game.reviews %}
-            <div class="card">
+      {% if game.reviews %}
+        {% for review in game.reviews %}
+          <a href="{{url_for('profile', user_id=review.user_id)}}">
+            <div class="card linkcard">
               <div class="card-content">
                 <span class="card-title">
                   Rating: <span id="rating">{{ review.rating }}/100</span>
@@ -56,14 +57,17 @@
                 <br>
                 <p>{{ review.review_content }}</p>
                 {% if review.user.avatar_url %}
-                  <img class="avatar" src="{{ review.user.avatar_url }}"></img>
+                  <br>
+                  <span>
+                    <img class="avatar" src="{{ review.user.avatar_url }}"></img>
                 {% endif %}
-                <p>
-                  <small>By <a href="{{url_for('profile', user_id=review.user_id)}}">{{ review.user.username }}</a> on {{ review.review_created_at.strftime('%d/%m/%Y') }}
-                  </small>
-                </p>
+                  <p>
+                    <small>By {{ review.user.username }} on {{ review.review_created_at.strftime('%d/%m/%Y') }}</small>
+                  </p>
+                </span>
               </div>
             </div>
+          </a> 
           {% endfor %}
         {% else %}
         <p>No reviews yet. Be the first to review this game!</p>

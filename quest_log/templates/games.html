@@ -30,7 +30,7 @@
     {% for game in games %}
       <div class="col l5 s12 m6">
         <a href="{{url_for('game_detail', game_id=game.game_id)}}" class="card-link">
-          <div class="card large">
+          <div class="card large linkcard">
             <div class="card-image">
               {% if current_user.is_authenticated %}
                 {% if game.game_id not in in_my_games %}

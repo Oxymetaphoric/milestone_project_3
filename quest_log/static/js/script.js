@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const gameCard = `
         <div>
           <a href="/add_game">
-            <div class="card">
+            <div class="card linkcard">
               <div class="row card-image">
               </div>
               <i class="col offset-m6 m12 s12 l12 fa-solid fa-plus"></i>
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const gameCard = `
           <div>
             <a href="/game_detail/${game.game_id}" class="card-link">
-              <div class="card">
+              <div class="card linkcard">
                 <div class="card-image">
                   <img src="${game.image_url}">
                   ${renderGameButton(game)}
