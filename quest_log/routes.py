@@ -269,9 +269,7 @@ def new_review(game_id):
     return render_template("add_review.html", game=game)
 
 
-app.route("/add_review/<int:game_id>", methods=["GET", "POST"])
-
-
+@app.route("/add_review/<int:game_id>", methods=["GET", "POST"])
 @login_required
 def add_review(game_id):
     game = Game.query.get_or_404(game_id)

@@ -34,7 +34,7 @@
             {% if user_review %}
               <a href="{{ url_for('edit_review', review_id=user_review.review_id) }}" class="btn waves-effect waves-light">Edit Your Review</a>
             {% else %}
-              <p>there was an issue loading your review. PLease refresh the page</p>
+              <p>there was an issue loading your review. Please refresh the page</p>
             {% endif %}
           {% else %}
             <a href="{{ url_for('add_review', game_id=game.game_id) }}" class="btn waves-effect waves-light">Write a Review</a>
