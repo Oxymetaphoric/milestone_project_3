@@ -12,7 +12,6 @@ from sqlalchemy.sql import func
 def home():
     return redirect(url_for("games"))
 
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -48,7 +47,6 @@ def register():
 
     return render_template("register.html")
 
-
 @app.route("/delete_user/<int:user_id>", methods=["POST"])
 @login_required
 def delete_user(user_id):
@@ -61,7 +59,6 @@ def delete_user(user_id):
     else:
         flash("You don't have permission to delete this account.", "error")
     return redirect(url_for("profile", user_id=user_id))
-
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -79,14 +76,12 @@ def login():
 
     return render_template("login.html")
 
-
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     flash("Logged out successfully")
     return redirect(url_for("home"))
-
 
 @app.route("/games")
 def games():
@@ -108,7 +103,6 @@ def games():
         games=games,
         in_my_games=in_my_games,
     )
-
 
 @app.route("/api/games")
 def api_games():
@@ -132,12 +126,10 @@ def api_games():
 
     return jsonify(game_list)
 
-
 @app.route("/add_game")
 @login_required
 def add_game():
     return render_template("add_game.html")
-
 
 @app.route("/remove_game/<int:game_id>")
 @login_required
@@ -146,7 +138,6 @@ def delete_game(game_id):
     db.session.delete(game)
     db.session.commit()
     return redirect(url_for("games"))
-
 
 @app.route("/new_game", methods=["POST"])
 @login_required
@@ -175,7 +166,6 @@ def new_game():
         flash("Game already exists")
     return redirect(url_for("games"))
 
-
 @app.route("/my_games/<int:user_id>")
 def my_games(user_id):
     user = User.query.get_or_404(user_id)
@@ -185,7 +175,6 @@ def my_games(user_id):
     return render_template(
         "my_games.html", current_user=current_user, user=user, my_games=games
     )
-
 
 @app.route("/game_detail/<int:game_id>")
 def game_detail(game_id):
@@ -228,7 +217,6 @@ def game_detail(game_id):
         avg_rating=avg_rating,
     )
 
-
 @app.route("/add_library/<int:game_id>", methods=["POST"])
 @login_required
 def add_library(game_id):
@@ -248,7 +236,6 @@ def add_library(game_id):
         flash("Game already in library", "info")
     return redirect(url_for("games"))
 
-
 @app.route("/remove_from_library/<int:game_id>", methods=["POST"])
 @login_required
 def remove_from_library(game_id):
@@ -261,13 +248,11 @@ def remove_from_library(game_id):
 
     return redirect(url_for("my_games", user_id=current_user.user_id))
 
-
 @app.route("/new_review/<int:game_id>")
 @login_required
 def new_review(game_id):
     game = Game.query.get_or_404(game_id)
     return render_template("add_review.html", game=game)
-
 
 @app.route("/add_review/<int:game_id>", methods=["GET", "POST"])
 @login_required
@@ -293,13 +278,11 @@ def add_review(game_id):
         return redirect(url_for("my_games", user_id=current_user.user_id))
     return render_template("add_review.html", game=game)
 
-
 @app.route("/my_reviews/<int:user_id>")
 def my_reviews(user_id):
     reviews = Review.query.filter_by(user_id=user_id).all()
     user = User.query.get_or_404(user_id)
     return render_template("my_reviews.html", user=user, my_reviews=reviews)
-
 
 @app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
 @login_required
@@ -321,7 +304,6 @@ def edit_review(review_id):
 
     return render_template("edit_review.html", review=review)
 
-
 @app.route("/delete_review/<int:review_id>", methods=["POST"])
 @login_required
 def delete_review(review_id):
@@ -334,7 +316,6 @@ def delete_review(review_id):
     flash("Your review has been deleted successfully", "success")
 
     return redirect(url_for("my_reviews", user_id=current_user.user_id))
-
 
 @app.route("/profile/<int:user_id>", methods=["GET", "POST"])
 @login_required
