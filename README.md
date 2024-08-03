@@ -397,14 +397,14 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
         >
         >$ `vim env.py`   
         
-        `import os   
-        
-        os.environ.setdefault("IP","0.0.0.0")  
-        os.environ.setdefault("PORT","5000")  
-        os.environ.setdefault("SECRET_KEY","_your secret key_")  
-        os.environ.setdefault("DEBUG","True")  
-        os.environ.setdefault("DEVELOPMENT","True")  
-        os.environ.setdefault("DB_URL","postgres:///quest_log")`  
+        `import os`   
+        ``
+        `os.environ.setdefault("IP","0.0.0.0")`
+        `os.environ.setdefault("PORT","5000")`  
+        `os.environ.setdefault("SECRET_KEY","_your secret key_")`  
+        `os.environ.setdefault("DEBUG","True")`  
+        `os.environ.setdefault("DEVELOPMENT","True")`  
+        `os.environ.setdefault("DB_URL","postgres:///quest_log")`  
   
     - install postgresql and create a quest_log database:  
         >$ `pacman -S postgresql`  
