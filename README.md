@@ -398,7 +398,7 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
         >$ `vim env.py`   
         
         `import os`   
-        ``
+        <br>
         `os.environ.setdefault("IP","0.0.0.0")`
         `os.environ.setdefault("PORT","5000")`  
         `os.environ.setdefault("SECRET_KEY","_your secret key_")`  
