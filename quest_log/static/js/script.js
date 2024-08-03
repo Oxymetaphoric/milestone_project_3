@@ -18,7 +18,6 @@
     var instances = M.Tooltip.init(elems);
   });
 
-
 document.addEventListener('DOMContentLoaded', function() {
   const addGameUrl = "{{ add_game_url }}";
   const searchInput = document.getElementById('game-search');
@@ -29,6 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       const response = await fetch(`/api/games?query=${query}`);
       if (!response.ok) throw new Error('Network response was not ok');
+      if (searchInput == null){
+         return []
+       }
       return await response.json();
     } catch (error) {
       console.error('Error fetching games:', error);

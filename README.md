@@ -397,14 +397,14 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
         >
         >$ `vim env.py`   
         
-        import os   
+        `import os   
         
         os.environ.setdefault("IP","0.0.0.0")  
         os.environ.setdefault("PORT","5000")  
         os.environ.setdefault("SECRET_KEY","_your secret key_")  
         os.environ.setdefault("DEBUG","True")  
         os.environ.setdefault("DEVELOPMENT","True")  
-        os.environ.setdefault("DB_URL","postgres:///quest_log")  
+        os.environ.setdefault("DB_URL","postgres:///quest_log")`  
   
     - install postgresql and create a quest_log database:  
         >$ `pacman -S postgresql`  
@@ -413,6 +413,9 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
         >  
         >$ `CREATE DATABASE [user] quest_log`  
     
+    - it is important to correctly assign the [user] when creating the db or you will need to manually grant permissions to read/write. If you are unsure, you can check your current username with: 
+        >$ `whoami`
+
     - from this point you can run locally with: 
         >$ `python3 app.py`  
 
