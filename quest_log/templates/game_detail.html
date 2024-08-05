@@ -5,7 +5,7 @@
     <div class="col l6 s12 m6">
       <div class="card detail" id="detail-card">
         <div class="card-image">
-          <img src="{{game.image_url}}">  
+          <img src="{{game.image_url}}" alt="{{game.game_title}} cover image">  
           <a class="center-align btn-floating halfway-fab waves-light red tooltipped"
             id="avg_score"
             data-tooltip="average user score"
@@ -62,11 +62,11 @@
                 {% if review.user.avatar_url %}
                   <br>
                   <span>
-                    <img class="avatar" src="{{ review.user.avatar_url }}"></img>
+                    <img class="avatar" alt="user avatar" src="{{ review.user.avatar_url }}">
                 {% endif %}
-                  <p>
+                    <br>                  
                     <small>By {{ review.user.username }} on {{ review.review_created_at.strftime('%d/%m/%Y') }}</small>
-                  </p>
+                  
                 </span>
               </div>
             </div>

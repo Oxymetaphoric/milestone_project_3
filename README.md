@@ -196,7 +196,8 @@ The database will contain 4 tables. One for the games, one for reviews, one for 
 
 The game table will need a primary key that is an assigned id number that is auto-incrementing, then the data for each game (publisher, developer etc.) these fields should all be required, as users should not be able to add games with incomplete information into the db. image_url is a development feature, and would need to be replaced with an image upload dialogue linking to some backend storage. This is for many reasons, not least that hotlinking images is both impolite and very slow.    
 
- Game Table 
+##### Game Table
+
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
 | game_id | int | AUTO_INCREMENT | PK | No |
@@ -210,7 +211,8 @@ The game table will need a primary key that is an assigned id number that is aut
 
 The review table will need to assign each review an ID that is autoincrementing, and will again be the primary key. However it will additionally require the foreign keys of user_id and game_id to link the review to the user to the game. we will also need to assign the current date/time to the review. 
 
-Review Table 
+##### Review Table  
+
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
 | review_id | int | AUTO_INCREMENT | PK | No |
@@ -225,7 +227,8 @@ Review Table
 
 The user table, like the other tables, will use an auto-incrementing integer and assign this to users as an ID which serves as the tables primary key, The rest of the information will relate to the user themselves, username, email address etc.  
 
- User Table  
+###### User Table  
+
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
 | user_id | int | AUTO_INCREMENT | PK | No |
@@ -237,7 +240,8 @@ The user table, like the other tables, will use an auto-incrementing integer and
 
 The final table is a junction table that implements a composite primary key. This key consists of two columns: user_id and game_id. Each of these columns serves as both a foreign key and part of the primary key. The user_id references the User table, while the game_id references the Game table. This table will be crucial for features such as the user's "My Games" and "My Reviews" pages. By using this structure, we transform the many-to-many relationship between users and games into two one-to-many relationships: one user can have many games, and one game can be associated with many users. This allows for efficient querying of user-game associations and simplifies the implementation of user-specific game collections and reviews.
 
- user > game / game > users  
+##### user > game / game > users  
+
 | Column Name | Data Type | Constraints | Key | Nullable |
 |-------------|-----------|-------------|-----|----------|
 | user_id | int | | PK, FK (User) | No |
@@ -245,7 +249,6 @@ The final table is a junction table that implements a composite primary key. Thi
 | added_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
 
 I converted the above markup tables into DBML (Database Markup Language) and used [dbdiagram.io](https://dbdiagram.io) to generate a .sql file of my schema to potentially use further into coding my project
-
 
 ### Site Features
 
@@ -356,17 +359,26 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
 3. I want to be able to delete reviews I have previously written
 4. I want to be able to view the profiles of others 
 5. I want to be able to write new reviews
-6. I want to be able to edit games to the database if they are not currently there
+6. I want to be able to add games to the database if they are not currently there
 
 ### HTML/CSS/JS/Python Validators
 
+#### HTML
+    - 
+    - 
+    -
+    -
+    -
+    -
 
+### CodeQL
+
+ ![codeQL](docs/CodeQL.png) 
 
 ### WAVE
 
 ### Lighthouse
 ---
-
 
 ### Bug fixes
 
@@ -395,8 +407,10 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
     - create and populate env.py:  
         >$ `touch env.py`
         >
-        >$ `vim env.py`   
-        
+        >$ `vim env.py` 
+
+    - paste the following settings into the created env.py, save and exit:
+    
         `import os`   
         <br>
         `os.environ.setdefault("IP","0.0.0.0")`
@@ -407,8 +421,8 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
         `os.environ.setdefault("DB_URL","postgres:///quest_log")`  
   
     - install postgresql and create a quest_log database:  
-        >$ `pacman -S postgresql`  
-        >  
+        >$ `pacman -S postgresql`    
+        >    
         >$ `sudo -u postgres psql`  
         >  
         >$ `CREATE DATABASE [user] quest_log`  
@@ -419,7 +433,7 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
     - from this point you can run locally with: 
         >$ `python3 app.py`  
 
-- navigate to the heroku website and create an account/login. 
+- To deploy online, navigate to the heroku website and create an account/login. 
 - create a new app, and in the Settings page click 'Show Environment Vars', and input: 
     
     |   variable    |     value     |

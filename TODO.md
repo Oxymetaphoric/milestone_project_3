@@ -22,6 +22,8 @@
     - [ ] flash messages
 - [x] sort layout on All Games
 - [x] remove ability for unauthenticated users to delete games
+- [ ] testing - add CodeQL screenshot
+
 
 ## submission feedback
 

@@ -8,7 +8,7 @@
       <a href="{{url_for('game_detail', game_id=game.game_id)}}" class="card-link">
         <div class="card large linkcard">
           <div class="card-image">
-            <img src="{{game.image_url}}"</img>
+            <img src="{{game.image_url}}">
             {% if current_user.is_authenticated and current_user.user_id == user.user_id %}
             <form  action="{{url_for('remove_from_library', game_id=game.game_id)}}" method="POST"> 
               <button type="submit" 
