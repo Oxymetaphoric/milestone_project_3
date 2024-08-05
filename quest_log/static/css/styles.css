@@ -48,9 +48,17 @@ small {
   font-family: 'UbuntuMono-Regular';
 }
 
+label {
+  font-family: 'UbuntuMono-Regular';
+}
+
 hr{
   color: lightgray;
   opacity: 50%;
+}
+
+#logo-icon {
+  vertical-align: middle;
 }
 
 #brand-logo  {
@@ -64,6 +72,18 @@ hr{
 nav .brand-logo #logo-icon{
   float: none;
   margin: 0;
+}
+
+.flashes{
+  font-family: 'UbuntuMono-Regular';
+  font-size: medium;
+  align-self: center;
+  align-content: center;
+  padding: 10px;
+  border:1px black;
+  border-radius: 5px; 
+  background-color: #f44336;
+  width: fit-content;
 }
 
 .halfway-fab { 
@@ -95,6 +115,10 @@ nav .brand-logo #logo-icon{
   box-shadow: 0 4px 8px rgba(0,0,0,0.8); 
 }
 
+.btn:hover{
+  box-shadow: 0 4px 8px rgba(0,0,0,0.8); 
+}
+
 #detail-card{
   max-width: 300px;
 }
@@ -104,3 +128,8 @@ nav .brand-logo #logo-icon{
   font-weight: bold; 
 }
 
+@media only screen and (max-width: 300px) {
+  #logo-icon {
+    display: none;
+  }
+}

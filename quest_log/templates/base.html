@@ -16,10 +16,12 @@
       <nav>
         <div class="nav-wrapper green">
           <span>
-            <a href="{{url_for('games')}}" class="brand-logo" id="brand-logo">
+            <div class="logo">
+              <a href="{{url_for('games')}}" class="brand-logo" id="brand-logo">
                 <b>QuestLog</b>
-                <i id="logo-icon" class="fa-solid fa-gamepad"></i>
-            </a>
+                <img id="logo-icon" src="../static/scroll.svg">
+              </a>
+            </div>
             <a href="{{url_for('games')}}" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           </span>
           {% if current_user.is_authenticated %}
@@ -58,11 +60,15 @@
     {% endif %}
   {% with messages = get_flashed_messages() %}
     {% if messages %}
-      <ul class="flashes">
-      {% for message in messages %}
-      <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
+      <div class="row">
+        <div class="col s8 m8 l6 offset-m2 offset-l3 offset-s2">
+          <ul class="center-align flashes">
+          {% for message in messages %}
+        <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+        </div>
+      </div>
     {% endif %}
   {% endwith %}
     {% block content %}
