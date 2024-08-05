@@ -5,7 +5,7 @@
 - [x] format dates on 'games' page
 - [ ] add superuser functionality
 - [ ] restrict add/edit/remove games to superuser
-- [ ] 'add game to library' checkbox on adding game to library
+- [ ] 'add game to library' checkbox on adding game to database
 - [x] add ability to remove games from My Games
 - [ ] add ability for users to 'like' reviews 
 - [x] links for users to view the profile of others by clicking reviews they have written
@@ -22,7 +22,7 @@
     - [ ] flash messages
 - [x] sort layout on All Games
 - [x] remove ability for unauthenticated users to delete games
-- [ ] testing - add CodeQL screenshot
+- [x] testing - add CodeQL screenshot
 
 
 ## submission feedback

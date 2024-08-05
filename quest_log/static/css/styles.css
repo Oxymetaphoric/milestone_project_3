@@ -3,9 +3,30 @@
   src: url('../fonts/BigBlueTermPlusNerdFontPropo-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'UbuntuMono-Regular';
+  src: url('../fonts/UbuntuMono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'UbuntuMono-Bold';
+  src: url('../fonts/UbuntuMono-Bold.ttf') format('truetype');
+}
+
 a {
   color: inherit;
+  font-family: 'UbuntuMono-Regular';
+  text-decoration: dashed;
 }
+
+.btn {
+  font-family: 'UbuntuMono-Bold';
+}
+
+.card-title{
+  font-family: 'BigBlueTermPlus';
+}
+
 
 h1 { 
   font-size: large;
@@ -19,13 +40,21 @@ h2, h3, h4 {
   padding-top: 5px;
 }
 
+p { 
+  font-family: 'UbuntuMono-Regular', Courier, monospace;
+}
+
+small {
+  font-family: 'UbuntuMono-Regular';
+}
+
 hr{
   color: lightgray;
   opacity: 50%;
 }
 
 #brand-logo  {
-  font-family:'BigBlueTermPlus', system-ui, -apple-system, sans-serif;
+  font-family:'BigBlueTermPlus', system-ui, sans-serif;
 }
 
 #rating{
@@ -40,7 +69,6 @@ nav .brand-logo #logo-icon{
 .halfway-fab { 
   margin-bottom: 25px;
   margin-right: -20px;
-  box-shadow: 2px;
 }
 
 .input-group{
