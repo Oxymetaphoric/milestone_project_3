@@ -24,6 +24,9 @@
             {% endif %}
           {% endif %}
         </div>
+      {% if current_user.is_authenticated %}
+        {% if game.game_id in reviewed_games %}
+        {% endif %}
         <div class="card-content">
           <h4 class="center-align">{{game.game_title}}</h4>
           <p><b>Developer: </b>{{game.developer}}</p>
@@ -32,27 +35,19 @@
           <p><b>Genre: </b>{{game.genre}}</p>
         </div>
       </div>
-      {% if current_user.is_authenticated %}
-        <a href="{{ url_for('delete_game', game_id=game.game_id)}}" class="btn waves-effect waves-light red">remove game</a>
-      {% endif %}
+      <a href="{{ url_for('delete_game', game_id=game.game_id)}}" class="btn waves-effect waves-light red">remove game</a>
     </div>
     <div class="col l6 s12 m6">
       <h4 class="center-align">Reviews</h4>
       {% if current_user.is_authenticated %}
         {% if game.game_id in reviewed_games %}
           {% if user_review %}
-          <div class="row">
-            <a href="{{ url_for('edit_review', review_id=user_review.review_id) }}" class="btn waves-effect waves-light green col center-align">Edit Your Review</a>
-          </div>
+            <a href="{{ url_for('edit_review', review_id=user_review.review_id) }}" class="btn waves-effect waves-light">Edit Your Review</a>
           {% else %}
             <p>there was an issue loading your review. Please refresh the page</p>
           {% endif %}
         {% else %}
-        <div class="row">
-          <div class="col center-align">
-            <a href="{{ url_for('add_review', game_id=game.game_id) }}" class="btn waves-effect waves-light green">Write a Review</a>
-        </div>
-      </div>
+          <a href="{{ url_for('add_review', game_id=game.game_id) }}" class="btn waves-effect waves-light">Write a Review</a>
         {% endif %}
       {% endif %}
       {% if game.reviews %}
@@ -72,17 +67,17 @@
                   <span>
                     <img class="avatar" alt="user avatar" src="{{ review.user.avatar_url }}">
                 {% endif %}
-                    <br>                  
-                    <small>By {{ review.user.username }} on {{ review.review_created_at.strftime('%d/%m/%Y') }}</small>
-                  
+                  <br>                  
+                  <small>By {{ review.user.username }} on {{ review.review_created_at.strftime('%d/%m/%Y') }}</small>   
                 </span>
               </div>
             </div>
           </a> 
-          {% endfor %}
+        {% endfor %}
         {% else %}
         <p>No reviews yet. Be the first to review this game!</p>
         {% endif %}
+      {% endif %}
     </div>
   </div>
 </div>

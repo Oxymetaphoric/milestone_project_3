@@ -16,10 +16,10 @@
 - [ ] highest, lowest and average score given by users
 - [ ] an avatar picker with some dummy examples to choose from hosted in static
 - [ ] consistent site-wide styling
-    - [ ] fonts
+    - [x] fonts
     - [ ] background image?
-    - [ ] header
-    - [ ] flash messages
+    - [x] header
+    - [x] flash messages
 - [x] sort layout on All Games
 - [x] remove ability for unauthenticated users to delete games
 - [x] testing - add CodeQL screenshot

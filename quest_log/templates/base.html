@@ -15,11 +15,11 @@
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper green">
-          <span>
-            <div class="logo">
+          <span class="row logo">
+            <div class="col">
               <a href="{{url_for('games')}}" class="brand-logo" id="brand-logo">
                 <b>QuestLog</b>
-                <img id="logo-icon" src="../static/scroll.svg">
+                <img class="logo-icon" id="logo-icon" src="../static/scroll.svg">
               </a>
             </div>
             <a href="{{url_for('games')}}" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -61,8 +61,8 @@
   {% with messages = get_flashed_messages() %}
     {% if messages %}
       <div class="row">
-        <div class="col s8 m8 l6 offset-m2 offset-l3 offset-s2">
-          <ul class="center-align flashes">
+        <div class="col s12 m12 l10">
+          <ul class="z-depth-2 flashes">
           {% for message in messages %}
         <li>{{ message }}</li>
           {% endfor %}

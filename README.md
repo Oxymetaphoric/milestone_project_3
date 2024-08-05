@@ -464,4 +464,5 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
 
 ---
 - favicon from: https://favicon.io/emoji-favicons/alien-monster
+https://iconscout.com/icons/scroll-and-quill?price=free
 - My wonderful family!

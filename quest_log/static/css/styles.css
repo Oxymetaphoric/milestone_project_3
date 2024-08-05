@@ -21,6 +21,7 @@ a {
 
 .btn {
   font-family: 'UbuntuMono-Bold';
+  background-color: #f44336;
 }
 
 .card-title{
@@ -61,8 +62,15 @@ hr{
   vertical-align: middle;
 }
 
+.row { 
+display: inline;
+
+}
+
+
 #brand-logo  {
   font-family:'BigBlueTermPlus', system-ui, sans-serif;
+  padding-left: 10px;
 }
 
 #rating{
@@ -74,16 +82,18 @@ nav .brand-logo #logo-icon{
   margin: 0;
 }
 
-.flashes{
+body .flashes{
   font-family: 'UbuntuMono-Regular';
   font-size: medium;
   align-self: center;
   align-content: center;
+  text-align: center;
   padding: 10px;
   border:1px black;
   border-radius: 5px; 
-  background-color: #f44336;
+  background-color: #4caf50; /* red: #f44336*/
   width: fit-content;
+  padding-left: 10px;
 }
 
 .halfway-fab { 
@@ -116,7 +126,11 @@ nav .brand-logo #logo-icon{
 }
 
 .btn:hover{
-  box-shadow: 0 4px 8px rgba(0,0,0,0.8); 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6); 
+}
+
+.card-image{
+  min-width:100%;
 }
 
 #detail-card{
@@ -128,8 +142,8 @@ nav .brand-logo #logo-icon{
   font-weight: bold; 
 }
 
-@media only screen and (max-width: 300px) {
-  #logo-icon {
-    display: none;
+@media screen and (max-width: 450px) {
+  body .logo-icon {
+  display: none;
   }
 }
