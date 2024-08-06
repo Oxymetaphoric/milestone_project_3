@@ -316,7 +316,7 @@ def edit_review(review_id):
 
         db.session.commit()
         flash("Your review has been updated successfully", "success")
-        return redirect(url_for("my_reviews", user_id=current_user.user_id))
+        return redirect(url_for("game_detail", game_id=review.game.game_id))
 
     return render_template("edit_review.html", review=review)
 
