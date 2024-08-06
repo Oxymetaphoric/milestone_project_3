@@ -52,15 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
     gameResults.innerHTML = '';
     if (games.length === 0) {
       const gameCard = `
-        <div>
+        <div class="s8 m6 offset-m3 offset-s2">
           <a href="/add_game">
-            <div class="card linkcard">
-              <div class="row card-image">
+            <div class="card linkcard green" id="add_game">
+              <div class="col s6 offset-s3 center-align">
+                <i class="fa-solid fa-plus"></i>
               </div>
-              <i class="col offset-m6 m12 s12 l12 fa-solid fa-plus"></i>
               <div class="card-content">
                 <p class="center-align">Add game to database</p>
-              </div>
             </div>
           </a>
         </div>

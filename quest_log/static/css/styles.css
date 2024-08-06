@@ -74,8 +74,13 @@ hr{
   opacity: 50%;
 }
 
-.input-field{
-  color:lightgraygray;
+.input-field .autocomplete{
+  font-family: 'UbuntuMono-Regular';
+  color:lightgray;
+}
+
+.input-field input{
+  font-family:'UbuntuMono-Regular';
 }
 
 #logo-icon{
@@ -133,6 +138,10 @@ body .flashes{
   padding-left: 10px;
 }
 
+#add_game{
+  padding:10px;
+}
+
 .halfway-fab { 
   margin-bottom: 25px;
   margin-right: -20px;
@@ -156,6 +165,10 @@ body .flashes{
 .card-link {
   color: inherit; 
   text-decoration: none;
+}
+
+#add_game{
+  color:white;
 }
 
 .linkcard:hover{

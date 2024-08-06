@@ -131,14 +131,6 @@ def api_games():
 def add_game():
     return render_template("add_game.html")
 
-@app.route("/remove_game/<int:game_id>")
-@login_required
-def delete_game(game_id):
-    game = Game.query.get_or_404(game_id)
-    db.session.delete(game)
-    db.session.commit()
-    return redirect(url_for("games"))
-
 @app.route("/new_game", methods=["POST"])
 @login_required
 def new_game():
@@ -175,6 +167,30 @@ def my_games(user_id):
     return render_template(
         "my_games.html", current_user=current_user, user=user, my_games=games
     )
+
+@app.route("/remove_game/<int:game_id>")
+@login_required
+def delete_game(game_id):
+    game = Game.query.get_or_404(game_id)
+    db.session.delete(game)
+    db.session.commit()
+    return redirect(url_for("games"))
+
+@app.route("/edit_game/<int:game_id>", methods=["GET", "POST"])
+@login_required
+def edit_game(game_id):
+    game=Game.query.get_or_404(game_id)
+    if request.method == "POST":
+        game.game_title = request.form.get("game_title")
+        game.game_publisher = request.form.get("game_publisher")
+        game.developer = request.form.get("developer")
+        game.release_date = request.form.get("release_date")
+        game.genre = request.form.get("genre")
+        game.image_url = request.form.get("image_url")
+        db.session.commit()
+        flash("Game edited", "error")
+        return redirect(url_for("game_detail", game_id=game_id))
+    return render_template("edit_game.html", game=game)
 
 @app.route("/game_detail/<int:game_id>")
 def game_detail(game_id):
