@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col l6 s12 m6">
+    <div class="col l6 s10 offset-s1 m6">
       <div class="card detail" id="detail-card">
         <div class="card-image">
           <img src="{{game.image_url}}" alt="{{game.title}} cover image">  
@@ -42,7 +42,7 @@
       {% if current_user.is_authenticated %}
         {% if game.game_id in reviewed_games %}
           {% if user_review %}
-            <a href="{{ url_for('edit_review', review_id=user_review.review_id) }}" class="btn waves-effect waves-light">Edit Your Review</a>
+            <a href="{{ url_for('edit_review', review_id=user_review.review_id) }}" class="btn waves-effect waves-light green">Edit Your Review</a>
           {% else %}
             <p>there was an issue loading your review. Please refresh the page</p>
           {% endif %}

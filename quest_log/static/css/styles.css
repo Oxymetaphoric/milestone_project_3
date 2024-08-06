@@ -1,27 +1,38 @@
-@font-face {
+@font-face{
   font-family: 'BigBlueTermPlus';
   src: url('../fonts/BigBlueTermPlusNerdFontPropo-Regular.ttf') format('truetype');
 }
 
-@font-face {
+@font-face{
   font-family: 'UbuntuMono-Regular';
   src: url('../fonts/UbuntuMono-Regular.ttf') format('truetype');
 }
 
-@font-face {
+@font-face{
   font-family: 'UbuntuMono-Bold';
   src: url('../fonts/UbuntuMono-Bold.ttf') format('truetype');
 }
 
-a {
+a{
   color: inherit;
   font-family: 'UbuntuMono-Regular';
   text-decoration: dashed;
 }
 
-.btn {
+.card-panel a{
+  color: green;
+  text-decoration:underline;
+}
+
+.card-panel a:hover{
+  text-decoration:none; 
+}
+
+
+.btn{
   font-family: 'UbuntuMono-Bold';
   background-color: #f44336;
+  margin:10px;
 }
 
 .card-title{
@@ -29,28 +40,33 @@ a {
 }
 
 
-h1 { 
+h1{ 
   font-size: large;
   font-family: 'BigBlueTermPlus';
 }
 
-h2, h3, h4 {
+h2, h3, h4{
   font-family: 'BigBlueTermPlus';
   font-size: medium;
   margin-top: 5px;
   padding-top: 5px;
 }
 
-p { 
+p{ 
   font-family: 'UbuntuMono-Regular', Courier, monospace;
 }
 
-small {
+small{
   font-family: 'UbuntuMono-Regular';
 }
 
-label {
+body .input-field label{
   font-family: 'UbuntuMono-Regular';
+  color: lightgray !important;
+}
+
+body .input-field label.active{
+  color:lightgrey !important;
 }
 
 hr{
@@ -58,17 +74,21 @@ hr{
   opacity: 50%;
 }
 
-#logo-icon {
+.input-field{
+  color:lightgraygray;
+}
+
+#logo-icon{
   vertical-align: middle;
 }
 
-.row { 
+.row{ 
 display: inline;
 
 }
 
 
-#brand-logo  {
+#brand-logo{
   font-family:'BigBlueTermPlus', system-ui, sans-serif;
   padding-left: 10px;
 }
@@ -77,9 +97,26 @@ display: inline;
   font-size: 20px;
 }
 
+.nav-wrapper{
+  background-image:url("../img/header_texture.webp");
+}
+
 nav .brand-logo #logo-icon{
   float: none;
-  margin: 0;
+  margin: 1;
+}
+
+.sidenav li a{
+  font-size: medium;
+}
+
+.sidenav li a:hover{
+  background-image:url('../img/header_texture.webp');
+  color:#ffffff;
+}
+
+.menu-header{
+  background-image:url("../img/header_texture.webp"); 
 }
 
 body .flashes{
@@ -126,6 +163,7 @@ body .flashes{
 }
 
 .btn:hover{
+  background-color: #f44336;
   box-shadow: 0 4px 8px rgba(0,0,0,0.6); 
 }
 
@@ -137,13 +175,24 @@ body .flashes{
   max-width: 300px;
 }
 
-#avg_score {
+#avg_score{
   font-size: 1.2rem;
   font-weight: bold; 
 }
 
-@media screen and (max-width: 450px) {
-  body .logo-icon {
+@media screen and (max-width: 450px){
+  body .logo-icon{
   display: none;
+  }
+
+  h1{
+    font-size: medium;
+  }
+  h2 h3 h4{
+    font-size: small;
+  }
+
+  .sidenav li a{
+    font-size: small;
   }
 }
