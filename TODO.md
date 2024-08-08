@@ -15,9 +15,9 @@
 - [x] links in profile to a users library and reviews
 - [ ] highest, lowest and average score given by users
 - [ ] an avatar picker with some dummy examples to choose from hosted in static
-- [ ] consistent site-wide styling
+- [x] consistent site-wide styling
     - [x] fonts
-    - [ ] background image?
+    - [x] background image?
     - [x] header
     - [x] flash messages
 - [x] sort layout on All Games
@@ -33,7 +33,7 @@ Learning Objective 1: Design, develop and implement a Back end for a web applica
 - [x] add a more obvious way to add games to site
 - [x] size images
 - [x] more user feedback
-- [ ] design work, colours/images
+- [x] design work, colours/images
 
 L02 – Model and manage data
 

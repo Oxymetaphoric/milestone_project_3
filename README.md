@@ -265,7 +265,7 @@ I converted the above markup tables into DBML (Database Markup Language) and use
 - [x] My Review page, aggregating all of a users reviews
 - [x] Individual reviews can be edited/deleted from My reviews
 - [x] Game Detail page displays game details, aggregate user score, and all reviews of the game
-- [x] Game detail page contains contextually appropriate Edit/Add Review buttons
+- [x] Game Detail page contains contextually appropriate Edit/Add Review buttons
 - [x] Games can be deleted from the database from the game detail page
 - [x] reviews on Game Detail page display user avatar and link to profile
 - [x] User Profiles can be viewed and contain:
@@ -287,8 +287,20 @@ I will be using the Materialize framework for the structure and styling of this 
 
 #### Typography
 
+I wanted the typography and design of the site to evoke the retro videogame aesthetic, while being clear, readable, and screenreader friendly 
+
+I choose a chunky retro pixel font for the headers:
+
+[BigBlue Terminal](https://www.programmingfonts.org/#bigblue-terminal)
+
+and a slimmer, monospaced console font for the body text: 
+
+[UuntuMono](https://www.programmingfonts.org/#ubuntu)
+
 #### Colour Palettes
 
+I wanted to keep this project simple and clean, so I decided to present the site primarily in black and white, using green as an accent colour which hearkens back to greenscreen monitors, which the texture in the header background image reinforces with CRT scan lines.  
+ 
 ### Technologies and Tools used
 
 #### Languages/Frameworks
@@ -463,6 +475,6 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
 ## :heart: Credits and Acknowledgments
 
 ---
-- favicon from: https://favicon.io/emoji-favicons/alien-monster
-https://iconscout.com/icons/scroll-and-quill?price=free
+
+- favicon from: https://iconscout.com/icons/scroll-and-quill?price=free
 - My wonderful family!
