@@ -21,6 +21,7 @@
             <br>
             <p><small>Posted on: {{ review.review_created_at.strftime('%d/%m/%Y') }}</small></p>
           </div>
+        {% if owns_profile %}
           <div class="center-align card-action">
             <a href="{{ url_for('edit_review', review_id=review.review_id) }}" 
             class="btn waves-effect waves-light green">
@@ -36,6 +37,7 @@
               </button>
             </form>
           </div>
+        {% endif %}
         </div>
       </div>
     {% endfor %}

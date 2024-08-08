@@ -298,7 +298,12 @@ def add_review(game_id):
 def my_reviews(user_id):
     reviews = Review.query.filter_by(user_id=user_id).all()
     user = User.query.get_or_404(user_id)
-    return render_template("my_reviews.html", user=user, my_reviews=reviews)
+    owns_profile = user.user_id == current_user.user_id
+    return render_template("my_reviews.html",
+                           owns_profile=owns_profile,
+                           user=user,
+                           my_reviews=reviews
+                           )
 
 @app.route("/edit_review/<int:review_id>", methods=["GET", "POST"])
 @login_required
