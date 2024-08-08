@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       const response = await fetch(`/api/games?query=${query}`);
       if (!response.ok) throw new Error('Network response was not ok');
-      if (searchInput == null){
+      if (typeof searchInput === null){
          return []
        }
       return await response.json();
@@ -38,7 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Handle search input
+if (searchInput == null){
+     return ''
+   } else{
+  // Handle search input //
   searchInput.addEventListener('input', function() {
     const query = this.value.trim();
     if (query) {
@@ -47,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
       renderGames([]);
     }
   });
+}
 
   function renderGames(games) {
     gameResults.innerHTML = '';
