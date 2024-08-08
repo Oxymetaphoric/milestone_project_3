@@ -92,7 +92,6 @@ display: inline;
 
 }
 
-
 #brand-logo{
   font-family:'BigBlueTermPlus', system-ui, sans-serif;
   padding-left: 10px;
@@ -133,9 +132,9 @@ body .flashes{
   padding: 10px;
   border:1px black;
   border-radius: 5px; 
-  background-color: #4caf50; /* red: #f44336*/
   width: fit-content;
   padding-left: 10px;
+  color: white;
 }
 
 #add_game{

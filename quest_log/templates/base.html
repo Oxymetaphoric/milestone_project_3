@@ -61,8 +61,8 @@
   {% with messages = get_flashed_messages() %}
     {% if messages %}
       <div class="row">
-        <div class="col s12 m12 l10">
-          <ul class="z-depth-2 flashes">
+        <div class="col s12 offset-s2 offset-l4 m4 offset-m4 l4">
+          <ul class="z-depth-2 flashes green darken-1">
           {% for message in messages %}
         <li>{{ message }}</li>
           {% endfor %}
