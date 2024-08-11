@@ -169,7 +169,7 @@ def my_games(user_id):
         "my_games.html", owns_profile=owns_profile, current_user=current_user, user=user, my_games=games
     )
 
-@app.route("/remove_game/<int:game_id>")
+@app.route("/delete_game/<int:game_id>", methods=["POST"])
 @login_required
 def delete_game(game_id):
     game = Game.query.get_or_404(game_id)

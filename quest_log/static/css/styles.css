@@ -172,6 +172,11 @@ body .flashes{
   text-decoration: none;
 }
 
+#game_image{
+  width:100%;
+  height:fit-content;
+}
+
 #add_game{
   color:white;
 }
