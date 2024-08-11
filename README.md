@@ -101,7 +101,15 @@ For the database management system, I will employ PostgreSQL. This robust, open-
 
 #### Accessibility
 
+Things to take into consideration: 
 
+    - appropriate use and structure of semantic HTML
+    - descriptive links 
+    - use of aria-label
+    - colour contrast
+    - font usage and readability
+    - alt text for images 
+    - well structured and labelled forms 
 
 ---
 

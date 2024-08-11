@@ -15,15 +15,15 @@
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper green">
-          <span class="row logo">
+          <div class="row logo">
             <div class="col">
               <a href="{{url_for('games')}}" class="brand-logo" id="brand-logo">
                 <b>QuestLog</b>
-                <img class="logo-icon" id="logo-icon" src="../static/scroll.svg">
+                <img class="logo-icon" id="logo-icon" src="../static/scroll.svg" alt="site logo">
               </a>
             </div>
             <a href="{{url_for('games')}}" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-          </span>
+          </div>
           {% if current_user.is_authenticated %}
             <ul class="right hide-on-med-and-down">
               <li><a href="{{url_for('logout')}}">logout</a></li>
