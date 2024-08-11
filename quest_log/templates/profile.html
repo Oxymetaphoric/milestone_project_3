@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<h2 class="center-align text-darken-4"> {{ user.username }}'s profile </h2>
+{% if owns_profile %}
+  <h2 class="center-align text-darken-4">My Profile</h2>
+{% else %}
+  <h2 class="center-align text-darken-4"> {{ user.username }}'s Profile</h2>
+{% endif %}
 <div class="row">
   <div class="col s12 m8 offset-m2">
     <div class="card-panel">
@@ -9,8 +13,13 @@
       <span><p><b>account created:  </b> {{user.created_at.strftime('%d/%m/%Y') }}</p></span>
       <span><p><b>number of games:  </b> {{user.user_games|length}}</p></span>
       <span><p><b>number of reviews: </b> {{user.reviews|length}}</p></span>
-      <a href="{{url_for('my_games', user_id=user.user_id)}}"<p><b>My Games</b></p></a>
-      <a href="{{url_for('my_reviews',user_id=user.user_id)}}"<p><b>My Reviews</b></p></a>
+      {% if  owns_profile %}
+        <a href="{{url_for('my_games', user_id=user.user_id)}}"<p><b>My Games</b></p></a>
+        <a href="{{url_for('my_reviews',user_id=user.user_id)}}"<p><b>My Reviews</b></p></a>
+      {% else %}
+      <a href="{{url_for('my_games', user_id=user.user_id)}}"<p><b>{{ user.username }}'s Games</b></p></a>
+      <a href="{{url_for('my_reviews',user_id=user.user_id)}}"<p><b>{{ user.username}}'s Reviews</b></p></a>
+      {% endif %}
     </div>
   </div>
 </div>

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="center-align">{{user.username}}'s reviews</h1>
+{% if owns_profile %}
+  <h1 class="center-align">My Reviews</h1>
+{% else %}
+  <h1 class="center-align">{{user.username}}'s Reviews</h1>
+{% endif %}
 <div class="container">
   <div class="row">
     {% for review in my_reviews %}

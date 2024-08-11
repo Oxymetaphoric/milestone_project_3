@@ -163,9 +163,10 @@ def my_games(user_id):
     user = User.query.get_or_404(user_id)
     user_games = UserGame.query.filter_by(user_id=user_id).all()
     games = [user_game.game for user_game in user_games]
-
+    owns_profile = user.user_id == current_user.user_id
+    
     return render_template(
-        "my_games.html", current_user=current_user, user=user, my_games=games
+        "my_games.html", owns_profile=owns_profile, current_user=current_user, user=user, my_games=games
     )
 
 @app.route("/remove_game/<int:game_id>")
