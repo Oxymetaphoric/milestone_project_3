@@ -384,20 +384,29 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
 ### HTML/CSS/JS/Python Validators
 
 #### HTML
-    - 
-    - 
-    -
-    -
-    -
-    -
 
-### CodeQL
+Using the W3 HTMl validator for my main page: 
+
+![W3 HTML Validatior results](docs/html_validation.png)
+
+#### CSS
+
+uploaded the CSS file to the W3 CSS validator:
+
+![W3 CSS validator results](docs/css_validation.png)
+
+### python / javaScript
+
+codeQL through github gave the following results: 
 
  ![codeQL](docs/CodeQL.png) 
 
 ### WAVE
 
 ### Lighthouse
+
+
+
 ---
 
 ### Bug fixes
