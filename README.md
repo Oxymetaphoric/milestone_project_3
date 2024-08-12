@@ -282,7 +282,6 @@ I converted the above markup tables into DBML (Database Markup Language) and use
         - links to users My Games and My Review pages
 - [x] users that are not logged in may browse the game collection but not change any of the present data
 - [x] users navigating to their own My Profile page can update password, email and avatar link
-- [ ] user statistics
 
 ---
 

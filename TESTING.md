@@ -12,9 +12,11 @@
 ### User Stories Testing
 
 
-#### - First Time User Testing
+#### - First Time User Stories Testing
 
 1. I want to encounter a landing page that succinctly and clearly explains the functionality of the site
+    
+
 
 2. I want to be able to browse review of games I am interested in
 
@@ -28,7 +30,7 @@ The signup page is clearly signposted in the navigation of the page
 
 The site is simple and intuitive to navigate. Navigation elements are obvious and accessible at all screen sizes. Pages are clearly labelled, and functionality is explained through the use of tooltips and big, chunky UI elements. 
 
-#### - Returning User Testing
+#### - Returning User Stories Testing
 
 1. I want to be able to login quickly and easily
 2. I want to be able to intuitively find all my prior reviews
@@ -57,32 +59,90 @@ using codeQL through github gave the following results:
 
  ![codeQL](docs/CodeQL.png) 
 
-### Lighthouse
+### Lighthouse Testing
 
 #### Desktop
 
+##### Login
+
 ![login](docs/lighthouse/desktop/desktop_login.png)
+
+##### Register
+
 ![register](docs/lighthouse/desktop/desktop_register.png)
+
+##### Games
+
 ![main page](docs/lighthouse/desktop/desktop_games.png)
+
+##### Add Game
+
 ![add gane](docs/lighthouse/desktop/desktop_add_game.png)
+
+##### Game Detail
+
 ![game detail](docs/lighthouse/desktop/desktop_game_detail.png)
+
+##### Edit Game
+
 ![edit game](docs/lighthouse/desktop/desktop_edit_game.png)
+
+##### My Games
+
 ![my games](docs/lighthouse/desktop/desktop_my_games.png)
+
+##### My Reviews
+
 ![my reviews](docs/lighthouse/desktop/desktop_my_reviews.png)
+
+##### Edit Review
+
 ![edit review](docs/lighthouse/desktop/desktop_edit_review.png)
+
+##### Profile
+
 ![profile](docs/lighthouse/desktop/desktop_profile.png)
 
 #### Mobile 
 
+##### Login
+
 ![login](docs/lighthouse/mobile/mobile_login.png)
+
+##### Register
+
 ![register](docs/lighthouse/mobile/mobile_register.png)
+
+##### Games
+
 ![main page](docs/lighthouse/mobile/mobile_games.png)
+
+##### Add Game
+
 ![add gane](docs/lighthouse/mobile/mobile_add_game.png)
+
+##### Game Detail
+
 ![game detail](docs/lighthouse/mobile/mobile_game_detail.png)
+
+##### Edit Game
+
 ![edit game](docs/lighthouse/mobile/mobile_edit_games.png)
+
+##### My Games
+
 ![my games](docs/lighthouse/mobile/mobile_my_games.png)
+
+##### My Reviews
+
 ![my reviews](docs/lighthouse/mobile/mobile_my_reviews.png)
+
+##### Edit Review
+
 ![edit review](docs/lighthouse/mobile/mobile_edit_review.png)
+
+##### Profile
+
 ![profile](docs/lighthouse/mobile/mobile_profile.png)
 
 
