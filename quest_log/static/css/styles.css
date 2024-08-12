@@ -204,22 +204,36 @@ body .flashes{
   font-weight: bold; 
 }
 
-@media screen and (max-width: 450px){
+@media screen and (max-width: 600px){
   body .logo-icon{
   display: none;
   }
 
-  nav .brand-logo{
-    font-size: medium;
-  } 
+  body nav .nav-wrapper .logo #brand-logo b{
+    font-size: 20pt;
+  }
+
   h1{
-    font-size: medium;
+    font-size: 16pt;
   }
   h2 h3 h4{
-    font-size: small;
+    font-size: 16pt;
   }
 
   .sidenav li a{
-    font-size: small;
+    font-size: 14pt;
+  }
+}
+
+@media screen and (max-width: 300px){
+  body nav .nav-wrapper .logo #brand-logo b{
+    display: none;
+  }
+  h1{
+    font-size: 12pt;
+    margin: 10px;
+  }
+  h2, h3, h4{
+    font-size: 10pt;
   }
 }
