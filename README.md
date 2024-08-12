@@ -1,12 +1,12 @@
 # Milestone Project :three:
 
-[LIVE SITE](https://ms3-questlog-046b16039c76.herokuapp.com/register)
+[LIVE SITE](https://ms3-questlog-046b16039c76.herokuapp.com/games)
 
 ![amiresponsive screenshot](docs/amiresponsive.png)
 
 ### Response to Initial Feedback
 
-please see (TODO)[TODO.md]
+please see [TODO.md](/TODO.md)
 
 ---
 
@@ -17,7 +17,7 @@ please see (TODO)[TODO.md]
 ### Project Goals
 
 
-This is my milestone two project for the [Code Institute's](http://www.codeinstitute.net/) *'Level 5 Diploma in Web Application Development'*. The goal of this project is to *Design, develop and implement a Back end for a web application using Python and a micro-framework.* To this end I am building a webapp utilising Flask & postgreSQL, that will alow users to create, modify, and track reviews for video games. The app will be aimed at gamers, people who are invested in tracking their relationship with videogames and offer a place for users to conveniently archive and keep a track of all the games that they have played and the thoughts that they had on them. Reviews will be abel to be tagged as public or private, and other visitors to the site will be able to browse reviews by game or by user. The site will also aggregate scores of reviews allowing users to accurately assess potential new purchases.  
+This is my milestone two project for the [Code Institute's](http://www.codeinstitute.net/) *'Level 5 Diploma in Web Application Development'*. The goal of this project is to *Design, develop and implement a Back end for a web application using Python and a micro-framework.* To this end I am building a webapp utilising Flask & postgreSQL, that will alow users to create, modify, and track reviews for video games. The app will be aimed at gamers, people who are invested in tracking their relationship with videogames and offer a place for users to conveniently archive and keep a track of all the games that they have played and the thoughts that they had on them. Reviews will be able to be tagged as public or private, and other visitors to the site will be able to browse reviews by game or by user. The site will also aggregate scores of reviews allowing users to accurately assess potential new purchases.  
 
 #### User Goals
 
@@ -56,7 +56,7 @@ For the database management system, I will employ PostgreSQL. This robust, open-
 
 #### Target Audience
 
-- Video game players are the primary audience, but we can break it down further:
+- Video game players are the primary audience, but more specifically:
 
     - Casual gamers: Those who play games occasionally and want quick insights before purchasing.
     - Hardcore gamers: Enthusiasts who play frequently and desire in-depth reviews and discussions.
@@ -333,7 +333,7 @@ I wanted to keep this project simple and clean, so I decided to present the site
 - Flask/Jinja2
 - MaterializeCSS
 
-see [requirements.txt](requirements.txt)
+see also [requirements.txt](requirements.txt)
  
 #### Tools
 
@@ -437,7 +437,7 @@ see [requirements.txt](requirements.txt)
 
 ## :microscope: Testing
 
-see (TESTING.md)[/TESTING.md]
+see [TESTING.md](TESTING.md)
 
 ---
 
