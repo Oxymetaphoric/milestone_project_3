@@ -17,22 +17,26 @@ Further testing was done using HTML, CS, JS, and Python validators as well as us
 | not logged in                                           | verified |
 | ---------------------------------------------- | -------- | 
 | register |
+| -----|
 | header/menu working | yes|
 | sign-up allows new users | yes |
 | signup forces unique usernames | yes |
 ||
 | login |
+|-----|
 | header/menu links working | yes |
 | login allows existing users to login | yes |
 | login enforces correct password | yes | 
 | login disallowed if password missing or incorrect | yes|
 ||
 | Misc. |
+| ----- |
 | user unable to access profile route without logging in | yes |
 
 | Test as logged in | verified |
 |---------------------------|--------|
 | games |
+|----|
 | header/menu working | yes |
 | Games page displays entire catalogue | yes | 
 | search function triggers on each keystroke | yes |  
@@ -44,10 +48,12 @@ Further testing was done using HTML, CS, JS, and Python validators as well as us
 | Add Game button shows if searched game not in db | yes |
 ||
 | Add Game |
+| -----|
 | header/menu working | yes |
 | game not added if same as existing title | yes |
 ||
 | game detail |
+| ----|
 | header/menu working | yes |
 | write review button works correctly | yes | 
 | write review button only shows if review not written | yes | 
@@ -56,33 +62,38 @@ Further testing was done using HTML, CS, JS, and Python validators as well as us
 | average score icon works correctly | yes | 
 ||
 | edit game | 
+| ----- |
 | header/menu working | yes |
 | form is prefilled with correct info | yes | 
 | delete game button only displays if user is_admin | yes |
 | delete game button displays alert on press | yes | 
 | okay button on alert working | yes | 
 ||
-| My Games | 
+| My Games |
+| ----- |
 | header/menu working | yes |
 | title displays conditionally if user owns profile | yes |
 | games can be removed from My Games with button | yes |
 | game cards link to gaem detail page for correct title | yes |
 | flash message displays correctly on adding/removing games from My Games | yes |
 ||
-| My reviews | 
+| My reviews |
+| ------ |
 | header/menu working | yes |
 | edit review button works correctly | yes | 
 | delete and edit review buttons only displays if user owns profile | yes | 
 | delete review button works correctly | yes |
 | section title displays conditionally if user owns profile | yes |
 ||
-| edit review | 
+| edit review |
+| ------ |
 | header/menu working | yes |
 | form prefilled correctly | yes | 
 | submit button updates db entry | yes |
 | users can only review their own reviews | yes |
 ||
 | Profile |
+| ------- | 
 | user profile displays edit box only if user owns profile | yes | 
 | users cannot edit profiles of others | yes | 
 | user accounts can be deleted | yes | 
