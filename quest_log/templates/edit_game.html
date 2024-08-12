@@ -48,19 +48,21 @@
           </div>
         </form>
         <br>
-        <div class="row">
-          <div class="col m6 offset-m3">
-            <form style="display: inline;"
-              method="POST" 
-              action="{{ url_for('delete_game', game_id=game.game_id) }}" 
-              onsubmit="return confirm('Are you sure you want to delete this game?');">
-              <button type="submit"
-                class="col offset-s2 offset-m2 m8 s8 center-align btn waves-effect waves-light red">
-                Delete Game
-              </button>
-            </form>
+        {% if current_user.is_admin %}
+          <div class="row">
+            <div class="col m6 offset-m3">
+              <form style="display: inline;"
+                method="POST" 
+                action="{{ url_for('delete_game', game_id=game.game_id) }}" 
+                onsubmit="return confirm('Are you sure you want to delete this game?');">
+                <button type="submit"
+                  class="col offset-s2 offset-m2 m8 s8 center-align btn waves-effect waves-light red">
+                  Delete Game
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
+        {% endif %}
       </div>
     </div>
   </form>

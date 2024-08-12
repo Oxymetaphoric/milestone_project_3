@@ -182,6 +182,22 @@ def delete_game(game_id):
     flash(f"Game '{game.game_title}' has been deleted", "success")
     return redirect(url_for("games"))
 
+@app.route("/make_admin/<int:user_id>", methods=['POST'])
+@login_required
+def make_admin(user_id):
+    user = User.query.get_or_404(user_id)
+    if user:
+        user.is_admin = True
+        db.session.commit()
+        flash('You are now an admin!')
+    else:
+        flash('User not found!')
+
+    return redirect(url_for('home'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 @app.route("/edit_game/<int:game_id>", methods=["GET", "POST"])
 @login_required
 def edit_game(game_id):
