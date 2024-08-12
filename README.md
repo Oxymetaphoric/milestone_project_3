@@ -344,10 +344,16 @@ see also [requirements.txt](requirements.txt)
 - **[git](https://git-scm.com/)**
 - **[lunarVim](https://lunarvim.org)**
 - **[GitHub](https://www.github.com)**
+- **[Heroku](https://www.heroku.com)**
 - **[Pencil](https://pencil.evolus.vn/)**
 - **[Google Fonts](https://fonts.google.com/)**
 - **[Photopea](https://www.photopea.com/)**
 - **[amiresponsive](https://ui.dev/amiresponsive)**
+- **[W3C HTML Validator](https://validator.w3.org/)**
+- **[W3C CSS Validator](https://jigsaw.w3.org/css-validator/)**
+- **[CodeQL](https://codeql.github.com/)**
+- **[WAVE - Accessibility Tool](https://wave.webaim.org/)**
+- **[Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/)**
 
 ---
 
