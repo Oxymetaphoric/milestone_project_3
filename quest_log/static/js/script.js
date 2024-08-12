@@ -133,6 +133,6 @@ if (searchInput == null){
 
   function formatDate(dateString) {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB'); // This will format the date as dd/mm/yyyy
+    return date.toLocaleDateString('en-GB');
   }
 });
