@@ -353,6 +353,8 @@ see [requirements.txt](requirements.txt)
 3. fixed a long-standing bug where the search javascript was triggering on loading other pages, and not handling the resultant null input gracefully. Fixed by wrapping the function that adds the eventlistener in a conditional check that returns nothing if the input is null. 
 4. getting the conditional checks to correctly display contextually relevent buttons 
 5. during deployment I ran into an issue in which I was not able to get flask-migrate to function correctly during deployment to heroku, it led to a lot of inexplicable tracebacks and weird build errors. I believe the issue was something to do with the order in which flask-migrate was used, in that it seemed to be trying to access a table that didn't currently exist.  
+6. during updating my models to use is_admin, I had to rebase the entire database, as one of the migrations I used was somehow incorrect, and eventually I had to drop all the tables on the db and then use flask db init to reinitialise the entire thing.  
+
 
 --------------------------------
 
