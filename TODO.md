@@ -35,7 +35,7 @@ Learning Objective 1: Design, develop and implement a Back end for a web applica
 accounts can now be deleted by the account owner via the Profile page 
 
 - [x] add a more obvious way to add games to site  
-due to the unique nature of games t he database needs to be queried before a new gam can be added, which is the rationale for only presenting the user with the Add Game button when they have searched for a game and it doesn't already exist in the db 
+due to the unique nature of games the database needs to be queried before a new gam can be added, which is the rationale for only presenting the user with the Add Game button when they have searched for a game and it doesn't already exist in the db 
 
 - [x] size images  
 done
@@ -53,7 +53,7 @@ Expanded on and fleshed out the previous descriptions
 
 - [x] add ERD  
 ERD is available in the README beneath the text description of the database  
-can be found here: (ERD)[docs/database_schema.png]  
+can be found here: [ERD](docs/database_schema.png)  
 
 L03: Query and manipulate data  
 
