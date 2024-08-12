@@ -4,6 +4,10 @@
 
 ![amiresponsive screenshot](docs/amiresponsive.png)
 
+### Response to Initial Feedback
+
+please see (TODO)[TODO.md]
+
 ---
 
 ## :world_map: Strategy
@@ -429,11 +433,19 @@ see [requirements.txt](requirements.txt)
 
 - Once the build process has completed the project should now be accessible online 
 
+--------
+
+## :microscope: Testing
+
+see (TESTING.md)[/TESTING.md]
+
 ---
 
 ## :heart: Credits and Acknowledgments
 
 ---
 
+- Paul Bowers for the insight and wisdom! 
 - favicon from: https://iconscout.com/icons/scroll-and-quill?price=free
+- header texture based on: https://www.freepik.com/free-vector/vhs-effect-background_37443185.htm#fromView=search&page=1&position=35&uuid=c9af7fee-97a0-43a8-8f8e-4fe205ddae25
 - My wonderful family!
