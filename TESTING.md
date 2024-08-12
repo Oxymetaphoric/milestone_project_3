@@ -6,7 +6,7 @@
 
 ### Functional testing
 
-| test                                           | verified |
+| Test                                           | verified |
 | ---------------------------------------------- | -------- |
 | sign-up allows new users | yes |
 | signup forces unique usernames | yes |

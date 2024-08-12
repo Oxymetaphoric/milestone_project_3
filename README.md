@@ -52,7 +52,13 @@ For the database management system, I will employ PostgreSQL. This robust, open-
 
 #### Target Audience
 
-- video game players
+- Video game players are the primary audience, but we can break it down further:
+
+    - Casual gamers: Those who play games occasionally and want quick insights before purchasing.
+    - Hardcore gamers: Enthusiasts who play frequently and desire in-depth reviews and discussions.
+    - Game collectors: People who maintain large game libraries and want to catalog their experiences.
+    - Trophy/achievement hunters: Players who focus on completing games and may want to track their progress.
+    - Retro gamers: Individuals interested in older games and their historical context.
 
 #### User Requirements and Expectations
 
