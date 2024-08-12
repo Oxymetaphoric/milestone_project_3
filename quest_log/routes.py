@@ -172,9 +172,14 @@ def my_games(user_id):
 @app.route("/delete_game/<int:game_id>", methods=["POST"])
 @login_required
 def delete_game(game_id):
+    if not current_user.is_admin:
+        flash("You don't have permission to delete games", "error")
+        return redirect(url_for("games"))
+
     game = Game.query.get_or_404(game_id)
     db.session.delete(game)
     db.session.commit()
+    flash(f"Game '{game.game_title}' has been deleted", "success")
     return redirect(url_for("games"))
 
 @app.route("/edit_game/<int:game_id>", methods=["GET", "POST"])

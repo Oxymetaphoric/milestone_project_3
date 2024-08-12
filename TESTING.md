@@ -24,7 +24,8 @@
 | users cannot edit profiles of others | yes | 
 | My Reviews displays all users reviews | yes | 
 | user accounts can be deleted | yes | 
-| user account details can be edited | yes | 
+| user account details can be edited | yes |
+| games can be removed from the database | yes |
 | logout functionality works correctly | yes | 
 
 ### User Stories Testing
