@@ -4,7 +4,7 @@
 
 ### Testing Procedure
 
-### Functional testing
+### Functional Testing
 
 | Test                                           | verified |
 | ---------------------------------------------- | -------- |

@@ -3,8 +3,8 @@
 - [x] remove add game button from main page
 - [x] add redirect to search function. such that game not found redirects to add_game
 - [x] format dates on 'games' page
-- [ ] add superuser functionality
-- [ ] restrict add/edit/remove games to superuser
+- [x] add superuser functionality
+- [x] restrict removing games to superuser
 - [ ] 'add game to library' checkbox on adding game to database
 - [x] add ability to remove games from My Games
 - [ ] add ability for users to 'like' reviews 
@@ -24,7 +24,7 @@
 - [x] remove ability for unauthenticated users to delete games
 - [x] testing - add CodeQL screenshot
 - [x] remove edit/delete review buttons from My Reviews if user is not the creator
-- [ ] fix delete game route
+- [x] fix delete game route
 
 
 ## submission feedback

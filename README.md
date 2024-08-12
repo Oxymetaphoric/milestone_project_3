@@ -108,13 +108,13 @@ For the database management system, I will employ PostgreSQL. This robust, open-
 
 Things to take into consideration: 
 
-    - appropriate use and structure of semantic HTML
-    - descriptive links 
-    - use of aria-label
-    - colour contrast
-    - font usage and readability
-    - alt text for images 
-    - well structured and labelled forms 
+- appropriate use and structure of semantic HTML
+- descriptive links 
+- use of aria-label
+- colour contrast
+- font usage and readability
+- alt text for images 
+- well structured and labelled forms 
 
 ---
 
@@ -203,11 +203,11 @@ page to send users to if a game/review is somehow not found in the database
 
 The database will contain 4 tables. One for the games, one for reviews, one for users, and a join table that gives me access to all games reviewed for a given user and all reviews from users for a given game.  
 
-#### Entity Relationship diagram
+#### Entity Relationship Diagram
 
 ![Schema Diagram](docs/database_schema.png) 
 
-#### Database models 
+#### Database Models 
 
 The game table will need a primary key that is an assigned id number that is auto-incrementing, then the data for each game (publisher, developer etc.) these fields should all be required, as users should not be able to add games with incomplete information into the db. image_url is a development feature, and would need to be replaced with an image upload dialogue linking to some backend storage. This is for many reasons, not least that hotlinking images is both impolite and very slow.    
 
