@@ -35,9 +35,9 @@
 
 1. I want to encounter a landing page that succinctly and clearly explains the functionality of the site
     
+User encounters explanatory text and call to action on loading the page. 
 
-
-2. I want to be able to browse review of games I am interested in
+2 .I want to be able to browse review of games I am interested in
 
 first time users can browse the catalogue of games and view the reviews of any games without he need for sign-up, and are presented with the catalogue of games immedietely on page load. 
 
@@ -52,11 +52,29 @@ The site is simple and intuitive to navigate. Navigation elements are obvious an
 #### - Returning User Stories Testing
 
 1. I want to be able to login quickly and easily
+
+Login details are saved to browser keychain and autofill on returning to the logon screen
+
 2. I want to be able to intuitively find all my prior reviews
+
+My Reviews page aggregates all a users reviews
+
 3. I want to be able to delete reviews I have previously written
-4. I want to be able to view the profiles of others 
+
+Users may delete their own reviews but may not delete or edit the reviews of others 
+
+4. I want to be able to view the profiles of others
+
+users can view the globally acccessible user information of other users, but may not edit or delete other users accounts
+
 5. I want to be able to write new reviews
+
+users can quickly and easily add reviews for games. UI is simple to navigate. 
+
 6. I want to be able to add games to the database if they are not currently there
+
+users must first search for a title, if the title is not found in the database they are presented with the Add Game option. As game titles are unique, the db will have to be queried on any new addition to make sure game_title is unique, as such it makes sense to only present the user with teh option to add a game after they have established it does not already exist in the database. 
+
 
 ### HTML/CSS/JS/Python Validators
 
