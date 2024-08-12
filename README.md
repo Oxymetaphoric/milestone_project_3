@@ -2,7 +2,7 @@
 
 [LIVE SITE](https://ms3-questlog-046b16039c76.herokuapp.com/register)
 
-![amiresponsive screenshot]()
+![amiresponsive screenshot](docs/amiresponsive.png)
 
 ---
 
@@ -79,7 +79,6 @@ For the database management system, I will employ PostgreSQL. This robust, open-
 4. As a returning visitor I want to be able to view the profiles of others 
 5. As a returning visitor I want to be able to write new reviews
 6. As a returning visitor I want to be able to edit games to the database if they are not currently there
-
 
 #### Identified tasks/needs the website should fulfill
 
@@ -187,6 +186,8 @@ form to edit an existing review
 - 404.html
 
 page to send users to if a game/review is somehow not found in the database
+
+#### structure diagram
 
 ![Hierarchy diagram](docs/quest_log_structure_chart.png)
 
@@ -340,8 +341,6 @@ see [requirements.txt](requirements.txt)
 
 ---
 
----
-
 ### Bug fixes
 
 1. while writing the profile page, I encountered a bug where the browser would autofill the new password box, I solved this by changing the type of input to text from password and processing it as a password
@@ -349,6 +348,7 @@ see [requirements.txt](requirements.txt)
 3. fixed a long-standing bug where the search javascript was triggering on loading other pages, and not handling the resultant null input gracefully. Fixed by wrapping the function that adds the eventlistener in a conditional check that returns nothing if the input is null. 
 4. getting the conditional checks to correctly display contextually relevent buttons 
 5. during deployment I ran into an issue in which I was not able to get flask-migrate to function correctly during deployment to heroku, it led to a lot of inexplicable tracebacks and weird build errors. I believe the issue was something to do with the order in which flask-migrate was used, in that it seemed to be trying to access a table that didn't currently exist.  
+
 --------------------------------
 
 ## :loudspeaker: Deployment

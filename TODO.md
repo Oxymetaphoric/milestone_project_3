@@ -24,6 +24,7 @@
 - [x] remove ability for unauthenticated users to delete games
 - [x] testing - add CodeQL screenshot
 - [x] remove edit/delete review buttons from My Reviews if user is not the creator
+- [ ] fix delete game route
 
 
 ## submission feedback
