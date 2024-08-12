@@ -26,6 +26,7 @@
 | user accounts can be deleted | yes | 
 | user account details can be edited | yes |
 | games can be removed from the database | yes |
+| superuser status allows deleting games | yes | 
 | logout functionality works correctly | yes | 
 
 ### User Stories Testing
@@ -74,7 +75,6 @@ users can quickly and easily add reviews for games. UI is simple to navigate.
 6. I want to be able to add games to the database if they are not currently there
 
 users must first search for a title, if the title is not found in the database they are presented with the Add Game option. As game titles are unique, the db will have to be queried on any new addition to make sure game_title is unique, as such it makes sense to only present the user with teh option to add a game after they have established it does not already exist in the database. 
-
 
 ### HTML/CSS/JS/Python Validators
 

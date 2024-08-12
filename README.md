@@ -252,8 +252,9 @@ The user table, like the other tables, will use an auto-incrementing integer and
 | password_hash | string(255) | | | No |
 | location | string(255) | | | Yes |
 | created_at | datetime | DEFAULT CURRENT_TIMESTAMP | | No |
+| is_admin | Bool |  | | No |
 
-The final table is a junction table that implements a composite primary key. This key consists of two columns: user_id and game_id. Each of these columns serves as both a foreign key and part of the primary key. The user_id references the User table, while the game_id references the Game table. This table will be crucial for features such as the user's "My Games" and "My Reviews" pages. By using this structure, we transform the many-to-many relationship between users and games into two one-to-many relationships: one user can have many games, and one game can be associated with many users. This allows for efficient querying of user-game associations and simplifies the implementation of user-specific game collections and reviews.
+The final table is a junction table that implements a composite primary key. This key consists of two columns: user_id and game_id. Each of these columns serves as both a foreign key and part of the primary key. The user_id references the User table, while the game_id references the Game table. This table will be crucial for features such as the user's "My Games" and "My Reviews" pages. By using this structure, we transform the many-to-many relationship between users and games into two one-to-many relationships: one user can have many games, and one game can be associated with many users. This allows for efficient querying of user-game associations and simplifies the implementation of user-specific game collections and reviews. Towards the end of development I established that a Bool for admin priviliges would be neccessary to add to the User table to restrict sensitive actions such as removing users/games etc. 
 
 ##### user > game / game > users  
 
