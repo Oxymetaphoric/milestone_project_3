@@ -8,6 +8,24 @@
 
 | test                                           | verified |
 | ---------------------------------------------- | -------- |
+| sign-up allows new users | yes |
+| signup forces unique usernames | yes |
+| login allows existing users to login | yes |
+| login enforces correct password | yes | 
+| Games page displays entire catalogue | yes | 
+| search function triggers on each keystroke | yes |  
+| Game cards link to appropriate gaem page | yes | 
+| clicking the plus icon adds game to users My Games | yes | 
+| icon displays tick if game is in My Games and reverts to a plus if removed | yes |
+| games can be added to and removed from My Games | yes | 
+| flash messages display correctly | yes |
+| reviews can be added, deleted and edited | yes | 
+| user profile displays edit box if user owns profile | yes | 
+| users cannot edit profiles of others | yes | 
+| My Reviews displays all users reviews | yes | 
+| user accounts can be deleted | yes | 
+| user account details can be edited | yes | 
+| logout functionality works correctly | yes | 
 
 ### User Stories Testing
 
