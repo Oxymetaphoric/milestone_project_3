@@ -31,47 +31,47 @@
 
 Learning Objective 1: Design, develop and implement a Back end for a web application using Python and a microframework.
 
-- [x] add facility to delete account
+- [x] add facility to delete account  
 accounts can now be deleted by the account owner 
 
-- [x] add a more obvious way to add games to site
-due to the unique nature of games t he database needs to be queried before a new gam can be added, which is the rationale for only presenting the user with the Add Game button when they have searched for a game adn it doesn't already exist in the db 
+- [x] add a more obvious way to add games to site  
+due to the unique nature of games t he database needs to be queried before a new gam can be added, which is the rationale for only presenting the user with the Add Game button when they have searched for a game and it doesn't already exist in the db 
 
-- [x] size images
+- [x] size images  
 done
 
-- [x] more user feedback
+- [x] more user feedback  
 More visual feedback, flash feedback and alerts added across the site, 
 
-- [x] design work, colours/images
+- [x] design work, colours/images  
 Site has had a visual overhaul since initial submission, as documented in README
 
-L02 – Model and manage data
+L02 – Model and manage data  
 
-- [x] describe data scheme fully in readme
-Expanded on and fleshed out the previous descriptions
+- [x] describe data scheme fully in readme  
+Expanded on and fleshed out the previous descriptions  
 
-- [x] add ERD
-ERD is available in the README beneath the text description of the database
-can be found here: (ERD)[./docs/database_schema.png]
+- [x] add ERD  
+ERD is available in the README beneath the text description of the database  
+can be found here: (ERD)[./docs/database_schema.png]  
 
-L03: Query and manipulate data.
+L03: Query and manipulate data  
 
-- [x] add a button to add new games to database
-addressed above
+- [x] add a button to add new games to database   
+addressed above  
 
-- [x] prevent users from accesing accounts of others by URL manipulation
+- [x] prevent users from accesing accounts of others by URL manipulation  
 users may not edit reviews or accounts that they do not own  
 
-LO4: Deploy a Full Stack web application to a Cloud platform.
+LO4: Deploy a Full Stack web application to a Cloud platform.  
 
-- [x] detail the deployment process
-see README
+- [x] detail the deployment process  
+see README  
 
-LO5: Identify and apply security features
+LO5: Identify and apply security features  
 
-- [x] finish rationale and user stories 
+- [x] finish rationale and user stories   
 fleshed out and expanded on User Stories 
 
-- [x] credits
-updated
+- [x] credits  
+updated  
