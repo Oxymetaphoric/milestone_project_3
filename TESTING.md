@@ -1,33 +1,94 @@
 ## :microscope: Testing
 
+Manual testing, or user testing, is the process of using the site as intended, clicking buttons, signing up, resizing windows etc. and noting any unintended behaviour or other bugs. 
+This process was followed throughtout the development of this process with each new feature thoroughly tested and confirmed to be working before work started on the next feature.
+
+Automated testing is the process fo writing custom scripts to interact with the project by doing things like deleting reviews, creating a new user etc. This methodology was not used during this project, as I judged the time and work involved in automatically testing this site, versus manually testing it during development to not be warrent the investment. 
+
+Further testing was done using HTML, CS, JS, and Python validators as well as using the tools Lighthouse and WAVE to test for performance and accessibility respectively.
+
+
 ---
 
 ### Testing Procedure
 
 ### Functional Testing
 
-| Test                                           | verified |
-| ---------------------------------------------- | -------- |
+| not logged in                                           | verified |
+| ---------------------------------------------- | -------- | 
+| register |
+| header/menu working | yes|
 | sign-up allows new users | yes |
 | signup forces unique usernames | yes |
+||
+| login |
+| header/menu links working | yes |
 | login allows existing users to login | yes |
 | login enforces correct password | yes | 
+| login disallowed if password missing or incorrect | yes|
+||
+| Misc. |
+| user unable to access profile route without logging in | yes |
+
+| Test as logged in | verified |
+|---------------------------|--------|
+| games |
+| header/menu working | yes |
 | Games page displays entire catalogue | yes | 
 | search function triggers on each keystroke | yes |  
-| Game cards link to appropriate gaem page | yes | 
+| Game cards link to appropriate game page | yes | 
 | clicking the plus icon adds game to users My Games | yes | 
 | icon displays tick if game is in My Games and reverts to a plus if removed | yes |
 | games can be added to and removed from My Games | yes | 
 | flash messages display correctly | yes |
-| reviews can be added, deleted and edited | yes | 
-| user profile displays edit box if user owns profile | yes | 
+| Add Game button shows if searched game not in db | yes |
+||
+| Add Game |
+| header/menu working | yes |
+| game not added if same as existing title | yes |
+||
+| game detail |
+| header/menu working | yes |
+| write review button works correctly | yes | 
+| write review button only shows if review not written | yes | 
+| edit review button shows if review exists from user | yes |
+| edit game button works correctly | 
+| average score icon works correctly | yes | 
+||
+| edit game | 
+| header/menu working | yes |
+| form is prefilled with correct info | yes | 
+| delete game button only displays if user is_admin | yes |
+| delete game button displays alert on press | yes | 
+| okay button on alert working | yes | 
+||
+| My Games | 
+| header/menu working | yes |
+| title displays conditionally if user owns profile | yes |
+| games can be removed from My Games with button | yes |
+| game cards link to gaem detail page for correct title | yes |
+| flash message displays correctly on adding/removing games from My Games | yes |
+||
+| My reviews | 
+| header/menu working | yes |
+| edit review button works correctly | yes | 
+| delete and edit review buttons only displays if user owns profile | yes | 
+| delete review button works correctly | yes |
+| section title displays conditionally if user owns profile | yes |
+||
+| edit review | 
+| header/menu working | yes |
+| form prefilled correctly | yes | 
+| submit button updates db entry | yes |
+| users can only review their own reviews | yes |
+||
+| Profile |
+| user profile displays edit box only if user owns profile | yes | 
 | users cannot edit profiles of others | yes | 
-| My Reviews displays all users reviews | yes | 
 | user accounts can be deleted | yes | 
 | user account details can be edited | yes |
-| games can be removed from the database | yes |
-| superuser status allows deleting games | yes | 
 | logout functionality works correctly | yes | 
+| admin can add users to admin group | yes | 
 
 ### User Stories Testing
 
