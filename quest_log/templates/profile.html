@@ -68,17 +68,17 @@
       </button>
     </div>
   </form>
-  {% if user.is_admin %}
-    <form class="col s8 offset-s2 m8 offset-m2"
-      method="POST"
-      action="{{ url_for('make_admin', user_id=user.user_id) }}">
-        <div class="row">
-          <button type="submit" class="col s8 offset-s2 btn red darken-4 text-shadow">
-            Make User Admin
-          </button>
-        </div>
-    </form>
-  {% endif %}
-</div>
 {% endif %}
+{% if current_user.is_admin %}
+  <form class="col s8 offset-s2 m8 offset-m2"
+    method="POST"
+    action="{{ url_for('make_admin', user_id=user.user_id) }}">
+      <div class="row">
+        <button type="submit" class="col s8 offset-s2 btn red darken-4 text-shadow">
+          Make User Admin
+        </button>
+      </div>
+  </form>
+{% endif %}
+</div>
 {% endblock %}

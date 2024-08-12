@@ -189,7 +189,7 @@ def make_admin(user_id):
     if user:
         user.is_admin = True
         db.session.commit()
-        flash('You are now an admin!')
+        flash('{{user.username}} is now an admin!')
     else:
         flash('User not found!')
 
