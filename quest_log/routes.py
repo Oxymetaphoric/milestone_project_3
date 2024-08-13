@@ -12,6 +12,11 @@ from sqlalchemy.sql import func
 def home():
     return redirect(url_for("games"))
 
+@app.errorhandler(404)
+def page_not_found(e):
+    flash("Error: page not found", "error")
+    return render_template('404.html'), 404
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
