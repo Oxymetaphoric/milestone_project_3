@@ -1,7 +1,7 @@
 ## :microscope: Testing
 
 Manual testing, or user testing, is the process of using the site as intended, clicking buttons, signing up, resizing windows etc. and noting any unintended behaviour or other bugs. 
-This process was followed throughtout the development of this process with each new feature thoroughly tested and confirmed to be working before work started on the next feature.
+This process was followed throughout the development of this process with each new feature thoroughly tested and confirmed to be working before work started on the next feature.
 
 Automated testing is the process fo writing custom scripts to interact with the project by doing things like deleting reviews, creating a new user etc. This methodology was not used during this project, as I judged the time and work involved in automatically testing this site, versus manually testing it during development to not be warrent the investment. 
 
